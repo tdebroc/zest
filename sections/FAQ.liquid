@@ -1,0 +1,113 @@
+<style type="text/css">
+.faq { 
+ position: relative; 
+}
+.faq input { display: none; }
+.faq input:checked + label { 
+ background: (top,#FFFFFF,#FFFFFF); 
+ color: #F29F05; 
+ font-size:100%;
+ font-weight: bold; 
+}
+.faq label { 
+ font-family: helvetica;
+ cursor: pointer; 
+ display: block; 
+ height: auto; 
+ text-align: left; 
+ padding:15px;
+ padding-left:15px;
+ margin:1;
+ padding-right: 15px;
+
+ color: #333; 
+ font-size:100%; 
+ border:1px solid #FFFFFF;
+ border-bottom: 0;
+ font-weight: bold; 
+ background: (top,#FFFFFF,#FFFFFF); 
+}
+.faq label:before {
+ content:"+";
+ line-height:21px;
+ font-size:21px; 
+ margin-right:20px; 
+}
+.faq input:checked + label:before {
+ content:"-";
+}
+.faq label:last-child { margin-right: 0; }
+.faq label:hover { 
+ background: (top,#FFFFFF,#FFFFFF); 
+}
+.faq article { 
+ max-height: 0;
+ overflow: hidden; 
+ transition: max-height 0.15s ease-out;
+ position: relative; 
+ margin-bottom: 0;
+ top:0;
+ padding:10px 10px 10px 10px; 
+ color: #333; 
+ opacity: 0;
+ border:1px solid #FFFFFF;
+}
+.faq div > input:checked ~ article { 
+ max-height: 500px;
+ opacity: 1;
+ margin-bottom:12px;
+ transition: max-height 0.25s ease-in; 
+}​
+</style> 
+<form class="faq">
+    <div class="faq-wrapper">
+        <input type="radio" name="size" id="faq1" value="faq1" checked="checked" />
+        <label for="faq1">Zester suffit-il pour dîner ?</label>
+        <article>
+            <p>Une planche est un apéro dinatoire, cela veut dire que ton ventre ne criera pas famine à la fin de la dégustation, nous te l’assurons. Pour les grands mangeurs et ceux qui auraient peur de manquer n’hésitez pas à commander une baguette en supplément. Et pour ceux qui auraient besoin de finir leur dîner sur une touche sucrée, commandez un petit Zest sur le gâteau. </p>
+        </article>
+    </div>
+  
+    <div class="faq-wrapper">
+        <input type="radio" name="size" id="faq2" value="faq2" />
+        <label for="faq2">A combien s’élève la livraison ? </label>
+        <article>
+            <p>La livraison est assurée par une chouette entreprise de coursier à vélo, produit purement français : Diligo. Nous livrons actuellement dans Paris intra-muros pour 3,5€. 
+Notre souhait était de ne faire aucune concession sur la livraison à vélo. Et pour être tout à fait honnête avec vous et justifier ce prix, sachez que nous rentrons dans le prix des planches plus de la moitié du prix de la livraison réel. Et ce n’est pas que vous payez votre planche plus cher, bien au contraire c’est que nous faisons une marge plus petite.
+</p>
+        </article>
+    </div>
+    <div class="faq-wrapper">
+        <input type="radio" name="size" id="faq3" value="faq3" />
+        <label for="faq3">Quand pouvons-nous nous faire livrer ?</label>
+        <article>
+            <p>Nous enfourchons notre vélo à 17h30 et livrons la dernière commande pour 21h30.  Et oui en Italie l’apéro commence tôt, en Espagne il commence tard, ici chez Zest nous essayons de ravir tout le monde.</p>
+        </article>
+    </div>
+    <div class="faq-wrapper">
+        <input type="radio" name="size" id="faq4" value="faq4" />
+        <label for="faq4">Quand pouvons-nous commander ?
+</label>
+        <article>
+            <p>Absolument quand tu le souhaites avant 15h le jour du Zest. Plusieurs raisons justifient ce choix de notre part. Tout d’abord, il faut savoir que toutes nos productions sont faites maison. Pour cette raison, afin de préserver la conservation et la qualité de chacune de nos recettes, nous réitérons chaque jour avec nos petites mains et le sourire les mêmes gestes. On peut te le dire : ton apéro est fait dans la journée, uniquement pour toi, tout frais. Pour éviter de participer au 1,6 millions de tonnes d’aliments encore consommables qui sont jetées chaque année par la restauration, nous demandons à nos clients de commander à l’avance. 
+*Si tu commandes la veille de ton Zest, tu auras la chance de trouver un cadeau Zestif pour ton apéro.
+</p>
+        </article>
+    </div>
+    <div class="faq-wrapper">
+        <input type="radio" name="size" id="faq5" value="faq5" />
+        <label for="faq5">Où pouvons-nous vous joindre ? </label>
+        <article>
+            <p>Nous sommes joignables sur beaucoup de canaux grâce au super pouvoir d’un Zest mobile. Instagram, Facebook, Linkedin, Whatsapp, email, texto, appel. Retrouve tous les liens ci-dessus.   
+Que ce soit pour un mot Zestifiant, une question, une recommandation, une interrogation ou même discuter avec l’une d’entre nous, n’hésite pas.
+</p>
+        </article>
+    </div>
+    <div class="faq-wrapper">
+        <input type="radio" name="size" id="faq6" value="faq6" />
+        <label for="faq6">La boite et le papier se recyclent-ils?</label>
+        <article>
+            <p>Tout d’abord, tout notre packaging est fait à base de produits recyclés, c’est déjà une chouette nouvelle. A la fin de ton Zest, il va tout droit dans la poubelle jaune. Quant à la cuillère en bois et les bateaux en bambou comme ils ont été en contact avec de la nourriture, tu peux les mettre dans ton compost. Nous serons ravies de savoir que notre Zest a permis de faire germer des graines. </p>
+        </article>
+    </div>
+</form>

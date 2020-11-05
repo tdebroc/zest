@@ -1,0 +1,1631 @@
+{
+  "current": {
+    "body_text_col": "#2c2528",
+    "header_col": "#f29f05",
+    "logo_col": "#6a5b5c",
+    "prod_sale_price_col": "#f29f05",
+    "feature_col": "#f29f05",
+    "feature_over_col": "#ffffff",
+    "btn_shape": "rect",
+    "site_border_col": "#f29f05",
+    "site_border_thickness": 0,
+    "divider_col": "#ffffff",
+    "nav_main_col": "#2c2528",
+    "nav_main_hover_col": "#f29f05",
+    "nav_drop_bg_col": "#ffffff",
+    "nav_drop_link_col": "#6a5b5c",
+    "nav_drop_link_hover_col": "#f29f05",
+    "nav_drop_heading_col": "#6a5b5c",
+    "cart_summary_bg_col": "#fffdf3",
+    "homepage_divider_col": "#ffffff",
+    "coll_header_bg_col": "#f4f2e9",
+    "coll_header_heading_col": "#f29f05",
+    "coll_header_text_col": "#6a5b5c",
+    "sale_label_bg_col": "#f29f05",
+    "sale_label_text_col": "#ffffff",
+    "new_in_label_bg_col": "#f29f05",
+    "new_in_label_text_col": "#ffffff",
+    "sold_out_label_bg_col": "#7f7f7f",
+    "sold_out_label_text_col": "#ffffff",
+    "low_inv_label_bg_col": "#7f7f7f",
+    "low_inv_label_text_col": "#ffffff",
+    "foot_bg_col": "#fffdf3",
+    "foot_text_col": "#2c2528",
+    "foot_links_col": "#2c2528",
+    "site_bg_col": "#ffffff",
+    "site_bg": "",
+    "bg_alignment": "repeat-x",
+    "type_base_font": "karla_n4",
+    "type_heading_font": "karla_n4",
+    "type_nav_font": "karla_n4",
+    "type_logo_font": "karla_n4",
+    "font_size_body_int": 16,
+    "font_size_nav_int": 17,
+    "prod_thumb_shape": "natural",
+    "prod_thumb_gutter": "10",
+    "prod_thumb_show_border": false,
+    "product_grid_hover_image": true,
+    "product_grid_show_weight": false,
+    "prod_block_layout": "above align-center",
+    "label_sale_show": true,
+    "label_soldout_show": true,
+    "label_remain_show": true,
+    "prod_stock_warn_limit_int": 4,
+    "label_new_in_show": true,
+    "prod_new_in_limit_int": 7,
+    "prod_quick_buy_show": true,
+    "prod_quick_buy_type": "in-page",
+    "prod_quick_buy_pos": "middle",
+    "search_type": "product",
+    "favicon": "shopify:\/\/shop_images\/logo_Zest_4d14ea96-535a-418f-80ce-c159979bf1ba.png",
+    "share_image": "shopify:\/\/shop_images\/communication_12.png",
+    "social_twitter_url": "",
+    "social_facebook_url": "https:\/\/www.facebook.com\/zest.planche\/",
+    "social_pinterest_url": "",
+    "social_vimeo_url": "",
+    "social_youtube_url": "",
+    "social_instagram_url": "https:\/\/www.instagram.com\/zest.planche\/",
+    "social_custom_icon": "shopify:\/\/shop_images\/logo_Zest_4d14ea96-535a-418f-80ce-c159979bf1ba.png",
+    "social_custom_url": "",
+    "cart_type": "drawer-standard",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "small",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fffdf3",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#f29f05",
+    "checkout_button_color": "#f29f05",
+    "checkout_error_color": "#f29f05",
+    "prod_thumb_border": "border",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "1600939207597": {
+            "type": "menu_promotion",
+            "settings": {
+              "dropdown_link_title": "",
+              "text": ""
+            }
+          }
+        },
+        "block_order": [
+          "1600939207597"
+        ],
+        "settings": {
+          "menu_linklist": "main-menu",
+          "header_layout": "center",
+          "logo": "shopify:\/\/shop_images\/logo_Zest_4d14ea96-535a-418f-80ce-c159979bf1ba.png",
+          "logo_width": "200",
+          "use_mobile_logo": false,
+          "compact_logo": "shopify:\/\/shop_images\/logo_Zest_4d14ea96-535a-418f-80ce-c159979bf1ba.png",
+          "show_header_search": true,
+          "show_social_icons": true,
+          "show_locale_selector": true,
+          "show_currency_selector": true,
+          "nav_alignment": "center",
+          "nav_col_limit_int": 8,
+          "nav_featured_link": "Sale",
+          "nav_featured_col": "#f29f05",
+          "announcement_show": true,
+          "announcement_position": "above",
+          "announcement_home_only": false,
+          "announcement_text": "Commande avant 19h30 et fais toi livrer le soir même dans tout Paris et Boulogne",
+          "announcement_col_bar": "#f29f05",
+          "announcement_col_text": "#fafafa"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_complexity": "columns",
+          "show_footer_logo": true,
+          "footer_logo": "shopify:\/\/shop_images\/logo_Zest_4d14ea96-535a-418f-80ce-c159979bf1ba.png",
+          "text_content": "<p>Pour te permettre de Zester ta planche dînatoire à Paris, nous sommes ouverts du <strong>mardi<\/strong> au <strong>dimanche.<\/strong><\/p><p>Livraison de <strong>17H30<\/strong> à <strong>21H30 <\/strong>dans tout<strong> Paris intramuros.<\/strong><\/p><p>Pour nous rendre visite : <\/p><p><strong>5 rue Crillon<\/strong><\/p><p><strong>75004 Paris<\/strong><\/p><p>Pour nous appeler : <\/p><p>06 36 16 93 83<\/p>",
+          "footer_linklist": "footer",
+          "footer_linklist2": "",
+          "footer_linklist3": "footer-2",
+          "footer_display_newsletter": true,
+          "newsletter_text": "<p>Inscris toi à notre newsletter pour recevoir des news<\/p>",
+          "show_locale_selector": true,
+          "show_currency_selector": false
+        }
+      },
+      "1478797384865": {
+        "type": "slideshow",
+        "blocks": {
+          "cfb804cb-2b2c-43d3-bffa-2d34236fbab7": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/communication_12_27462514-d821-4a54-895b-b4919bc4aae3.png",
+              "mobile_image": "shopify:\/\/shop_images\/communication_12_27462514-d821-4a54-895b-b4919bc4aae3.png",
+              "tint_color": "#3d4246",
+              "tint_opacity": 0,
+              "position": "centre",
+              "heading": "",
+              "text": "",
+              "text_colour": "#ffffff",
+              "button_text": "PLANCHE 100% FAIT MAISON",
+              "link_url": "shopify:\/\/collections\/tous-nos-produits"
+            }
+          },
+          "1598353872644": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pb.png",
+              "mobile_image": "shopify:\/\/shop_images\/pb.png",
+              "tint_color": "rgba(0,0,0,0)",
+              "tint_opacity": 0,
+              "position": "centre",
+              "heading": "",
+              "text": "",
+              "text_colour": "#4a8329",
+              "button_text": "COMMANDER",
+              "link_url": "shopify:\/\/products\/planche-chaude-dinatoire-1"
+            }
+          }
+        },
+        "block_order": [
+          "cfb804cb-2b2c-43d3-bffa-2d34236fbab7",
+          "1598353872644"
+        ],
+        "settings": {}
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "show_rss": false,
+          "show_tags": false,
+          "show_author": false,
+          "show_meta_on_listing": false,
+          "show_tags_on_articles": false,
+          "show_sharing_icons": true,
+          "tile_mode": "tile",
+          "use_inf_scroll": false
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "prod_show_brand": false,
+          "prod_show_type": false,
+          "show_tax_and_shipping": false,
+          "prod_show_weight": true,
+          "prod_show_sku": false,
+          "stock_warning_show": true,
+          "stock_warning_limit": 5,
+          "prod_show_quantity_input": true,
+          "prod_clicky_opt_names": "",
+          "description_location": "",
+          "enable_payment_button": false,
+          "show_backorder_text": true,
+          "show_sharing_icons": false,
+          "enable_video_looping": true,
+          "enable_product_image_zoom": false,
+          "show_size_chart": false,
+          "size_chart_variant": "Size",
+          "size_chart_page": ""
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "grid_show_vendor": false,
+          "header_align": "left",
+          "header_mode": "text-only",
+          "header_height_fixed": true,
+          "header_height": 300,
+          "sidebar_show": false,
+          "sidebar_linklist": "",
+          "sidebar_page": "nos-boulangeries",
+          "show_collection_tags": true,
+          "collection_tags": "boxes",
+          "collection_sort": true,
+          "collection_sort_show_featured": false,
+          "products_per_row": "5",
+          "pagination_limit_int": 32,
+          "coll_infiniscroll": true
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "blocks": {
+          "8444ac95-b1f2-4e57-8bc9-0ac1c12446b3": {
+            "type": "image",
+            "settings": {
+              "collection": "pack-anti-deprime"
+            }
+          }
+        },
+        "block_order": [
+          "8444ac95-b1f2-4e57-8bc9-0ac1c12446b3"
+        ],
+        "settings": {
+          "title": "",
+          "layout": "rows",
+          "grid_show_vendor": false,
+          "display_type": "all",
+          "products_per_row": "5",
+          "sidebar_show": false,
+          "sidebar_title": "Categories",
+          "sidebar_linklist": "main-menu"
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "show_feat_image": false,
+          "show_tags": false,
+          "show_author": false,
+          "show_sharing_icons": false
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "show_notes": false,
+          "show_tax_and_shipping": true,
+          "show_additional_checkout_buttons": true,
+          "show_backorder_text": true,
+          "cart_notification_show": false,
+          "cart_notification_text": "",
+          "cart_notification_pos": "",
+          "shipping_calculator": false,
+          "shipping_calculator_default_country": "United States"
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "recommendations_title": "Un  petit Zest en plus ?",
+          "show_recommendations": true,
+          "products_per_row": "5",
+          "grid_show_vendor": false
+        }
+      },
+      "1590157729940": {
+        "type": "featured-collections",
+        "blocks": {
+          "1590157729940-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "nos-tartinables"
+            }
+          },
+          "1590157729940-1": {
+            "type": "collection",
+            "settings": {
+              "collection": "nos-boulangeries"
+            }
+          },
+          "1590157729940-2": {
+            "type": "collection",
+            "settings": {
+              "collection": "nos-zest-en"
+            }
+          },
+          "1590157729940-3": {
+            "type": "collection",
+            "settings": {
+              "collection": "nos-zest-sucre"
+            }
+          },
+          "1598438156586": {
+            "type": "collection",
+            "settings": {
+              "collection": "nos-planches"
+            }
+          }
+        },
+        "block_order": [
+          "1590157729940-0",
+          "1590157729940-1",
+          "1590157729940-2",
+          "1590157729940-3",
+          "1598438156586"
+        ],
+        "settings": {
+          "heading": "Tous nos Zest",
+          "show_view_all": true,
+          "collections_per_row": "5"
+        }
+      },
+      "1590506747837": {
+        "type": "featured-collection",
+        "settings": {
+          "collection": "planches-a-composer",
+          "grid_show_vendor": false,
+          "products_per_row": "5",
+          "row_count_int": 2
+        }
+      },
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {
+          "enable_cart_notes": true,
+          "show_tax_and_shipping": false,
+          "show_additional_checkout_buttons": false,
+          "promo_products_show": true,
+          "promo_products_heading": "On te recommande en plus :",
+          "promo_products_product_1": "houmous-de-carottes-jaune-curry-coco",
+          "promo_products_product_2": "focaccia",
+          "cart_summary_image_show": false,
+          "cart_summary_image_tint_color": "#3d4246",
+          "cart_summary_image_tint_opacity": 0,
+          "cart_summary_image_heading": "",
+          "cart_summary_image_subheading": "",
+          "cart_summary_image_text_color": "#ffffff"
+        }
+      },
+      "page-story-template": {
+        "type": "page-story-template",
+        "blocks": {
+          "1598536180983": {
+            "type": "image-with-text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/communication_3_31746544-84c4-4478-91f0-7521af886e41.png",
+              "layout": "right",
+              "title": "Particuliers ? nous te Zestons ton événement sur mesure.",
+              "text": "<p>Tu veux&nbsp;organiser l'anniversaire de ta grand-m&egrave;re, ou tout simplement, tu ram&egrave;nes un lama aux fian&ccedil;ailles de ton meilleur pote, contacte-nous, nous mettrons tout notre Zest &agrave; rendre ta soir&eacute;e parfaite.<\/p>",
+              "button_label": "DEMANDER UN DEVIS",
+              "button_link": "shopify:\/\/pages\/traiteur-particuliers"
+            }
+          },
+          "1598533307188": {
+            "type": "image-with-text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/communication_16.png",
+              "layout": "left",
+              "title": "Vos événements entreprise",
+              "text": "<p>Zest s'occupe de tes &eacute;v&eacute;nements entreprise.<\/p>\n<p><\/p>\n<p>Envoie-nous ta demande et on s'occupe du reste.<\/p>",
+              "button_label": "DEMANDER UN DEVIS",
+              "button_link": "shopify:\/\/pages\/devis-zest"
+            }
+          }
+        },
+        "block_order": [
+          "1598536180983",
+          "1598533307188"
+        ],
+        "settings": {
+          "show_title": false,
+          "show_dividers": true
+        }
+      },
+      "featured-collection": {
+        "type": "featured-collection",
+        "settings": {
+          "collection": "tous-nos-produits",
+          "grid_show_vendor": false,
+          "products_per_row": "5",
+          "row_count_int": 4
+        }
+      },
+      "image-with-text": {
+        "type": "image-with-text",
+        "settings": {}
+      },
+      "featured-product": {
+        "type": "featured-product",
+        "settings": {
+          "product": "pack-anti-deprime",
+          "prod_show_brand": false,
+          "prod_show_type": false,
+          "show_tax_and_shipping": false,
+          "prod_show_weight": false,
+          "prod_show_sku": false,
+          "stock_warning_show": false,
+          "stock_warning_limit": 5,
+          "prod_show_quantity_input": true,
+          "prod_clicky_opt_names": "",
+          "text": "<p>La Box Anti Déprime à partager entre amis de couvre-feu (à partir de 2 Zesteurs).<\/p><p>Une planche dinatoire où tu retrouveras bien sur nos tartinables, sablés,etc, accompagnée d’une nos tartines chaude. En cadeau ? Notre Maxi cookie ultra moelleux et son caramel maison ! N’hésite pas à accompagner cette box d’une nos boisson que nous te présentons sur notre site internet chez nos partenaires du Sud-Ouest.Bref de quoi voir la vie en Zest, commande ta box avant 18h00 et fais toi livrer dans tout Paris à vélo le soir même ! <\/p><p><strong>PLANCHE DÎNATOIRE + COOKIE <\/strong><\/p><p>Accompagne ta box d&#x27;une chouette boisson parmi la sélection ci-dessous<\/p>",
+          "enable_payment_button": false,
+          "show_backorder_text": true,
+          "prod_show_thumbnails": true,
+          "enable_product_image_zoom": true,
+          "enable_video_looping": false
+        }
+      },
+      "featured-content": {
+        "type": "featured-content",
+        "settings": {
+          "title": "Rich text",
+          "text": "<p>Use this text to share information about your store with your customers.<\/p><p>Describe products, share announcements, or welcome customers to your store.<\/p>"
+        }
+      },
+      "slideshow": {
+        "type": "slideshow",
+        "blocks": {
+          "1600512404962": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/communication_15.png",
+              "mobile_image": "shopify:\/\/shop_images\/communication_16.png",
+              "tint_color": "#ffffff",
+              "tint_opacity": 0,
+              "position": "centre",
+              "heading": "",
+              "text": "",
+              "text_colour": "#ffffff",
+              "button_text": "",
+              "link_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1600512404962"
+        ],
+        "settings": {}
+      },
+      "tiled-images": {
+        "type": "tiled-images",
+        "blocks": {
+          "1598288952051": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link_url": "",
+              "tint_color": "#3d4246",
+              "tint_opacity": 0,
+              "title": "",
+              "text_line_2": "",
+              "overlay_color": "#464654",
+              "overlay_bg": "#ffffff"
+            }
+          },
+          "1598466015290": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link_url": "",
+              "tint_color": "#3d4246",
+              "tint_opacity": 0,
+              "title": "",
+              "text_line_2": "",
+              "overlay_color": "#464654",
+              "overlay_bg": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "1598288952051",
+          "1598466015290"
+        ],
+        "settings": {
+          "row_size_int": 1,
+          "image_margin": "0"
+        }
+      },
+      "image1": {
+        "type": "image1",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/communication_18.png",
+          "layout": "right",
+          "title": "",
+          "text": "<p>En ce <strong>25 avril 2020<\/strong>, J.31 de confinement, il est 18h04, quand ces trois &eacute;tudiantes de <strong>l&rsquo;Institut Paul<\/strong>&nbsp;<strong>Bocuse<\/strong> et <strong>Em lyon<\/strong> en master d&rsquo;h&ocirc;tellerie restauration se retrouvent en vid&eacute;oconf&eacute;rence entre deux projets d&rsquo;&eacute;cole.<\/p>\n<p>L&rsquo;un de ces projets &eacute;tablit la conjoncture du march&eacute; de la restauration apr&egrave;s covid, l&rsquo;autre &eacute;voque la volont&eacute; des restaurateurs d&rsquo;&eacute;voluer vers une consommation responsable et engag&eacute;e.&nbsp;<\/p>\n<p><\/p>\n<p>Elles&nbsp;&eacute;changent sur leur avenir respectif qui, &agrave; court terme, devait les emmener&nbsp;sur un tour du Luxembourg &agrave; v&eacute;lo (oui oui chez Zest on aime les gros d&eacute;fis) en passant par la vente de&nbsp;planches ap&eacute;ritives sur les plages du Sud-Ouest.<\/p>\n<p>L'id&eacute;e s'affine, Zest est cr&eacute;&eacute;, et les voil&agrave;&nbsp;lanc&eacute;es dans cette folle aventure.&nbsp;<\/p>\n<p>C&rsquo;est parti pour 1 mois en cuisine &agrave; effectuer des tests dans tous les sens : <strong>103<\/strong> essais de recettes de sabl&eacute;s, <strong>25<\/strong> assaisonnements possibles d&rsquo;houmous de tomates s&eacute;ch&eacute;es, <strong>14<\/strong> br&ucirc;lures sur les bras apr&egrave;s avoir retourn&eacute; la tortilla.<\/p>\n<p>Une id&eacute;e de mono-produit de saison par recette, un zest d&rsquo;originalit&eacute; et nos planches sont pr&ecirc;tes.&nbsp;<\/p>\n<p><\/p>\n<p><\/p>",
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "image2": {
+        "type": "image2",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/communication_5.png",
+          "layout": "left",
+          "title": "",
+          "text": "<p><\/p>\n<p><\/p>\n<p>Il fallait alors penser &agrave; les transporter. <strong>43<\/strong> diff&eacute;rents agencements de bo&icirc;tes sont envisag&eacute;s, tout autant d&rsquo;aller-retour sur la place de la Concorde afin&nbsp;de tester nos crackers sur les pav&eacute;s.<\/p>\n<p>Ce joyeux trio anim&eacute; par plusieurs valeurs communes : <strong>&eacute;co-responsabilit&eacute;<\/strong> , <strong>partage<\/strong>, et <strong>vitalit&eacute;<\/strong> part&nbsp;&agrave; la recherche d'un local pour cuisiner&nbsp;dans lequel il s&rsquo;installe le <strong>31 ao&ucirc;t 2020<\/strong> &agrave; <strong>Bastille<\/strong>.<\/p>\n<p>&nbsp;<\/p>\n<p>Heureuses de cette &eacute;volution nous sommes le 1 Septembre lorsque l&rsquo;aventure Zest d&eacute;marre r&eacute;ellement.<\/p>\n<p>&nbsp;<\/p>\n<p><strong>Et ce n&rsquo;est que le d&eacute;but &hellip;.<\/strong><\/p>\n<p><br><br><\/p>",
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "custom-html": {
+        "type": "custom-html",
+        "settings": {}
+      },
+      "featured-blog": {
+        "type": "featured-blog",
+        "settings": {
+          "title": "Nos partenaires locaux",
+          "blog": "nos-partenaires-locaux",
+          "crop_image": true,
+          "crop_ratio": "3-4",
+          "show_author": false
+        }
+      },
+      "1599129325640": {
+        "type": "instafeed",
+        "settings": {
+          "heading_font": "helvetica_n4",
+          "heading_size": 20,
+          "feed_width": 100,
+          "html_area": "<!-- -->"
+        }
+      },
+      "slideshow2": {
+        "type": "slideshow2",
+        "blocks": {
+          "1600512712861": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/ZEST_1.png",
+              "mobile_image": "shopify:\/\/shop_images\/ZEST_1.png",
+              "tint_color": "#3d4246",
+              "tint_opacity": 0,
+              "position": "centre",
+              "heading": "",
+              "text": "",
+              "text_colour": "#ffffff",
+              "button_text": "",
+              "link_url": ""
+            }
+          },
+          "1600512791297": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/ZEST_2.png",
+              "mobile_image": "shopify:\/\/shop_images\/ZEST_2.png",
+              "tint_color": "#fcfeff",
+              "tint_opacity": 0,
+              "position": "centre",
+              "heading": "Slideshow",
+              "text": "",
+              "text_colour": "#ffffff",
+              "button_text": "",
+              "link_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1600512712861",
+          "1600512791297"
+        ],
+        "settings": {}
+      },
+      "traiteur": {
+        "type": "traiteur",
+        "settings": {
+          "custom_html": "<div class=\"typeform-widget\" data-url=\"https:\/\/form.typeform.com\/to\/rcQQTIaX\" style=\"width: 100%; height: 500px;\"><\/div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id=\"typef_orm\", b=\"https:\/\/embed.typeform.com\/\"; if(!gi.call(d,id)) { js=ce.call(d,\"script\"); js.id=id; js.src=b+\"embed.js\"; q=gt.call(d,\"script\")[0]; q.parentNode.insertBefore(js,q) } })() <\/script> <div style=\"font-family: Sans-Serif;font-size: 12px;color: #999;opacity: 0.5; padding-top: 5px;\"> powered by <a href=\"https:\/\/admin.typeform.com\/signup?utm_campaign=rcQQTIaX&amp;utm_source=typeform.com-01EA9DHP7NT8WNRFVJM2TQ1SVE-free&amp;utm_medium=typeform&amp;utm_content=typeform-embedded-poweredbytypeform&amp;utm_term=EN\" style=\"color: #999\" target=\"_blank\">Typeform<\/a> <\/div>"
+        }
+      },
+      "boissonsbox": {
+        "type": "boissonsbox",
+        "settings": {
+          "collection": "boissons-alcolisees",
+          "grid_show_vendor": false,
+          "products_per_row": "5",
+          "row_count_int": 4
+        }
+      },
+      "ea": {
+        "type": "ea",
+        "settings": {}
+      },
+      "datePicker": {
+        "type": "datePicker",
+        "settings": {}
+      },
+      "1604338685d5b5fb7e": {
+        "type": "featured-collections",
+        "disabled": true,
+        "blocks": {
+          "1604338685d5b5fb7e-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "planche-apero"
+            }
+          },
+          "1604338685d5b5fb7e-1": {
+            "type": "collection",
+            "settings": {
+              "collection": "planche-reconfortante"
+            }
+          }
+        },
+        "block_order": [
+          "1604338685d5b5fb7e-0",
+          "1604338685d5b5fb7e-1"
+        ],
+        "settings": {
+          "heading": "Nos Planches dînatoires",
+          "show_view_all": true,
+          "collections_per_row": "4"
+        }
+      },
+      "16044199161174e69f": {
+        "type": "image3",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/1.png",
+          "layout": "left",
+          "title": "Nos Planches apéros",
+          "text": "<p>Ta planche apéro dînatoire 100% maison <\/p>",
+          "button_label": "COMMANDER",
+          "button_link": "shopify:\/\/collections\/planche-apero"
+        }
+      }
+    },
+    "content_for_index": [
+      "1478797384865",
+      "1604338685d5b5fb7e",
+      "1590506747837",
+      "1590157729940",
+      "1599129325640",
+      "16044199161174e69f"
+    ]
+  },
+  "presets": {
+    "Kiln": {
+      "body_text_col": "#2c2528",
+      "header_col": "#6a5b5c",
+      "logo_col": "#6a5b5c",
+      "prod_sale_price_col": "#89c21e",
+      "feature_col": "#5c8018",
+      "feature_over_col": "#ffffff",
+      "btn_shape": "rect",
+      "site_border_col": "#6a5b5c",
+      "site_border_thickness": 12,
+      "divider_col": "#e5e2d4",
+      "nav_main_col": "#2c2528",
+      "nav_main_hover_col": "#5c8018",
+      "nav_drop_bg_col": "#e5e2d4",
+      "nav_drop_link_col": "#6a5b5c",
+      "nav_drop_link_hover_col": "#5c8018",
+      "nav_drop_heading_col": "#6a5b5c",
+      "cart_summary_bg_col": "#ffffff",
+      "homepage_divider_col": "rgba(0,0,0,0)",
+      "coll_header_bg_col": "#f4f2e9",
+      "coll_header_heading_col": "#5c8018",
+      "coll_header_text_col": "#6a5b5c",
+      "sale_label_bg_col": "#89c21e",
+      "sale_label_text_col": "#ffffff",
+      "new_in_label_bg_col": "#5c8018",
+      "new_in_label_text_col": "#ffffff",
+      "sold_out_label_bg_col": "#7f7f7f",
+      "sold_out_label_text_col": "#ffffff",
+      "low_inv_label_bg_col": "#7f7f7f",
+      "low_inv_label_text_col": "#ffffff",
+      "foot_bg_col": "#f4f2e9",
+      "foot_text_col": "#2c2528",
+      "foot_links_col": "#2c2528",
+      "site_bg_col": "#ffffff",
+      "bg_alignment": "repeat-x",
+      "type_base_font": "gill_sans_nova_n3",
+      "type_heading_font": "gill_sans_nova_n4",
+      "type_nav_font": "gill_sans_nova_n4",
+      "type_logo_font": "gill_sans_nova_n4",
+      "font_size_body_int": 15,
+      "font_size_nav_int": 17,
+      "prod_thumb_shape": "1",
+      "prod_thumb_gutter": "10",
+      "prod_thumb_show_border": true,
+      "product_grid_hover_image": true,
+      "product_grid_show_weight": true,
+      "prod_block_layout": "beside",
+      "label_sale_show": true,
+      "label_soldout_show": true,
+      "label_remain_show": true,
+      "prod_stock_warn_limit_int": 4,
+      "label_new_in_show": false,
+      "prod_new_in_limit_int": 7,
+      "prod_quick_buy_show": true,
+      "prod_quick_buy_type": "in-page",
+      "prod_quick_buy_pos": "topcorner",
+      "search_type": "product",
+      "cart_type": "drawer-always",
+      "prod_thumb_border": "border",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "header_layout": "nav",
+            "logo_width": "75",
+            "show_header_search": true,
+            "show_social_icons": true,
+            "nav_alignment": "left",
+            "nav_col_limit_int": 8,
+            "nav_featured_link": "Sale",
+            "nav_featured_col": "#5c8018",
+            "announcement_show": true,
+            "announcement_position": "above",
+            "announcement_home_only": false,
+            "announcement_text": "Free shipping and returns",
+            "announcement_col_bar": "#f4f2e9",
+            "announcement_col_text": "#2c2528"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {
+            "footer_complexity": "columns",
+            "show_footer_logo": true,
+            "text_content": "",
+            "footer_display_newsletter": true,
+            "newsletter_text": ""
+          }
+        },
+        "1478797384865": {
+          "type": "slideshow",
+          "blocks": {
+            "1478797384865-0": {
+              "type": "image",
+              "settings": {
+                "tint_color": "#2c2528",
+                "tint_opacity": 24,
+                "position": "centre",
+                "text_colour": "#ffffff"
+              }
+            },
+            "1590330964852": {
+              "type": "image",
+              "settings": {
+                "tint_color": "#2c2528",
+                "tint_opacity": 24,
+                "position": "centre",
+                "text_colour": "#ffffff"
+              }
+            },
+            "1590331020519": {
+              "type": "image",
+              "settings": {
+                "tint_color": "#2c2528",
+                "tint_opacity": 24,
+                "position": "centre",
+                "text_colour": "#ffffff"
+              }
+            }
+          },
+          "block_order": [
+            "1478797384865-0",
+            "1590330964852",
+            "1590331020519"
+          ],
+          "settings": {}
+        },
+        "1478798179956": {
+          "type": "featured-collection",
+          "disabled": true,
+          "settings": {
+            "grid_show_vendor": false,
+            "products_per_row": "4",
+            "row_count_int": 4
+          }
+        },
+        "1478859958434": {
+          "type": "featured-blog",
+          "settings": {
+            "crop_image": true,
+            "crop_ratio": "16-9",
+            "show_author": true
+          }
+        },
+        "1478864807619": {
+          "type": "tiled-images",
+          "blocks": {
+            "1478864807619-0": {
+              "type": "image",
+              "settings": {
+                "tint_color": "#3d4246",
+                "tint_opacity": 0,
+                "overlay_color": "#5c8018",
+                "overlay_bg": "#f4f2e9"
+              }
+            },
+            "1478864807619-2": {
+              "type": "image",
+              "settings": {
+                "tint_color": "#3d4246",
+                "tint_opacity": 0,
+                "overlay_color": "#5c8018",
+                "overlay_bg": "#f4f2e9"
+              }
+            },
+            "1478864807619-1": {
+              "type": "image",
+              "settings": {
+                "tint_color": "#3d4246",
+                "tint_opacity": 0,
+                "overlay_color": "#5c8018",
+                "overlay_bg": "#f4f2e9"
+              }
+            },
+            "1478864807619-3": {
+              "type": "image",
+              "settings": {
+                "tint_color": "#3d4246",
+                "tint_opacity": 0,
+                "overlay_color": "#5c8018",
+                "overlay_bg": "#f4f2e9"
+              }
+            }
+          },
+          "block_order": [
+            "1478864807619-0",
+            "1478864807619-2",
+            "1478864807619-1",
+            "1478864807619-3"
+          ],
+          "settings": {
+            "row_size_int": 2,
+            "image_margin": "0.5"
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "show_rss": true,
+            "show_tags": false,
+            "show_author": true,
+            "show_meta_on_listing": true,
+            "show_tags_on_articles": false,
+            "show_sharing_icons": true,
+            "tile_mode": "",
+            "use_inf_scroll": false
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "prod_show_brand": false,
+            "prod_show_type": false,
+            "show_tax_and_shipping": false,
+            "prod_show_weight": true,
+            "prod_show_sku": false,
+            "stock_warning_show": true,
+            "stock_warning_limit": 5,
+            "prod_show_quantity_input": true,
+            "prod_clicky_opt_names": "",
+            "description_location": "",
+            "enable_payment_button": false,
+            "show_backorder_text": true,
+            "show_sharing_icons": true,
+            "enable_video_looping": true,
+            "enable_product_image_zoom": true,
+            "show_size_chart": false,
+            "size_chart_variant": "Size",
+            "size_chart_page": ""
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "grid_show_vendor": false,
+            "header_align": "left",
+            "header_mode": "coloured-split",
+            "header_height_fixed": true,
+            "header_height": 300,
+            "show_collection_tags": true,
+            "collection_tags": "dropdown",
+            "collection_sort": true,
+            "collection_sort_show_featured": true,
+            "products_per_row": "5",
+            "pagination_limit_int": 30,
+            "coll_infiniscroll": false
+          }
+        },
+        "1480594642153": {
+          "type": "featured-content",
+          "settings": {}
+        },
+        "list-collections-template": {
+          "type": "list-collections-template",
+          "settings": {
+            "layout": "grid"
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "show_feat_image": true,
+            "show_tags": true,
+            "show_author": true,
+            "show_sharing_icons": true
+          }
+        },
+        "cart-template": {
+          "type": "cart-template",
+          "settings": {
+            "show_notes": false,
+            "show_tax_and_shipping": true,
+            "show_additional_checkout_buttons": true,
+            "show_backorder_text": true
+          }
+        },
+        "product-recommendations": {
+          "type": "product-recommendations",
+          "settings": {
+            "show_recommendations": true,
+            "products_per_row": "4",
+            "grid_show_vendor": false
+          }
+        },
+        "1590157729940": {
+          "type": "featured-collections",
+          "blocks": {
+            "1590157729940-0": {
+              "type": "collection",
+              "settings": {}
+            },
+            "1590157729940-1": {
+              "type": "collection",
+              "settings": {}
+            },
+            "1590157729940-2": {
+              "type": "collection",
+              "settings": {}
+            },
+            "1590157729940-3": {
+              "type": "collection",
+              "settings": {}
+            },
+            "1590578358116": {
+              "type": "collection",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1590157729940-0",
+            "1590157729940-1",
+            "1590157729940-2",
+            "1590157729940-3",
+            "1590578358116"
+          ],
+          "settings": {
+            "show_view_all": true,
+            "collections_per_row": "5"
+          }
+        },
+        "1590157903142": {
+          "type": "newsletter",
+          "settings": {
+            "color_bg": "#f4f2e9"
+          }
+        },
+        "1590158040284": {
+          "type": "image-with-text",
+          "settings": {
+            "layout": "right"
+          }
+        },
+        "1590506637124": {
+          "type": "featured-collection",
+          "settings": {
+            "grid_show_vendor": false,
+            "products_per_row": "5",
+            "row_count_int": 1
+          }
+        },
+        "1590506747837": {
+          "type": "featured-collection",
+          "settings": {
+            "grid_show_vendor": false,
+            "products_per_row": "5",
+            "row_count_int": 1
+          }
+        },
+        "1590506794009": {
+          "type": "featured-product",
+          "settings": {
+            "prod_show_brand": false,
+            "prod_show_type": false,
+            "show_tax_and_shipping": false,
+            "prod_show_weight": false,
+            "prod_show_sku": false,
+            "stock_warning_show": false,
+            "stock_warning_limit": 5,
+            "prod_show_quantity_input": false,
+            "prod_clicky_opt_names": "",
+            "enable_payment_button": false,
+            "show_backorder_text": true,
+            "prod_show_thumbnails": false,
+            "enable_product_image_zoom": false,
+            "enable_video_looping": false
+          }
+        },
+        "cart-drawer": {
+          "type": "cart-drawer",
+          "settings": {
+            "enable_cart_notes": false,
+            "show_tax_and_shipping": false,
+            "show_additional_checkout_buttons": true,
+            "promo_products_show": true,
+            "cart_summary_image_show": true
+          }
+        },
+        "1591023133695": {
+          "type": "video",
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "1478797384865",
+        "1480594642153",
+        "1590506747837",
+        "1590506637124",
+        "1478864807619",
+        "1590157729940",
+        "1590506794009",
+        "1590158040284",
+        "1590157903142",
+        "1591023133695",
+        "1478859958434",
+        "1478798179956"
+      ]
+    },
+    "Elda": {
+      "body_text_col": "#063148",
+      "header_col": "#063148",
+      "logo_col": "#262630",
+      "prod_sale_price_col": "#e5afb2",
+      "feature_col": "#e5afb2",
+      "feature_over_col": "#063148",
+      "btn_shape": "rect",
+      "site_border_col": "#fae9ec",
+      "site_border_thickness": 16,
+      "divider_col": "#fdf6f7",
+      "nav_main_col": "#262630",
+      "nav_main_hover_col": "#063148",
+      "nav_drop_bg_col": "#fae9ec",
+      "nav_drop_link_col": "#121e28",
+      "nav_drop_link_hover_col": "#0a4565",
+      "nav_drop_heading_col": "#121e28",
+      "cart_summary_bg_col": "#ffffff",
+      "homepage_divider_col": "rgba(0,0,0,0)",
+      "coll_header_bg_col": "#ecdfe1",
+      "coll_header_heading_col": "#063148",
+      "coll_header_text_col": "#063148",
+      "sale_label_bg_col": "#e5afb2",
+      "sale_label_text_col": "#063148",
+      "new_in_label_bg_col": "#e5afb2",
+      "new_in_label_text_col": "#063148",
+      "sold_out_label_bg_col": "#063148",
+      "sold_out_label_text_col": "#ecdfe1",
+      "low_inv_label_bg_col": "#063148",
+      "low_inv_label_text_col": "#ecdfe1",
+      "foot_bg_col": "#fdf6f7",
+      "foot_text_col": "#121e28",
+      "foot_links_col": "#063148",
+      "site_bg_col": "#ffffff",
+      "bg_alignment": "repeat-x",
+      "type_base_font": "montserrat_n3",
+      "type_heading_font": "itc_novarese_n5",
+      "type_nav_font": "montserrat_n4",
+      "type_logo_font": "futura_n5",
+      "font_size_body_int": 15,
+      "font_size_nav_int": 15,
+      "prod_thumb_shape": "natural",
+      "prod_thumb_gutter": "20",
+      "prod_thumb_show_border": false,
+      "product_grid_hover_image": true,
+      "product_grid_show_weight": false,
+      "prod_block_layout": "above",
+      "label_sale_show": true,
+      "label_soldout_show": true,
+      "label_remain_show": true,
+      "prod_stock_warn_limit_int": 4,
+      "label_new_in_show": false,
+      "prod_new_in_limit_int": 7,
+      "prod_quick_buy_show": true,
+      "prod_quick_buy_type": "hover",
+      "prod_quick_buy_pos": "middle",
+      "search_type": "product,article,page",
+      "cart_type": "drawer-standard",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "header_layout": "center",
+            "logo_width": "176",
+            "show_header_search": true,
+            "show_social_icons": false,
+            "show_locale_selector": true,
+            "show_currency_selector": true,
+            "nav_alignment": "center",
+            "nav_col_limit_int": 8,
+            "announcement_show": true,
+            "announcement_position": "below",
+            "announcement_home_only": false,
+            "announcement_text": "Free shipping and returns",
+            "announcement_link": "",
+            "announcement_col_bar": "#063148",
+            "announcement_col_text": "#fdf6f7"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {
+            "footer_complexity": "columns",
+            "show_footer_logo": true,
+            "footer_display_newsletter": true
+          }
+        },
+        "1478797384865": {
+          "type": "slideshow",
+          "blocks": {
+            "1588592960084": {
+              "type": "image",
+              "settings": {
+                "tint_color": "#3d4246",
+                "tint_opacity": 0,
+                "position": "right",
+                "text_colour": "#ffffff"
+              }
+            },
+            "1545047796116": {
+              "type": "image",
+              "settings": {
+                "tint_color": "rgba(0,0,0,0)",
+                "tint_opacity": 0,
+                "position": "left",
+                "text_colour": "#ffffff"
+              }
+            }
+          },
+          "block_order": [
+            "1588592960084",
+            "1545047796116"
+          ],
+          "settings": {}
+        },
+        "1478859958434": {
+          "type": "featured-blog",
+          "settings": {
+            "crop_image": true,
+            "crop_ratio": "16-9",
+            "show_author": false
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "show_rss": true,
+            "show_tags": true,
+            "show_author": false,
+            "show_meta_on_listing": false,
+            "show_tags_on_articles": false,
+            "show_sharing_icons": true,
+            "tile_mode": "tile",
+            "use_inf_scroll": false
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "prod_show_brand": false,
+            "prod_show_type": false,
+            "show_tax_and_shipping": false,
+            "prod_show_weight": false,
+            "prod_show_sku": false,
+            "stock_warning_show": false,
+            "stock_warning_limit": 5,
+            "prod_show_quantity_input": true,
+            "prod_clicky_opt_names": "Color",
+            "description_location": "",
+            "enable_payment_button": false,
+            "show_backorder_text": true,
+            "show_sharing_icons": false,
+            "enable_video_looping": false
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "grid_show_vendor": false,
+            "header_align": "center",
+            "header_mode": "",
+            "header_height_fixed": true,
+            "header_height": 200,
+            "show_collection_tags": false,
+            "collection_tags": "dropdown",
+            "collection_sort": false,
+            "collection_sort_show_featured": false,
+            "products_per_row": "4",
+            "pagination_limit_int": 36,
+            "coll_infiniscroll": true
+          }
+        },
+        "1480594642153": {
+          "type": "featured-content",
+          "settings": {}
+        },
+        "list-collections-template": {
+          "type": "list-collections-template",
+          "settings": {
+            "layout": "rows",
+            "grid_show_vendor": false,
+            "products_per_row": "3"
+          }
+        },
+        "cart-template": {
+          "type": "cart-template",
+          "settings": {
+            "show_notes": true,
+            "show_tax_and_shipping": true,
+            "show_additional_checkout_buttons": true,
+            "show_backorder_text": true,
+            "cart_notification_show": true,
+            "cart_notification_pos": "under-items"
+          }
+        },
+        "search-template": {
+          "type": "search-template",
+          "settings": {
+            "grid_show_vendor": false,
+            "products_per_row": "4",
+            "pagination_limit_int": 36
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "show_feat_image": true,
+            "show_tags": true,
+            "show_author": true,
+            "show_sharing_icons": true
+          }
+        },
+        "1534424678089": {
+          "type": "map",
+          "settings": {
+            "color_bg": "#ecdfe1",
+            "show_pin": true,
+            "map_style": "aubergine"
+          }
+        },
+        "page-list-collections": {
+          "type": "page-list-collections",
+          "settings": {
+            "header_mode": "coloured-split",
+            "layout": "rows",
+            "grid_show_vendor": false,
+            "products_per_row": "4"
+          }
+        },
+        "product-recommendations": {
+          "type": "product-recommendations",
+          "settings": {
+            "show_recommendations": true,
+            "products_per_row": "4"
+          }
+        },
+        "1588261335597": {
+          "type": "featured-collections",
+          "blocks": {
+            "1588261335597-0": {
+              "type": "collection",
+              "settings": {}
+            },
+            "1588261335597-1": {
+              "type": "collection",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1588261335597-0",
+            "1588261335597-1"
+          ],
+          "settings": {
+            "heading": "",
+            "show_view_all": false,
+            "collections_per_row": "2"
+          }
+        },
+        "1588261566048": {
+          "type": "featured-collections",
+          "blocks": {
+            "1588261566048-3": {
+              "type": "collection",
+              "settings": {}
+            },
+            "1588261566048-0": {
+              "type": "collection",
+              "settings": {}
+            },
+            "1588261566048-1": {
+              "type": "collection",
+              "settings": {}
+            },
+            "1588261566048-2": {
+              "type": "collection",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1588261566048-3",
+            "1588261566048-0",
+            "1588261566048-1",
+            "1588261566048-2"
+          ],
+          "settings": {
+            "show_view_all": false,
+            "collections_per_row": "4"
+          }
+        },
+        "1588261598786": {
+          "type": "image-with-text",
+          "settings": {
+            "layout": "left"
+          }
+        },
+        "1588261707681": {
+          "type": "featured-collection",
+          "settings": {
+            "grid_show_vendor": false,
+            "products_per_row": "4",
+            "row_count_int": 1
+          }
+        },
+        "1588261729449": {
+          "type": "image-with-text",
+          "settings": {
+            "layout": "right"
+          }
+        },
+        "1588261986238": {
+          "type": "newsletter",
+          "settings": {
+            "color_bg": "#063148"
+          }
+        },
+        "1588262023813": {
+          "type": "video",
+          "settings": {}
+        },
+        "cart-drawer": {
+          "type": "cart-drawer",
+          "settings": {
+            "enable_cart_notes": false,
+            "show_tax_and_shipping": false,
+            "show_additional_checkout_buttons": true
+          }
+        }
+      },
+      "content_for_index": [
+        "1478797384865",
+        "1480594642153",
+        "1588261335597",
+        "1588261986238",
+        "1588261566048",
+        "1588261598786",
+        "1588261707681",
+        "1588261729449",
+        "1534424678089",
+        "1478859958434",
+        "1588262023813"
+      ]
+    },
+    "Thread": {
+      "body_text_col": "#828282",
+      "header_col": "#4a4a4a",
+      "logo_col": "#222222",
+      "prod_sale_price_col": "#9c5aa2",
+      "feature_col": "#98d4d2",
+      "feature_over_col": "#ffffff",
+      "btn_shape": "rect",
+      "site_border_col": "#333333",
+      "site_border_thickness": 12,
+      "divider_col": "#f4f4f4",
+      "nav_main_col": "#222222",
+      "nav_main_hover_col": "#98d4d2",
+      "nav_drop_bg_col": "#222222",
+      "nav_drop_link_col": "#f4f4f4",
+      "nav_drop_link_hover_col": "#828282",
+      "nav_drop_heading_col": "#f9f9f9",
+      "homepage_divider_col": "#f4f4f4",
+      "coll_header_bg_col": "#98d4d2",
+      "coll_header_heading_col": "#ffffff",
+      "coll_header_text_col": "#ffffff",
+      "sale_label_bg_col": "#9c5aa2",
+      "sale_label_text_col": "#ffffff",
+      "sold_out_label_bg_col": "#505050",
+      "sold_out_label_text_col": "#ffffff",
+      "low_inv_label_bg_col": "#c9c9c9",
+      "low_inv_label_text_col": "#ffffff",
+      "foot_bg_col": "#222222",
+      "foot_text_col": "#c9c9c9",
+      "foot_links_col": "#c9c9c9",
+      "site_bg_col": "#ffffff",
+      "bg_alignment": "no-repeat",
+      "type_base_font": "montserrat_n4",
+      "type_heading_font": "century_gothic_n7",
+      "type_nav_font": "montserrat_n5",
+      "type_logo_font": "century_gothic_n7",
+      "font_size_body_int": 15,
+      "font_size_nav_int": 15,
+      "product_grid_hover_image": true,
+      "prod_block_layout": "above",
+      "label_sale_show": true,
+      "label_soldout_show": true,
+      "label_remain_show": true,
+      "prod_stock_warn_limit_int": 5,
+      "prod_quick_buy_show": true,
+      "prod_quick_buy_pos": "topcorner",
+      "search_type": "product,article,page",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "header_layout": "nav",
+            "logo_width": "80",
+            "show_header_search": true,
+            "show_social_icons": false,
+            "nav_alignment": "left",
+            "nav_col_limit_int": 8,
+            "nav_featured_link": "Sale",
+            "nav_featured_col": "#dd6666"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {
+            "footer_complexity": "columns",
+            "show_footer_logo": true,
+            "footer_display_newsletter": true
+          }
+        },
+        "1507119462379": {
+          "type": "slideshow",
+          "blocks": {
+            "1552560378392": {
+              "type": "image",
+              "settings": {}
+            },
+            "1552560427151": {
+              "type": "image",
+              "settings": {}
+            },
+            "1552560457753": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1552560378392",
+            "1552560427151",
+            "1552560457753"
+          ],
+          "settings": {}
+        },
+        "1507119543542": {
+          "type": "tiled-images",
+          "blocks": {
+            "1552560105864": {
+              "type": "image",
+              "settings": {}
+            },
+            "1552560193730": {
+              "type": "image",
+              "settings": {}
+            },
+            "1552560222520": {
+              "type": "image",
+              "settings": {}
+            },
+            "1552560262380": {
+              "type": "image",
+              "settings": {}
+            },
+            "1552560282867": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1552560105864",
+            "1552560193730",
+            "1552560222520",
+            "1552560262380",
+            "1552560282867"
+          ],
+          "settings": {
+            "row_size_int": 3,
+            "image_margin": "0.25"
+          }
+        },
+        "1507119733648": {
+          "type": "featured-collection",
+          "settings": {
+            "products_per_row": "4",
+            "row_count_int": 1
+          }
+        },
+        "1507119762528": {
+          "type": "featured-blog",
+          "settings": {
+            "crop_image": true,
+            "crop_ratio": "1-1",
+            "show_author": false
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "header_mode": "text-only",
+            "collection_tags": "dropdown",
+            "collection_sort": true,
+            "collection_sort_show_featured": true,
+            "products_per_row": "3",
+            "pagination_limit_int": 12
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "prod_show_brand": false,
+            "prod_show_type": false,
+            "prod_show_sku": false,
+            "enable_product_image_zoom": true,
+            "prod_show_quantity_input": true,
+            "prod_clicky_opt_names": "Colour,Size",
+            "description_location": "",
+            "enable_payment_button": false
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "show_rss": false,
+            "show_tags": true,
+            "show_author": false,
+            "show_meta_on_listing": false,
+            "show_tags_on_articles": false,
+            "tile_mode": "tile-masonry",
+            "use_inf_scroll": false
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "show_feat_image": true,
+            "show_tags": false,
+            "show_author": false
+          }
+        },
+        "cart-template": {
+          "type": "cart-template",
+          "settings": {
+            "show_notes": true
+          }
+        },
+        "1520516355144": {
+          "type": "map",
+          "settings": {
+            "color_bg": "#222222",
+            "show_pin": true,
+            "map_style": "silver"
+          }
+        },
+        "1520516787822": {
+          "type": "newsletter",
+          "settings": {
+            "color_bg": "#222222"
+          }
+        },
+        "1552560339054": {
+          "type": "featured-content",
+          "settings": {}
+        },
+        "list-collections-template": {
+          "type": "list-collections-template",
+          "settings": {
+            "layout": "grid",
+            "products_per_row": "3"
+          }
+        }
+      },
+      "content_for_index": [
+        "1507119543542",
+        "1552560339054",
+        "1507119462379",
+        "1507119733648",
+        "1507119762528",
+        "1520516787822",
+        "1520516355144"
+      ]
+    }
+  }
+}

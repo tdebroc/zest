@@ -1,0 +1,425 @@
+{
+  "cart": {
+    "shipping_calculator": {
+      "country": "Pays",
+      "province": "Ville",
+      "zip": "Code postal ",
+      "loading": "Calcul",
+      "no_rates": "Nous ne livrons pas à cette adresse",
+      "submit": "Calcul des frais d'envoie",
+      "at": "A"
+    },
+    "general": {
+      "subtotal": "Total TTC",
+      "checkout": "Payer",
+      "title": "Panier",
+      "empty_subtext": "Poursuivre ma commande",
+      "empty_title": "Vous n'avez pas d'article dans votre panier",
+      "remove": "Retirer du panier ",
+      "continue": "Poursuivre ma commande",
+      "taxes_included_but_shipping_at_checkout": "Frais de livraison calculés à la prochaine étape  ",
+      "confirm_remove": "Tu es sûr de ne plus en vouloir ? ",
+      "taxes_included_and_shipping_policy_html": "Tax inclus. <a href=\"{{ link }}\">Shipping<\/a> calculé au moment de payer",
+      "taxes_and_shipping_at_checkout": "Frais d'envois calculé en fonction de la livraison",
+      "update": "A DEGAGER"
+    },
+    "label": {
+      "note": "Un petit mot à nous dire ? ",
+      "quantity": "Quantité",
+      "description": "Description",
+      "price": "Prix",
+      "total": "Total TTC"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Ajouter au panier",
+      "adding_to_cart": "Ajouter",
+      "added_to_cart_btn": "Bon choix ",
+      "unit_price_separator": "\/",
+      "selector_label": "Options",
+      "quantity": "Quantité",
+      "previous": "Précèdent",
+      "next": "Suivant",
+      "size_chart": "Guide des tailles",
+      "sku": "SKU : ",
+      "back_to": "Retourner vers : ",
+      "product_unavailable_html": "Ce produit est victime de son succès, il reviendra vite "
+    },
+    "grid": {
+      "add_to_cart": "+",
+      "item_is_in_cart": "Ton Zest est dans ton panier ",
+      "choose_options": "+"
+    },
+    "variant": {
+      "out_of_stock": "Victime de son succès",
+      "non_existent": "Pas disponible"
+    },
+    "labels": {
+      "sold_out": "Victime de son succès",
+      "sale": "Soldes",
+      "new_in": "Nouveau",
+      "only_x_left": "Plus que {{ quantity }} !"
+    },
+    "general": {
+      "quick_buy_added": "Ajout dans mon panier",
+      "from": "Prix à partir de ",
+      "include_taxes": "Taxes inclus",
+      "full_details": "en cliquant ici",
+      "quick_buy_html": "+ "
+    },
+    "gallery": {
+      "previous": "Précédent",
+      "next": "Suivant",
+      "close": "Fermer"
+    }
+  },
+  "collections": {
+    "general": {
+      "all_items": "Tous les produits",
+      "view_all": "Voir tout",
+      "filter_by": "Filtrer",
+      "results": "Perdu ? ",
+      "empty": "Désolé, ce Zest n'existe pas "
+    },
+    "sorting": {
+      "best_selling": "Coup de coeur de nos Zesteurs",
+      "price_ascending": "Prix, du moins élevé au plus élevé",
+      "price_descending": "Prix, du plus élevé au moins élevé",
+      "az": "Produits de A à Z",
+      "za": "Produits de Z à A",
+      "date_ascending": "Du moins récent au plus récent",
+      "date_descending": "Du plus récent au moins récent",
+      "title": "Catégories ",
+      "featured": "Tous nos tartinables "
+    },
+    "infinite_scroll": {
+      "loading": "Chargement d'encore plus de Zest",
+      "no_more": "Plus de Zest"
+    },
+    "sidebar": {
+      "title": "Catégories"
+    }
+  },
+  "general": {
+    "search": {
+      "search_label": "Rechercher",
+      "search_button": "Rechercher ",
+      "no_results_title": "Aucun résultat",
+      "results_title": "Rechercher",
+      "read_more": "Lire +",
+      "page_title": "Chercher",
+      "title": "Chercher",
+      "no_results": "Oups ce Zest n'existe pas ",
+      "placeholder": "Rechercher ",
+      "results_with_count": {
+        "one": "Nous avons trouvé {{ count }} résultats",
+        "other": "Nous avons trouvé {{ count }} résultats"
+      }
+    },
+    "accessibility_labels": {
+      "previous": "Précédent ",
+      "next": "Suivant ",
+      "close": "Fermer",
+      "video_play": "Lire la video"
+    },
+    "language": {
+      "dropdown_label": "Langues"
+    },
+    "currency": {
+      "dropdown_label": "Monnaie"
+    },
+    "social": {
+      "share_heading": "Partager",
+      "share_on_facebook": "Partager sur Facebook",
+      "share_on_twitter": "Partager sur Twitter",
+      "share_on_pinterest": "Partager sur Pinterest"
+    },
+    "404": {
+      "title": "404 Page Not Found",
+      "subtext": "La page demandée n'existe pas",
+      "link": "Poursuivre ma commande"
+    },
+    "meta": {
+      "tagged": "Tag",
+      "page": "Page"
+    }
+  },
+  "layout": {
+    "cart_summary": {
+      "cart": "Voir mon panier",
+      "continue_shopping": "Continuer mes achats",
+      "title": "Ta commande Zest",
+      "subtotal": "Total",
+      "checkout": "Commander",
+      "products_header": "Produits",
+      "empty": "Pourquoi ton panier est encore vide ? ",
+      "item_count": {
+        "one": "Dans ta valise Zest il y a...",
+        "other": "({{ count }} items)"
+      }
+    },
+    "header": {
+      "search": "Recherche",
+      "close_mobile_nav_aria_label": "Fermer la navigation",
+      "open_mobile_nav_aria_label": "Ouvrir la navigation",
+      "breadcrumbs_collections": "Collections"
+    },
+    "footer": {
+      "back_to_top": "Retour en haut de la page",
+      "copyright": "Copyright"
+    },
+    "customer": {
+      "your_account": "Mon compte",
+      "log_out": "Déconnexion",
+      "log_in": "Connexion",
+      "create_account": "Créer un compte Zest",
+      "create_account_header_link": "Créer un compte Zest "
+    },
+    "signup": {
+      "email": "Email",
+      "post_success": "Bienvenue cher Zesteur !",
+      "button": "S'inscrire"
+    },
+    "mobile_navigation": {
+      "back": "Retour "
+    }
+  },
+  "homepage": {
+    "onboarding": {
+      "product_type": "Produit",
+      "collection_title": "Collection",
+      "product_name": "Produit {{ number }}",
+      "blog_empty": "Il n'y a pas encore d'article ",
+      "collection_name": "Collection {{ number }}"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Nom, Prénom",
+      "email": "Email ou Téléphone ",
+      "phone": "Téléphone",
+      "message": "Message",
+      "send": "Envoyer à la team Zest",
+      "post_success": "Merci pour toi message, nous revenons très vite vers toi",
+      "post_field_error_html": "",
+      "post_error": "ERREUR"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Mon compte",
+      "view_addresses": "Voir l'adresse"
+    },
+    "orders": {
+      "order_number": "Commande",
+      "date": "Date",
+      "total": "Total",
+      "none": "Il n'y a aucune commande ",
+      "payment_status": "Paiement ",
+      "fulfillment_status": "Réalisation  "
+    },
+    "activate_account": {
+      "title": "Activer le compte",
+      "password": "Mot de pass",
+      "password_confirm": "Confirmer le mot de pass",
+      "cancel": "Annuler",
+      "subtext": "Créer ton mot de passe pour avoir le sésame et activer ton compte",
+      "submit": "Soumettre "
+    },
+    "addresses": {
+      "title": "Ton adresse",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "company": "Entreprise",
+      "address1": "Adresse",
+      "address2": "Complément d'adresse",
+      "city": "Ville",
+      "country": "Pays",
+      "zip": "Code postal",
+      "phone": "Téléphone",
+      "cancel": "Annuler ",
+      "update": "Mise à jour de l'adresse",
+      "set_default": "Adresse de livraison par défaut ",
+      "add_new": "Ajouter une nouvelle adresse ",
+      "default": "Par défaut ",
+      "delete_confirm": "Vous êtes sûr de vouloir supprimer ?",
+      "delete": "Supprimer ",
+      "edit": "Modifier l'adresse ",
+      "add": "Ajouter l'adresse "
+    },
+    "login": {
+      "title": "Login",
+      "email": "Mail",
+      "password": "Mot de pass",
+      "forgot_password": "Mot de pass oublié ? ",
+      "sign_in": "S'inscrire ",
+      "create_new_account": "Créer un compte ",
+      "reset_sent": "Renvoyer un mail ",
+      "submit_recover": "Envoyer ",
+      "cancel": "Annuler ",
+      "guest_continue": "Continuer ",
+      "guest_title": "Continuer sans compte ",
+      "reset_password_subtext": "Vous allez recevoir un mail pour changer de mot de passe. ",
+      "reset_password": "Mot de passe oublié"
+    },
+    "order": {
+      "product": "Produit",
+      "price": "Prix",
+      "quantity": "Quantité",
+      "title": "Commande {{ name }}",
+      "cancelled": "Annuler la commande ",
+      "cancelled_reason": "Pourquoi souhaitez vous annuler ? ",
+      "billing_address": "Adresse de facturation ",
+      "shipping_address": "Adresse de livraison ",
+      "total": "Total ",
+      "subtotal": "Sous-total ",
+      "payment_status": "Paiement ",
+      "fulfilled": "Réalisation "
+    },
+    "register": {
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "email": "Email",
+      "password": "Mot de passe",
+      "cancel": "Retourner sur le site",
+      "title": "Créer un compte ",
+      "submit": "Créer "
+    },
+    "reset_password": {
+      "password": "Mot de passe",
+      "password_confirm": "Confirmer le mot de passe",
+      "submit": "Modifier le mot de passe ",
+      "title": "Réinitialiser le mot de passe "
+    },
+    "general": {
+      "back_to_account": "Retour au compte ",
+      "or": "Ou"
+    }
+  },
+  "blogs": {
+    "comments": {
+      "name": "Nom, Prénom ",
+      "email": "Email",
+      "message": "Message",
+      "title": "Commentaire",
+      "form_title": "Laisser un petit mot doux à l'équipe",
+      "post": "Poster un commentaire",
+      "success": "Ton commentaire était publié avec succès ! Merci de ta confiance ",
+      "error": "Erreur",
+      "success_moderated": "Merci pour ton commentaire, il sera publié dans quelques temps sur le blog. ",
+      "moderated": "Les commentaires doivent être validés avant d'être publiés "
+    },
+    "infinite_scroll": {
+      "loading": "Chargement de plus d'items",
+      "no_more": "Plus d'article"
+    },
+    "general": {
+      "all_articles": "Tous les articles",
+      "read_more": "Lire plus ",
+      "view_all": "Tout voir ",
+      "show_tags": "Voir les tags",
+      "tagged": "Tags"
+    },
+    "article": {
+      "posted_on_date": "Posté le ",
+      "posted_by_compact_html": "Auteur",
+      "back_to": "Retour {{ title }}",
+      "newer_post": "Nouveau post ",
+      "older_post": "Ancien post "
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "print": "Imprimer",
+      "shop_link": "Commencer le shopping"
+    }
+  },
+  "storefront_password": {
+    "login": {
+      "button": "Entrer",
+      "link": "Entrer le mot de passe",
+      "admin_link_html": "Etes vous le propriétaire du site ? "
+    },
+    "signup": {
+      "success": "Merci pour ton intérêt ! Nous te tenons au courant"
+    }
+  },
+  "shopify": {
+    "page_titles": {
+      "search": "Recherche"
+    },
+    "sentence": {
+      "last_word_connector": "Et ",
+      "two_words_connector": "Et",
+      "words_connector": ","
+    },
+    "checkout": {
+      "general": {
+        "page_title": "Paiement ",
+        "error_page_title": "Erreur",
+        "skip_to_content": "Passer au contenu ",
+        "continue_button_label": "Continuer ",
+        "complete_purchase_button_label": "Valider le paiement",
+        "pay_now_button_label": "Payer maintenant ",
+        "authenticate_purchase_button_label": "Authentification de paiement ",
+        "edit_link_label": "Modifier ",
+        "print_policies_link_label": "Imprimer",
+        "cart": "Panier",
+        "close_modal_label": "Fermer",
+        "close_notice_label": "Femer",
+        "expand_notice_label": "Voir plus ",
+        "continue_to_shipping_method": "Continuer vers l'expédition ",
+        "continue_to_payment_method": "Continuer vers le paiement ",
+        "continue_to_review": "Vérifier la commande ",
+        "back_to_cart": "Retour au panier "
+      }
+    }
+  },
+  "date_formats": {
+    "month_date_year": "Mois, date, année "
+  },
+  "pagefly": {
+    "products": {
+      "product": {
+        "sold_out": "Rupture de stock ",
+        "unavailable": "Invalide ",
+        "quantity": "Quantité ",
+        "add_to_cart": "Ajouter au panier ",
+        "back_to_collection": "Retour à la collection ",
+        "view_details": "Voir les détails ",
+        "regular_price": "Prix de base ",
+        "on_sale": "En solde "
+      }
+    },
+    "article": {
+      "back_to_blog": "Retour au blog ",
+      "read_more": "Lire plus ",
+      "by_author": "Par {{ author }}",
+      "posted_in": "Posté en ",
+      "all_topics": "Tous les articles   "
+    },
+    "comments": {
+      "title": "Un zest a nous dire ? ",
+      "name": "Nom ",
+      "email": "Mail ",
+      "message": "Message ",
+      "post": "Poster ",
+      "success": "Ton commentaire a été publié ! Merci "
+    },
+    "password_page": {
+      "login_form_password_label": "Mot de passe ",
+      "login_form_submit": "Entrer ",
+      "signup_form_email_label": "Mail",
+      "password_link": "Entrer le mot de passe ",
+      "signup_form_success": "Nous allons t'envoyer un mail juste avant d'ouvrir ",
+      "login_form_password_placeholder": "Ton mot de passe "
+    }
+  },
+  "map": {
+    "errors": {
+      "address_error": "Erreur d'adresse ",
+      "address_no_results": "Pas de résultat sur cette adresse "
+    }
+  }
+}

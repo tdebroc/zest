@@ -1,0 +1,449 @@
+{% assign show_single_variant_details = true %}
+
+
+<div class="container" data-section-type="cart-template">
+
+  {% if cart.item_count == 0 %}
+
+  <h2 class="page-title">{{ 'cart.general.empty_title' | t }}</h2>
+  <div class="rte"><a href="{{ routes.all_products_collection_url }}">{{ 'cart.general.empty_subtext' | t }}</a></div>
+
+  {% else %}
+
+  <div class="reading-column">
+
+    <h1 class="page-title">{{ 'cart.general.title' | t }}</h1>
+
+    {% if section.settings.cart_notification_show and section.settings.cart_notification_pos != 'under-items' %}
+    <div class="notification">
+      <div class="rte">{{ section.settings.cart_notification_text }}</div>
+    </div>
+    {% endif %}
+
+    <form class="cart-form" action="{{ routes.cart_url }}" method="post" id="cartform">
+      <div class="spaced opposing-items">
+        {% for item in cart.items %}
+          {% if forloop.first %}
+          {% assign collection_url = item.product.collections.first.url %}
+          {% if collection_url == nil or collection_url == empty or collection_url contains 'frontpage' %}{% capture collection_url %}{{ routes.all_products_collection_url }}{% endcapture %}{% endif %}
+          {% endif %}
+        {% endfor %}
+        <a class="more-link left" href="/collections/all">{{ 'cart.general.continue' | t }}</a>
+
+
+      </div>
+      <div class="iweb-order-delivery-dt-pro"></div>
+
+      <div id="postalCode-wrapper">
+        <input type="text" id="dateTimePicker" placeholder="Entrez votre date de livraison"/><br/>
+
+        <div id="cart-timeSelector">
+          <select onselect="sendDateIfValid()" onchange="sendDateIfValid()">
+            <option disabled selected value>Choisissez votre heure de livraison</option>
+            <option value="1">17h30 à 18h30</option>
+            <option value="2">18h30 à 19h30</option>
+            <option value="3">19h30 à 20h30</option>
+            <option value="4">20h30 à 21h30</option>
+          </select>
+        </div>
+
+        <input name="input-postalCode" type=text id="input-postalCode" onKeyUp="testPostalCode(true)"
+               placeholder="Votre Code Postal">
+        <span id="error-postalCode" style="display:none;">
+          <br />Commandez en ligne pour vos apéros intra-muros ou retrait click&amp;collect (75004).
+          <br />Pour une livraison en région parisienne, contactez-nous très simplement <span style="text-decoration: underline;"><a href="https://zestplanche.com/pages/contact" target="_blank">ici</a></span>, le coup de pédale en plus ne nous fait pas peur.
+        </span>
+        <br/>
+        <span>Où vous livre-t-on ?</span>
+        <div id="delivery-zone-choser">
+          <form>
+              <div class="delivery-zone-option pointer">
+                  <label>
+                    <input type="radio" name="delivery-zone">
+                    Je viens sur place !
+                  </label>
+              </div>
+              <div class="delivery-zone-option pointer">
+                  <label class="pointer">
+                    <input type="radio" name="delivery-zone">
+                      J'habite dans Paris
+                      <input name="input-delivery-zone-paris" type=text id="input-delivery-zone-paris"
+                             placeholder="Votre Code Postal">
+                  </label>
+              </div>
+              <div class="delivery-zone-option pointer">
+                  <label>
+                    <input type="radio" name="delivery-zone">
+                      J'habite en région Parisienne.
+                      <input name="input-delivery-zone-paris" type=text id="input-delivery-zone-paris"
+                             placeholder="Votre Code Postal">
+                  </label>
+              </div>
+          </form>
+        </div>
+
+        <div style="clear: both;"></div>
+        <script>
+          let DEFAULT_MIN_TIME = "17:30";
+          let DEFAULT_MAX_TIME_FOR_TODAY = "19:30";
+          let DEFAULT_MAX_TIME = "21:30";
+          // ================================================================== //
+          let currentDateObj = new Date()
+          let currentDate = currentDateObj.toLocaleDateString('fr-FR') // DD-MM-YYYY
+          let currentDay = currentDate.split("/")[2] + "-" + currentDate.split("/")[1] + "-" + currentDate.split("/")[0]
+          let disabledDates = [];
+          disabledDates.push(function(date) {return (date.getDay() === 1);}) // Disable Monday
+          disabledDates.push(function(date) {return (date.getTime() + 24 * 60 * 60 * 1000 < currentDateObj.getTime());}) // Disable Previous Days
+          if (!isCurrentDayAllowed()) {
+            disabledDates.push(currentDay)
+          }
+          let options = {
+            enableTime: false,
+            // defaultDate: currentDay + " 17:30",
+            "locale": "fr",
+            "disable": disabledDates,
+            onChange: function(selectedDates, dateStr, instance) {
+              sendDateIfValid(dateStr)
+            },
+          }
+          function isTimeChosen() {
+            return $("#cart-timeSelector option:selected").val() !== "";
+          }
+          function getTimeChosen() {
+            return $("#cart-timeSelector option:selected").text();
+          }
+          function getDateChosen() {
+            return FLAT_FICKER.selectedDates.length === 0 ? "" : FLAT_FICKER.selectedDates[0].toLocaleDateString('fr-FR');
+          }
+          function sendDateIfValid() {
+            let timeChosen = getTimeChosen();
+            if (!isDateTimeOK()) {
+              return;
+            }
+            let date = getDateChosen()
+            /* /!\ Be careful if you change the attribute name "Date et Heure de Livraison".
+               * This value is used in the Thank You Script Page, you should modify it here:
+               * https://zest-test.myshopify.com/admin/settings/checkout in script section. */
+            jQuery.post('/cart/update.js', "attributes[Date et Heure de Livraison]=" + date + " de " + timeChosen);
+          }
+          function isCurrentDayAllowed() {
+            let currentHour = new Date().getHours();
+            let currentMin = new Date().getMinutes();
+            let maxHourAllowed = parseInt(DEFAULT_MAX_TIME_FOR_TODAY.split(":")[0])
+            let maxMinAllowed = parseInt(DEFAULT_MAX_TIME_FOR_TODAY.split(":")[1])
+            return currentHour * 60 + currentMin < maxHourAllowed * 60 + maxMinAllowed;
+          }
+          function isCurrentDay(dateStr) {
+            return currentDay === dateStr.substring(0, 10)
+          }
+          let FLAT_FICKER = flatpickr("#dateTimePicker", options);
+          function testPostalCode(fromInput) {
+            let postalCode = document.getElementById("input-postalCode").value;
+            if (fromInput && postalCode.length < 5) {
+              return;
+            }
+            let isAllowed = false;
+            try {
+              let postalCodeNum = parseInt(postalCode)
+              if (postalCodeNum >= 75000 && postalCodeNum <= 75020 || postalCodeNum === 75116 || postalCodeNum === 92100) {
+                isAllowed = true;
+              }
+            } catch (e) {
+              isAllowed = false
+            }
+            if (isAllowed) {
+              document.getElementById("error-postalCode").style.display = "none";
+            } else {
+              document.getElementById("error-postalCode").style.display = "block";
+              scrollTo("#input-postalCode")
+            }
+            return isAllowed;
+          }
+
+          function scrollTo(selector) {
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $(selector).offset().top - 100
+              }, 500);
+          }
+          function isDateTimeOK() {
+            return getTimeChosen().length !== 0 && isTimeChosen();
+          }
+
+          function isCheckoutAllowed() {
+            if (!isDateTimeOK()) {
+              alert("Merci de rentrer la date et l'heure souhaité pour la livraison.")
+              scrollTo("#dateTimePicker")
+            }
+          	return testPostalCode() && isDateTimeOK();
+          }
+        </script>
+      </div>
+
+      <ul class="cart-items plain">
+        <li class="cart-item cart-items__heading border-bottom">
+          <span class="cart-item__description-and-image">{{ 'cart.label.description' | t }}</span>
+          <span class="cart-item__price">{{ 'cart.label.price' | t }}</span>
+          <span class="cart-item__quantity">{{ 'cart.label.quantity' | t }}</span>
+          <span class="cart-item__total">{{ 'cart.label.total' | t }}</span>
+        </li>
+        {% for item in cart.items %}
+          <li class="cart-item border-bottom cf">
+            <div class="cart-item__image">
+              <a class="image" href="{{ item.url }}">
+                <img src="{{ item | img_url: '100x' }}" alt="{{ item.title | escape }}"
+                      srcset="{{ item | img_url: '100x' }} 100w,
+                              {{ item | img_url: '200x' }} 200w" sizes="100px"/>
+              </a>
+            </div>
+
+            <div class="cart-item__not-image">
+              <div class="cart-item__description">
+                <div>{{ item.product.title | link_to: item.product.url }}</div>
+                {% if item.product.variants.size > 1 %}
+                <span class="variant">{{ item.variant.title }}</span>
+                {% elsif show_single_variant_details %}
+                {% unless item.product.has_only_default_variant %}
+                <span class="variant">{{ item.variant.title }}</span>
+                {% endunless %}
+                {% endif %}
+                {% comment %} Line Item Properties {% endcomment %}
+                {% for p in item.properties %}
+                <div class="property">
+                  {% unless p.last == blank %}
+                  <span class="label">{{ p.first }}:</span>
+                  {% if p.last contains '/uploads/' %}
+                  <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                  {% else %}
+                  {{ p.last }}
+                  {% endif %}
+                  <br />
+                  {% endunless %}
+                </div>
+                {% endfor %}
+
+                {% if section.settings.show_backorder_text == true %}
+                  {% render 'backorder', product: item.product, variant: item.variant %}
+                {% endif %}
+              </div>
+
+
+              <div class="cart-item__price">
+                <div class="cart-item__price__amount">
+                  {% if item.original_line_price > item.final_line_price %}
+                    <div class="struck-out-price theme-money"><div class="pn-price-item" data-id="{{ item.key }}">{{ item.original_price | money }}</div></div>
+                    <div class="cart-item__price-current reduced-price theme-money">{{ item.final_price | money }}</div>
+                  {% elsif item.variant.compare_at_price != blank and item.variant.price < item.variant.compare_at_price %}
+                    <div class="theme-money struck-out-price">{{ item.variant.compare_at_price | money }}</div>
+                    <div class="cart-item__price-current reduced-price theme-money">{{ item.final_price | money }}</div>
+                  {% else %}
+                    <div class="cart-item__price-current theme-money">{{ item.final_price | money }}</div>
+                  {% endif %}
+                </div>
+
+                {% render 'unit-price', variant: item %}
+              </div>
+
+              <div class="cart-item__quantity">
+                <div class="qty-adjuster">
+                  <div class="qty-adjuster__inner">
+                    <a class="qty-adjuster__down" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}">{% render 'svg-minus' %}</a>
+                    <input class="qty-adjuster__value" type="text" pattern="[0-9]*" name="updates[]" value="{{ item.quantity }}" aria-label="{{ 'cart.label.quantity' | t | escape }}">
+                    <a class="qty-adjuster__up"
+                        href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}"
+                        {% if item.variant.inventory_management == 'shopify' and item.variant.inventory_policy == 'deny' and item.variant.inventory_quantity == item.quantity %}disabled{% endif %}
+                        >
+                      {%- render 'svg-plus' -%}
+                    </a>
+                  </div>
+                  <a class="qty-adjuster__remove" onclick="return confirm('{{ 'cart.general.confirm_remove' | t }}')" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0">{{ 'cart.general.remove' | t }}</a>
+                </div>
+              </div>
+
+              <div class="cart-item__total">
+                <div class="cart-item__total__amount">
+                  {% if item.original_line_price != item.final_line_price %}
+                    <div class="struck-out-price theme-money"><div class="pn-total-line-item" data-id="{{ item.key }}">{{ item.original_line_price | money }}</div></div>
+                    <div class="cart-item__price-current reduced-price theme-money">{{ item.final_line_price | money }}</div>
+                  {% elsif item.variant.compare_at_price != blank and item.variant.price < item.variant.compare_at_price %}
+                    <div class="struck-out-price theme-money">{{ item.variant.compare_at_price | times: item.quantity | money }}</div>
+                    <div class="cart-item__price-current reduced-price theme-money">{{ item.final_line_price | money }}</div>
+                  {% else %}
+                    <div class="cart-item__price-current theme-money">{{ item.final_line_price | money }}</div>
+                  {% endif %}
+                </div>
+
+                {% if item.line_level_discount_allocations.size > 0 %}
+                  <ul class="cart-discount-list">
+                  {% for discount_allocation in item.line_level_discount_allocations %}
+                    <li class="cart-discount">
+                      <div class="cart-discount__label">{{ discount_allocation.discount_application.title }}</div>
+                      <div class="cart-discount__amount theme-money">{{ discount_allocation.amount | money }}</div>
+                    </li>
+                  {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+
+
+      {% if section.settings.cart_notification_show and section.settings.cart_notification_pos == 'under-items' %}
+      <div class="notification">
+        <div class="rte">{{ section.settings.cart_notification_text }}</div>
+      </div>
+      {% endif %}
+
+      <div class="row spaced-row">
+        <div class="half column">
+          {% if section.settings.show_notes %}
+            <label class="cart-note-label" for="note">{{ 'cart.label.note' | t }}</label>
+            <textarea id="note" name="note" rows="10" cols="50">{{ cart.note }}</textarea>
+          {% else %}
+            &nbsp;
+          {% endif %}
+        </div>
+
+        <div class="half column align-right">
+          {%- if cart.cart_level_discount_applications != blank -%}
+            <ul class="cart-discount-list cart-discount-list--by-subtotal">
+              {%- for discount_application in cart.cart_level_discount_applications -%}
+                <li class="cart-discount cart-discount--inline">
+                  <span class="cart-discount__label">{{ discount_application.title }}</span>
+                  <span class="cart-discount__amount theme-money">{{ discount_application.total_allocated_amount | money }}</span>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+
+
+
+          <div class="cart-subtotal">
+            <label class="cart-subtotal-label h2" for="checkout">{{ 'cart.general.subtotal' | t }}:</label>
+            <span class="theme-money h2">{{ cart.total_price | money }}</span>
+          </div>
+
+          {% if section.settings.show_tax_and_shipping %}
+            {%- capture taxes_shipping_checkout -%}
+              {%- if shop.taxes_included and shop.shipping_policy.body != blank -%}
+                {{ 'cart.general.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- elsif shop.taxes_included -%}
+                {{ 'cart.general.taxes_included_but_shipping_at_checkout' | t }}
+              {%- elsif shop.shipping_policy.body != blank -%}
+                {{ 'cart.general.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+              {%- else -%}
+                {{ 'cart.general.taxes_and_shipping_at_checkout' | t }}
+              {%- endif -%}
+            {%- endcapture -%}
+
+            <div class="cart-policies rte lightly-spaced-row">{{ taxes_shipping_checkout }}</div>
+          {% endif %}
+
+          <div class="cart-buttons">
+            <button class="checkout-button checkout-button--lower"
+                    onClick="return isCheckoutAllowed();"
+                    type="submit" name="checkout">{{ 'cart.general.checkout' | t }}</button>
+          </div>
+
+
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </form>
+
+    {% render 'shipping-calculator' %}
+
+  </div>
+
+
+</div>
+
+
+{% schema %}
+  {
+    "name": "Cart page",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_notes",
+        "label": "Enable cart notes",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_tax_and_shipping",
+        "label": "Show tax and shipping information",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_additional_checkout_buttons",
+        "label": "Show additional checkout options",
+        "default": true,
+        "info": "Display other gateways and quick checkout buttons. [Read more](https://help.shopify.com/en/manual/payments/accelerated-checkouts)"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_backorder_text",
+        "label": "Show backorder text",
+        "default": true,
+        "info": "Only shows for products which use Shopify inventory tracking and are available to purchase when out of stock."
+      },
+      {
+        "type": "header",
+        "content": "Cart announcement"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_notification_show",
+        "label": "Show announcement",
+        "default": false
+      },
+      {
+        "type": "richtext",
+        "id": "cart_notification_text",
+        "label": "Text"
+      },
+      {
+        "type": "select",
+        "id": "cart_notification_pos",
+        "label": "Position",
+        "default": "",
+        "options": [
+          {
+            "value": "",
+            "label": "Under page title"
+          },
+          {
+            "value": "under-items",
+            "label": "Under items"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Shipping estimates calculator"
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_calculator",
+        "label": "Show shipping calculator",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "shipping_calculator_default_country",
+        "label": "Default country selection",
+        "default": "United States"
+      },
+      {
+        "type": "paragraph",
+        "content": "If your customer is logged-in, the country in their default shipping address will be selected."
+      }
+    ]
+  }
+{% endschema %}
+
+

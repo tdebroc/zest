@@ -1,0 +1,73 @@
+{%- if section.settings.show_recommendations -%}
+  <div class="product-recommendations" data-product-id="{{ product.id }}" data-limit="{{ section.settings.products_per_row }}" data-url="{{ routes.product_recommendations_url }}">
+    {%- if recommendations.performed and recommendations.products_count > 0 -%}
+      <section class="border-top section products-section">
+        <div class="container">
+          <h2 class="section-heading">{{ section.settings.recommendations_title }}</h2>
+          <div class="product-grid row grid one-row" data-normheights=".image" data-normheights-inner="img">
+            {%- for product in recommendations.products -%}
+              {% render 'product-block', product: product %}
+            {%- endfor -%}
+
+            {%- for i in (1..section.settings.products_per_row) -%}
+              <div class="product-block product-block--flex-spacer flex column max-cols-{{ section.settings.products_per_row }} min-cols-2"></div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </section>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+
+
+
+{% schema %}
+  {
+    "name": "Product recommendations",
+    "settings": [
+      {
+        "type": "text",
+        "id": "recommendations_title",
+        "label": "Heading",
+        "default": "You may also like"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_recommendations",
+        "label": "Show recommendations",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "products_per_row",
+        "label": "Maximum number of recommended products",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ],
+        "default": "4"
+      },
+      {
+        "type": "checkbox",
+        "id": "grid_show_vendor",
+        "label": "Show product vendor",
+        "default": false
+      }
+    ]
+  }
+{% endschema %}
