@@ -409,7 +409,13 @@
       },
       "image-with-text": {
         "type": "image-with-text",
-        "settings": {}
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Capture_d_ecran_2020-06-11_a_17.34.07.png",
+          "layout": "left",
+          "title": "La Zest'aventure",
+          "text": "",
+          "button_label": ""
+        }
       },
       "featured-product": {
         "type": "featured-product",
@@ -508,9 +514,8 @@
           "image": "shopify:\/\/shop_images\/communication_18.png",
           "layout": "right",
           "title": "",
-          "text": "<p>En ce <strong>25 avril 2020<\/strong>, J.31 de confinement, il est 18h04, quand ces trois &eacute;tudiantes de <strong>l&rsquo;Institut Paul<\/strong>&nbsp;<strong>Bocuse<\/strong> et <strong>Em lyon<\/strong> en master d&rsquo;h&ocirc;tellerie restauration se retrouvent en vid&eacute;oconf&eacute;rence entre deux projets d&rsquo;&eacute;cole.<\/p>\n<p>L&rsquo;un de ces projets &eacute;tablit la conjoncture du march&eacute; de la restauration apr&egrave;s covid, l&rsquo;autre &eacute;voque la volont&eacute; des restaurateurs d&rsquo;&eacute;voluer vers une consommation responsable et engag&eacute;e.&nbsp;<\/p>\n<p><\/p>\n<p>Elles&nbsp;&eacute;changent sur leur avenir respectif qui, &agrave; court terme, devait les emmener&nbsp;sur un tour du Luxembourg &agrave; v&eacute;lo (oui oui chez Zest on aime les gros d&eacute;fis) en passant par la vente de&nbsp;planches ap&eacute;ritives sur les plages du Sud-Ouest.<\/p>\n<p>L'id&eacute;e s'affine, Zest est cr&eacute;&eacute;, et les voil&agrave;&nbsp;lanc&eacute;es dans cette folle aventure.&nbsp;<\/p>\n<p>C&rsquo;est parti pour 1 mois en cuisine &agrave; effectuer des tests dans tous les sens : <strong>103<\/strong> essais de recettes de sabl&eacute;s, <strong>25<\/strong> assaisonnements possibles d&rsquo;houmous de tomates s&eacute;ch&eacute;es, <strong>14<\/strong> br&ucirc;lures sur les bras apr&egrave;s avoir retourn&eacute; la tortilla.<\/p>\n<p>Une id&eacute;e de mono-produit de saison par recette, un zest d&rsquo;originalit&eacute; et nos planches sont pr&ecirc;tes.&nbsp;<\/p>\n<p><\/p>\n<p><\/p>",
-          "button_label": "",
-          "button_link": ""
+          "text": "<p>En ce <strong>25 avril 2020<\/strong>, J.31 de confinement, il est 18h04, quand ces trois étudiantes de <strong>l’Institut Paul<\/strong> <strong>Bocuse<\/strong> et <strong>Em lyon<\/strong> en master d’hôtellerie restauration se retrouvent en vidéoconférence entre deux projets d’école.<\/p><p>L’un de ces projets établit la conjoncture du marché de la restauration après covid, l’autre évoque la volonté des restaurateurs d’évoluer vers une consommation responsable et engagée. <\/p><p><\/p><p>Elles échangent sur leur avenir respectif qui, à court terme, devait les emmener sur un tour du Luxembourg à vélo (oui oui chez Zest on aime les gros défis) en passant par la vente de planches apéritives sur les plages du Sud-Ouest.<\/p><p>L&#x27;idée s&#x27;affine, Zest est créé, et les voilà lancées dans cette folle aventure. <\/p><p>C’est parti pour 1 mois en cuisine à effectuer des tests dans tous les sens : <strong>103<\/strong> essais de recettes de sablés, <strong>25<\/strong> assaisonnements possibles d’houmous de tomates séchées, <strong>14<\/strong> brûlures sur les bras après avoir retourné la tortilla.<\/p><p>Une idée de mono-produit de saison par recette, un zest d’originalité et nos planches sont prêtes. <\/p><p><\/p><p><\/p>",
+          "button_label": ""
         }
       },
       "image2": {
@@ -519,9 +524,8 @@
           "image": "shopify:\/\/shop_images\/communication_5.png",
           "layout": "left",
           "title": "",
-          "text": "<p><\/p>\n<p><\/p>\n<p>Il fallait alors penser &agrave; les transporter. <strong>43<\/strong> diff&eacute;rents agencements de bo&icirc;tes sont envisag&eacute;s, tout autant d&rsquo;aller-retour sur la place de la Concorde afin&nbsp;de tester nos crackers sur les pav&eacute;s.<\/p>\n<p>Ce joyeux trio anim&eacute; par plusieurs valeurs communes : <strong>&eacute;co-responsabilit&eacute;<\/strong> , <strong>partage<\/strong>, et <strong>vitalit&eacute;<\/strong> part&nbsp;&agrave; la recherche d'un local pour cuisiner&nbsp;dans lequel il s&rsquo;installe le <strong>31 ao&ucirc;t 2020<\/strong> &agrave; <strong>Bastille<\/strong>.<\/p>\n<p>&nbsp;<\/p>\n<p>Heureuses de cette &eacute;volution nous sommes le 1 Septembre lorsque l&rsquo;aventure Zest d&eacute;marre r&eacute;ellement.<\/p>\n<p>&nbsp;<\/p>\n<p><strong>Et ce n&rsquo;est que le d&eacute;but &hellip;.<\/strong><\/p>\n<p><br><br><\/p>",
-          "button_label": "",
-          "button_link": ""
+          "text": "<p><\/p><p><\/p><p>Il fallait alors penser à les transporter. <strong>43<\/strong> différents agencements de boîtes sont envisagés, tout autant d’aller-retour sur la place de la Concorde afin de tester nos crackers sur les pavés.<\/p><p>Ce joyeux trio animé par plusieurs valeurs communes : <strong>éco-responsabilité<\/strong> , <strong>partage<\/strong>, et <strong>vitalité<\/strong> part à la recherche d&#x27;un local pour cuisiner dans lequel il s’installe le <strong>31 août 2020<\/strong> à <strong>Bastille<\/strong>.<\/p><p> <\/p><p>Heureuses de cette évolution nous sommes le 1 Septembre lorsque l’aventure Zest démarre réellement.<\/p><p> <\/p><p><strong>Et ce n’est que le début ….<\/strong><\/p><p><br\/><br\/><\/p>",
+          "button_label": ""
         }
       },
       "custom-html": {

@@ -30,7 +30,7 @@
         {% endfor %}
         <a class="more-link left" href="/collections/all">{{ 'cart.general.continue' | t }}</a>
 
-
+        
       </div>
       <div class="iweb-order-delivery-dt-pro"></div>
 
@@ -54,34 +54,18 @@
           <br />Pour une livraison en région parisienne, contactez-nous très simplement <span style="text-decoration: underline;"><a href="https://zestplanche.com/pages/contact" target="_blank">ici</a></span>, le coup de pédale en plus ne nous fait pas peur.
         </span>
         <br/>
-        <span>Où vous livre-t-on ?</span>
-        <div id="delivery-zone-choser">
-          <form>
-              <div class="delivery-zone-option pointer">
-                  <label>
-                    <input type="radio" name="delivery-zone">
-                    Je viens sur place !
-                  </label>
-              </div>
-              <div class="delivery-zone-option pointer">
-                  <label class="pointer">
-                    <input type="radio" name="delivery-zone">
-                      J'habite dans Paris
-                      <input name="input-delivery-zone-paris" type=text id="input-delivery-zone-paris"
-                             placeholder="Votre Code Postal">
-                  </label>
-              </div>
-              <div class="delivery-zone-option pointer">
-                  <label>
-                    <input type="radio" name="delivery-zone">
-                      J'habite en région Parisienne.
-                      <input name="input-delivery-zone-paris" type=text id="input-delivery-zone-paris"
-                             placeholder="Votre Code Postal">
-                  </label>
-              </div>
-          </form>
+        <div id="delivery-zone-choser" style="display: none;">
+          <span>Où vous livre-t-on ?</span>
+          <div class="delivery-zone-option">
+            <input type="radio" name="">
+          </div>
+          <div class="delivery-zone-option">
+            Option 2
+          </div>
+          <div class="delivery-zone-option">
+            Option 3
+          </div>
         </div>
-
         <div style="clear: both;"></div>
         <script>
           let DEFAULT_MIN_TIME = "17:30";
@@ -155,11 +139,11 @@
               document.getElementById("error-postalCode").style.display = "none";
             } else {
               document.getElementById("error-postalCode").style.display = "block";
-              scrollTo("#input-postalCode")
+              scrollTo("#input-postalCode")    
             }
             return isAllowed;
           }
-
+          
           function scrollTo(selector) {
             $([document.documentElement, document.body]).animate({
                 scrollTop: $(selector).offset().top - 100
@@ -225,7 +209,7 @@
                   {% render 'backorder', product: item.product, variant: item.variant %}
                 {% endif %}
               </div>
-
+              
 
               <div class="cart-item__price">
                 <div class="cart-item__price__amount">
@@ -242,7 +226,7 @@
 
                 {% render 'unit-price', variant: item %}
               </div>
-
+ 
               <div class="cart-item__quantity">
                 <div class="qty-adjuster">
                   <div class="qty-adjuster__inner">
@@ -287,7 +271,7 @@
           </li>
         {% endfor %}
       </ul>
-
+    
 
       {% if section.settings.cart_notification_show and section.settings.cart_notification_pos == 'under-items' %}
       <div class="notification">
@@ -316,8 +300,8 @@
               {%- endfor -%}
             </ul>
           {%- endif -%}
-
-
+          
+          
 
           <div class="cart-subtotal">
             <label class="cart-subtotal-label h2" for="checkout">{{ 'cart.general.subtotal' | t }}:</label>
@@ -339,13 +323,13 @@
 
             <div class="cart-policies rte lightly-spaced-row">{{ taxes_shipping_checkout }}</div>
           {% endif %}
-
+   
           <div class="cart-buttons">
             <button class="checkout-button checkout-button--lower"
                     onClick="return isCheckoutAllowed();"
                     type="submit" name="checkout">{{ 'cart.general.checkout' | t }}</button>
           </div>
-
+          
 
           </div>
           {% endif %}
