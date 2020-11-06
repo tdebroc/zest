@@ -149,8 +149,11 @@
                 scrollTop: $(selector).offset().top - 100
               }, 500);
           }
+          function isDatePicked() {
+            return $("#dateTimePicker").val() !== ""
+          }
           function isDateTimeOK() {
-            return getTimeChosen().length !== 0 && isTimeChosen();
+            return isDatePicked() && getTimeChosen().length !== 0 && isTimeChosen();
           }
 
           function isCheckoutAllowed() {
