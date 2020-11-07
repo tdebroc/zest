@@ -286,18 +286,34 @@
           function shouldChangeExtra(quantity) {
             return doesCartHaveShippingExtra() && quantity === 0 || !doesCartHaveShippingExtra() && quantity === 1;
           }
-
+          console.log(jQuery.isReady)
           function getShippingExtraProduct() {
               return fetch('/products/' + EXTRA_SHIPPING_HANDLE + '.js')
                   .then(response => response.json())
                   .then(data => {
                       shippingExtraProduct = data;
-                      $("#shipping-total-price-outside-paris").text(
-                          (shippingExtraProduct.price / 100) + SHIPPING_BASE_PRICE
-                      );
-                      $("#extraShippingPrice").text(shippingExtraProduct.price / 100);
+                      displayInfoFromShippingExtraProduct();
                       return data;
                   });
+          }
+          function displayInfoFromShippingExtraProduct() {
+              $("#shipping-total-price-outside-paris").text(
+                  (shippingExtraProduct.price / 100) + SHIPPING_BASE_PRICE
+              );
+              $("#extraShippingPrice").text(shippingExtraProduct.price / 100);
+              if (jQuery.isReady) {
+                  forbidQuantityModificationForShippingExtra();
+              } else {
+                  $(document).ready(forbidQuantityModificationForShippingExtra)
+              }
+          }
+
+          function forbidQuantityModificationForShippingExtra() {
+              let parentEl = $(".qty-adjuster[data-variantId=" +  getShippingExtraVariantId() + "]")
+                  .parent()
+
+              parentEl.text("1");
+              parentEl.css("padding-top", "9px");
           }
 
           function getShippingExtraVariantId() {
@@ -353,9 +369,6 @@
           getShippingExtraProduct()
             .then(init);
 
-          $(document).ready(function() {
-              $(".qty-adjuster[data-variantId=" + getShippingExtraVariantId() + "]").remove()
-          })
           // ================================================================
           // = Checkout Button
           // ================================================================
@@ -454,9 +467,8 @@
 
                 {% render 'unit-price', variant: item %}
               </div>
-
               <div class="cart-item__quantity">
-                <div class="qty-adjuster" data-variantId="{{ item.variant_id }}">
+                <div class="qty-adjuster" data-handle="{{ item.handle }}" data-variantId="{{ item.variant_id }}">
                   <div class="qty-adjuster__inner">
                     <a class="qty-adjuster__down" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}">{% render 'svg-minus' %}</a>
                     <input class="qty-adjuster__value" type="text" pattern="[0-9]*" name="updates[]" value="{{ item.quantity }}" aria-label="{{ 'cart.label.quantity' | t | escape }}">
