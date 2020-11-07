@@ -812,13 +812,14 @@ loadProductRecommendationsIntoSection();
         });
     }
     let currentCartMoneyEl = $('.current-cart .theme-money')
+    let productAddedMessage =$("#product-added-to-basket-message")
     function productAdded() {
-        $("#product-added-to-basket-message").show(500);
+        productAddedMessage.show(500);
         Shopify.getCart(function(cart) {
             let currency = currentCartMoneyEl.text()[0];
             currentCartMoneyEl.text(currency + "" + cart.total_price / 100);
             setTimeout(function() {
-                $("#product-added-to-basket-message").hide(500);
+                productAddedMessage.hide(500);
             }, 5000)
         })
     }

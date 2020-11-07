@@ -7332,7 +7332,7 @@ html.template-password #password-login .password-owner {
   margin-bottom: 10px;
   margin-top: 10px;
 }
-#dateTimePicker, #cart-timeSelector select, #input-postalCode {
+#datePicker, #cart-timeSelector select, #input-postalCode {
   width: 300px;
 }
 #cart-timeSelector {
@@ -7340,8 +7340,9 @@ html.template-password #password-login .password-owner {
 }
 
 #cart-timeSelector select {
-  padding: 9px 0.6em;
   border: 1px solid #d3d1d2;
+  font-family: 'Karla';
+  padding: 9px 0.6em;
 }
 #postalCode-wrapper {
   text-align: center;
@@ -7349,11 +7350,42 @@ html.template-password #password-login .password-owner {
 #error-postalCode {
   color: orangered;
 }
+#delivery-zone-choser {
+  margin-top: 5px;
+}
 .delivery-zone-option {
-  border: 1px solid grey;
+  border-radius: 5px;
+  border: 1px solid #d3d1d2;
   float: left;
+  height: 125px;
   width: 32.5%;
   margin-right: 3px;
+  padding: 10px;
+  text-align: left;
+}
+.delivery-zone-option.selected {
+  border: grey;
+  background: rgba(242, 159, 5, 0.8);
+  box-shadow: 0px 5px 10px grey;
+}
+#where-do-deliver-question {
+  margin-bottom: 5px;
+}
+#input-delivery-zone-outside-paris {
+  width: 175px;
+}
+#input-delivery-zone-outside-paris.error {
+  border: 1px solid red;
+}
+.delivery-zone-option .inputLabel {
+  font-size: 0.9em;
+}
+.delivery-price-message {
+  font-size: 0.8em;
+  font-style: italic;
+}
+.nothing-selected {
+  color: grey;
 }
 @media (max-width: 767px) {
   .delivery-zone-option {

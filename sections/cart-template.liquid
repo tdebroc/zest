@@ -3,42 +3,42 @@
 
 <div class="container" data-section-type="cart-template">
 
-  {% if cart.item_count == 0 %}
+{% if cart.item_count == 0 %}
 
   <h2 class="page-title">{{ 'cart.general.empty_title' | t }}</h2>
   <div class="rte"><a href="{{ routes.all_products_collection_url }}">{{ 'cart.general.empty_subtext' | t }}</a></div>
 
-  {% else %}
+{% else %}
 
   <div class="reading-column">
 
     <h1 class="page-title">{{ 'cart.general.title' | t }}</h1>
 
     {% if section.settings.cart_notification_show and section.settings.cart_notification_pos != 'under-items' %}
-    <div class="notification">
-      <div class="rte">{{ section.settings.cart_notification_text }}</div>
-    </div>
+      <div class="notification">
+        <div class="rte">{{ section.settings.cart_notification_text }}</div>
+      </div>
     {% endif %}
 
     <form class="cart-form" action="{{ routes.cart_url }}" method="post" id="cartform">
       <div class="spaced opposing-items">
         {% for item in cart.items %}
           {% if forloop.first %}
-          {% assign collection_url = item.product.collections.first.url %}
-          {% if collection_url == nil or collection_url == empty or collection_url contains 'frontpage' %}{% capture collection_url %}{{ routes.all_products_collection_url }}{% endcapture %}{% endif %}
+            {% assign collection_url = item.product.collections.first.url %}
+            {% if collection_url == nil or collection_url == empty or collection_url contains 'frontpage' %}{% capture collection_url %}{{ routes.all_products_collection_url }}{% endcapture %}{% endif %}
           {% endif %}
         {% endfor %}
         <a class="more-link left" href="/collections/all">{{ 'cart.general.continue' | t }}</a>
 
-        
+
       </div>
       <div class="iweb-order-delivery-dt-pro"></div>
 
       <div id="postalCode-wrapper">
-        <input type="text" id="dateTimePicker" placeholder="Entrez votre date de livraison"/><br/>
+        <input type="text" id="datePicker" placeholder="Entrez votre date de livraison"/><br/>
 
         <div id="cart-timeSelector">
-          <select onselect="sendDateIfValid()" onchange="sendDateIfValid()">
+          <select onchange="onTimeChange()" class="nothing-selected">
             <option disabled selected value>Choisissez votre heure de livraison</option>
             <option value="1">17h30 à 18h30</option>
             <option value="2">18h30 à 19h30</option>
@@ -46,32 +46,88 @@
             <option value="4">20h30 à 21h30</option>
           </select>
         </div>
-
-        <input name="input-postalCode" type=text id="input-postalCode" onKeyUp="testPostalCode(true)"
-               placeholder="Votre Code Postal">
-        <span id="error-postalCode" style="display:none;">
-          <br />Commandez en ligne pour vos apéros intra-muros ou retrait click&amp;collect (75004).
-          <br />Pour une livraison en région parisienne, contactez-nous très simplement <span style="text-decoration: underline;"><a href="https://zestplanche.com/pages/contact" target="_blank">ici</a></span>, le coup de pédale en plus ne nous fait pas peur.
-        </span>
-        <br/>
-        <div id="delivery-zone-choser" style="display: none;">
-          <span>Où vous livre-t-on ?</span>
-          <div class="delivery-zone-option">
-            <input type="radio" name="">
-          </div>
-          <div class="delivery-zone-option">
-            Option 2
-          </div>
-          <div class="delivery-zone-option">
-            Option 3
-          </div>
+        <div id="delivery-zone-choser">
+              <div class="delivery-zone-option pointer" data-deliveryOption="pick-up" onClick="selectDeliveryOption(this)">
+                  <input type="radio" name="delivery-zone"/>
+                  <span class="inputLabel">Je viens récupérer sur place !</span><br/>
+                  <span class="delivery-price-message">Pas de frais de livraison</span>
+              </div>
+              <div class="delivery-zone-option pointer" data-deliveryOption="inside-paris" onClick="selectDeliveryOption(this)">
+                  <input type="radio" name="delivery-zone"/>
+                  <span class="inputLabel">J'habite dans Paris intra-muros ou Boulogne</span><br/>
+                  <span class="delivery-price-message">La livraison revient à <span class="shipping-base-price"></span>€</span>
+              </div>
+              <div class="delivery-zone-option pointer" data-deliveryOption="outside-paris" onClick="selectDeliveryOption(this)">
+                  <input type="radio" name="delivery-zone"/>
+                  <span class="inputLabel">J'habite en région Parisienne</span><br/>
+                  <input name="input-delivery-zone-paris"
+                         onkeyup="onPostalCodeChange()"
+                         type=text id="input-delivery-zone-outside-paris"
+                         placeholder="A quel Code Postal ?"/><br/>
+                <span class="delivery-price-message">La livraison revient à <span id="shipping-total-price-outside-paris"></span>€ (<span class="shipping-base-price"></span>€ de base + <span id="extraShippingPrice"></span>€ de supplément)</span>
+              </div>
         </div>
         <div style="clear: both;"></div>
-        <script>
+        <script type="text/javascript">
+          let CART_CONTENT = {{ cart | json }};
+          // ================================================================
+          // = CONFIG
+          // ================================================================
+          let EXTRA_SHIPPING_HANDLE = "supplement-livraison";
+          let SHIPPING_BASE_PRICE = 3.5;
           let DEFAULT_MIN_TIME = "17:30";
           let DEFAULT_MAX_TIME_FOR_TODAY = "19:46";
           let DEFAULT_MAX_TIME = "21:30";
-          // ================================================================== //
+          let MESSAGE_OUTSIDE_OF_ZONE = "Désolé nous ne livrons pas cette zone encore. Nous livrons dans le 92, 93, 94";
+          /* /!\ Be careful if you change the attribute name "Date et Heure de Livraison".
+               * This value is used in the Thank You Script Page, you should modify it here:
+               * https://zest-test.myshopify.com/admin/settings/checkout in script section. */
+          let DATE_HOUR_ATTR_KEY = "Date et Heure de Livraison";
+          let DELIVERY_OPTION_ATTR_KEY = "Delivery Option";
+          let POSTAL_CODE_ATTR_KEY = "Postal Code"
+          let DATE_HOUR_SEPARATOR = " de ";
+          // ================================================================
+          // = API Utils
+          // ================================================================
+          function updateCart(formData, callback) {
+              jQuery
+                  .post('/cart/update.js', formData)
+                  .done(handleJQueryCallback.bind(this, callback))
+                  .fail(handleJQueryCallback.bind(this, callback))
+          }
+          function handleJQueryCallback(callback, json) {
+              if (json.status === 422) {
+                  alert("Erreur 422 lors de la prise de commande, il faut appeler Zest, ils vont régler cela de suite !");
+              } else if (json.status === 200)  {
+                  if (callback) {
+                      callback(null, true)
+                  } else {
+                      console.log("Success for API call.")
+                  }
+              } else {
+                  alert("Erreur " + json.status + " lors de la prise de commande, il faut appeler Zest, ils vont régler cela de suite !");
+              }
+          }
+          function getNewFormData() {
+              return {
+                  attributes : {},
+                  updates : {}
+              }
+          }
+          function shouldLaunchApiCall(formData) {
+              return doesItModifyCartAttributes(formData) || doesItModifyCartAttributes(formData);
+          }
+          function doesItModifyCartItems(formData) {
+              return Object.keys(formData.updates).length > 0;
+          }
+          function doesItModifyCartAttributes(formData) {
+              return Object.keys(formData.attributes).length > 0;
+          }
+          // ================================================================
+          // = Date & Date Choser
+          // ================================================================
+          let datePickerEl = $("#datePicker");
+          let timeSelectorEl = $("#cart-timeSelector");
           let currentDateObj = new Date()
           let currentDate = currentDateObj.toLocaleDateString('fr-FR') // DD-MM-YYYY
           let currentDay = currentDate.split("/")[2] + "-" + currentDate.split("/")[1] + "-" + currentDate.split("/")[0]
@@ -86,10 +142,11 @@
             // defaultDate: currentDay + " 17:30",
             "locale": "fr",
             "disable": disabledDates,
-            onChange: function(selectedDates, dateStr, instance) {
+            onChange: function(selectedDates, dateStr) {
               sendDateIfValid(dateStr)
             },
           }
+          let FLAT_FICKER = flatpickr("#datePicker", options);
           function isTimeChosen() {
             return $("#cart-timeSelector option:selected").val() !== "";
           }
@@ -99,16 +156,22 @@
           function getDateChosen() {
             return FLAT_FICKER.selectedDates.length === 0 ? "" : FLAT_FICKER.selectedDates[0].toLocaleDateString('fr-FR');
           }
+          function onTimeChange() {
+              handleTimeSelected();
+              sendDateIfValid();
+          }
+          function handleTimeSelected() {
+              $("#cart-timeSelector select").removeClass("nothing-selected");
+          }
           function sendDateIfValid() {
             let timeChosen = getTimeChosen();
             if (!isDateTimeOK()) {
               return;
             }
-            let date = getDateChosen()
-            /* /!\ Be careful if you change the attribute name "Date et Heure de Livraison".
-               * This value is used in the Thank You Script Page, you should modify it here:
-               * https://zest-test.myshopify.com/admin/settings/checkout in script section. */
-            jQuery.post('/cart/update.js', "attributes[Date et Heure de Livraison]=" + date + " de " + timeChosen);
+            let date = getDateChosen();
+            let formData = getNewFormData();
+            formData["attributes"][DATE_HOUR_ATTR_KEY] = date + DATE_HOUR_SEPARATOR + timeChosen;
+            updateCart(formData);
           }
           function isCurrentDayAllowed() {
             let currentHour = new Date().getHours();
@@ -120,48 +183,210 @@
           function isCurrentDay(dateStr) {
             return currentDay === dateStr.substring(0, 10)
           }
-          let FLAT_FICKER = flatpickr("#dateTimePicker", options);
-          function testPostalCode(fromInput) {
-            let postalCode = document.getElementById("input-postalCode").value;
-            if (fromInput && postalCode.length < 5) {
-              return;
-            }
-            let isAllowed = false;
-            try {
-              let postalCodeNum = parseInt(postalCode)
-              if (postalCodeNum >= 75000 && postalCodeNum <= 75020 || postalCodeNum === 75116 || postalCodeNum === 92100) {
-                isAllowed = true;
-              }
-            } catch (e) {
-              isAllowed = false
-            }
-            if (isAllowed) {
-              document.getElementById("error-postalCode").style.display = "none";
-            } else {
-              document.getElementById("error-postalCode").style.display = "block";
-              scrollTo("#input-postalCode")    
-            }
-            return isAllowed;
-          }
-          
-          function scrollTo(selector) {
-            $([document.documentElement, document.body]).animate({
-                scrollTop: $(selector).offset().top - 100
-              }, 500);
-          }
           function isDatePicked() {
-            return $("#dateTimePicker").val() !== ""
+            return datePickerEl.val() !== "";
           }
           function isDateTimeOK() {
             return isDatePicked() && getTimeChosen().length !== 0 && isTimeChosen();
           }
+          // ================================================================
+          // = Delivery Zone
+          // ================================================================
+          let shippingExtraProduct;
+          let allOptionEls = $("#delivery-zone-choser .delivery-zone-option");
+          let postalCodeOutsideParisEl = $("#input-delivery-zone-outside-paris");
+          let numbers = /^[-+]?[0-9]+$/;
+          function selectDeliveryOption(el, isInit) {
+            let deliveryOption = $(el).attr("data-deliveryOption");
+            allOptionEls.removeClass("selected");
+            $(el).addClass("selected");
+            allOptionEls.find("input").prop('checked', false);
+            $(el).closest(".delivery-zone-option").find("input").prop('checked', true);
+            let formData = getNewFormData();
+            if (deliveryOption === 'outside-paris') {
+              postalCodeOutsideParisEl.focus();
+            } else {
+                if (postalCodeOutsideParisEl.val() !== "") {
+                    postalCodeOutsideParisEl.val("");
+                    formData.attributes[POSTAL_CODE_ATTR_KEY] = "";
+                }
+                if (shouldChangeExtra(0)) {
+                    formData.updates[getShippingExtraVariantId()] = 0
+                }
+            }
+            if (isInit) {
+                return;
+            }
+            if (currentData.deliveryOption !== deliveryOption) {
+                formData.attributes[DELIVERY_OPTION_ATTR_KEY] = deliveryOption;
+            }
+            modifyCart(formData)
+          }
+          function modifyCart(formData) {
+              if (!shouldLaunchApiCall(formData)) {
+                  return;
+              }
+              updateCart(formData, function() {
+                  if (doesItModifyCartItems(formData)) {
+                      window.location.reload();
+                  }
+              });
+          }
+          function doesCartHaveShippingExtra() {
+              return CART_CONTENT.items.filter(item => item.variant_id === getShippingExtraVariantId()).length > 0;
+          }
+          function isValidPostalCode(postalCode) {
+            return postalCode.length === 5 && postalCode.match(numbers);
+          }
+          function isAllowedPostalCodeForOutsideParis(postalCode) {
+            return postalCode.startsWith("92")
+                    || postalCode.startsWith("93")
+                    || postalCode.startsWith("94")
+          }
+          let PAD_TIME = 10;
+          let timeLeft = -PAD_TIME;
+          function onPostalCodeChange() {
+            timeLeft = 200;
+          }
+          function checkIfWeHandleChange() {
+            timeLeft -= PAD_TIME;
+            if (timeLeft === 0) {
+              handlePostalCodeChange();
+            }
+            setTimeout(checkIfWeHandleChange, PAD_TIME)
+          }
+          checkIfWeHandleChange()
 
+          function handlePostalCodeChange() {
+            let postalCode = postalCodeOutsideParisEl.val()
+            if (postalCode.length < 5) {
+              return;
+            }
+            if (currentData.postalCode === postalCode) {
+                return;
+            }
+            currentData.postalCode = postalCode;
+            postalCodeOutsideParisEl.removeClass("error")
+            if (!isValidPostalCode(postalCode)) {
+              postalCodeOutsideParisEl.addClass("error");
+              return;
+            }
+            if (!isAllowedPostalCodeForOutsideParis(postalCode)) {
+              alert(MESSAGE_OUTSIDE_OF_ZONE);
+              return;
+            }
+            let formData = getNewFormData()
+            if (shouldChangeExtra(1)) {
+              formData.updates[getShippingExtraVariantId()] = 1
+            }
+            formData.attributes[POSTAL_CODE_ATTR_KEY] = postalCode;
+            modifyCart(formData)
+          }
+
+          function shouldChangeExtra(quantity) {
+            return doesCartHaveShippingExtra() && quantity === 0 || !doesCartHaveShippingExtra() && quantity === 1;
+          }
+
+          function getShippingExtraProduct() {
+              return fetch('/products/' + EXTRA_SHIPPING_HANDLE + '.js')
+                  .then(response => response.json())
+                  .then(data => {
+                      shippingExtraProduct = data;
+                      $("#shipping-total-price-outside-paris").text(
+                          (shippingExtraProduct.price / 100) + SHIPPING_BASE_PRICE
+                      );
+                      $("#extraShippingPrice").text(shippingExtraProduct.price / 100);
+                      return data;
+                  });
+          }
+
+          function getShippingExtraVariantId() {
+              return shippingExtraProduct.variants[0].id
+          }
+
+          function isShippingSelected() {
+              return $("input[name=delivery-zone]:checked").length > 0
+          }
+          function getShippingSelectedValue() {
+              return $("input[name=delivery-zone]:checked").closest(".delivery-zone-option").attr("data-deliveryOption")
+          }
+          $(".shipping-base-price").text(SHIPPING_BASE_PRICE)
+          // ================================================================
+          // = Init Forms
+          // ================================================================
+          // Init Date & Time
+          function getDateFromCartAttr() {
+              return CART_CONTENT.attributes[DATE_HOUR_ATTR_KEY] ?
+                  CART_CONTENT.attributes[DATE_HOUR_ATTR_KEY].split(DATE_HOUR_SEPARATOR)[0] : undefined;
+          }
+          function getTimeFromCartAttr() {
+              return CART_CONTENT.attributes[DATE_HOUR_ATTR_KEY] ?
+                  CART_CONTENT.attributes[DATE_HOUR_ATTR_KEY].split(DATE_HOUR_SEPARATOR)[1] : undefined;
+          }
+          function getDeliveryOptionFromCartAttr() {
+              return CART_CONTENT.attributes[DELIVERY_OPTION_ATTR_KEY] ?
+                  CART_CONTENT.attributes[DELIVERY_OPTION_ATTR_KEY] : undefined;
+          }
+          function getDeliveryOptionFromCartAttr() {
+              return CART_CONTENT.attributes[POSTAL_CODE_ATTR_KEY] ?
+                  CART_CONTENT.attributes[POSTAL_CODE_ATTR_KEY] : undefined;
+          }
+          function init() {
+              if (CART_CONTENT.attributes[DATE_HOUR_ATTR_KEY]) {
+                  datePickerEl.val(getDateFromCartAttr())
+                  $("#cart-timeSelector option:contains(" + getTimeFromCartAttr() + ")").eq(0).prop('selected', true);
+                  handleTimeSelected();
+              }
+              let deliveryOption = CART_CONTENT.attributes[DELIVERY_OPTION_ATTR_KEY];
+              if (deliveryOption) {
+                  let el = $("#delivery-zone-choser .delivery-zone-option[data-deliveryOption='" + deliveryOption + "']").get(0)
+                  selectDeliveryOption(el, true);
+                  currentData.deliveryOption = deliveryOption;
+              }
+              let postalCode = CART_CONTENT.attributes[POSTAL_CODE_ATTR_KEY];
+              if (postalCode) {
+                  postalCodeOutsideParisEl.val(postalCode)
+                  currentData.postalCode = postalCode
+              }
+          }
+          let currentData = {}
+          getShippingExtraProduct()
+            .then(init);
+
+          $(document).ready(function() {
+              $(".qty-adjuster[data-variantId=" + getShippingExtraVariantId() + "]").remove()
+          })
+          // ================================================================
+          // = Checkout Button
+          // ================================================================
           function isCheckoutAllowed() {
             if (!isDateTimeOK()) {
-              alert("Merci de rentrer la date et l'heure souhaité pour la livraison.")
-              scrollTo("#dateTimePicker")
+              alert("Merci de rentrer la date et l'heure souhaité pour la livraison.");
+              scrollTo("#datePicker");
+              return false;
             }
-          	return testPostalCode() && isDateTimeOK();
+            if (!isShippingSelected()) {
+                alert("Vous devez choisir la façon dont nous allons vous livrer.")
+                scrollTo("#delivery-zone-choser");
+                return false
+            }
+            let postalCode = postalCodeOutsideParisEl.val();
+            if (getShippingSelectedValue() === 'outside-paris' && !isValidPostalCode(postalCode)) {
+                alert("Le code Postal n'est pas valide.")
+                scrollTo("#delivery-zone-choser");
+                return false
+            }
+            if (getShippingSelectedValue() === 'outside-paris' && !isAllowedPostalCodeForOutsideParis(postalCode)) {
+              alert(MESSAGE_OUTSIDE_OF_ZONE);
+              scrollTo("#delivery-zone-choser");
+              return false
+            }
+            return true;
+          }
+          function scrollTo(selector) {
+            $([document.documentElement, document.body]).animate({
+              scrollTop: $(selector).offset().top - 100
+            }, 500);
           }
         </script>
       </div>
@@ -178,7 +403,7 @@
             <div class="cart-item__image">
               <a class="image" href="{{ item.url }}">
                 <img src="{{ item | img_url: '100x' }}" alt="{{ item.title | escape }}"
-                      srcset="{{ item | img_url: '100x' }} 100w,
+                     srcset="{{ item | img_url: '100x' }} 100w,
                               {{ item | img_url: '200x' }} 200w" sizes="100px"/>
               </a>
             </div>
@@ -187,32 +412,32 @@
               <div class="cart-item__description">
                 <div>{{ item.product.title | link_to: item.product.url }}</div>
                 {% if item.product.variants.size > 1 %}
-                <span class="variant">{{ item.variant.title }}</span>
+                  <span class="variant">{{ item.variant.title }}</span>
                 {% elsif show_single_variant_details %}
-                {% unless item.product.has_only_default_variant %}
-                <span class="variant">{{ item.variant.title }}</span>
-                {% endunless %}
+                  {% unless item.product.has_only_default_variant %}
+                    <span class="variant">{{ item.variant.title }}</span>
+                  {% endunless %}
                 {% endif %}
                 {% comment %} Line Item Properties {% endcomment %}
                 {% for p in item.properties %}
-                <div class="property">
-                  {% unless p.last == blank %}
-                  <span class="label">{{ p.first }}:</span>
-                  {% if p.last contains '/uploads/' %}
-                  <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
-                  {% else %}
-                  {{ p.last }}
-                  {% endif %}
-                  <br />
-                  {% endunless %}
-                </div>
+                  <div class="property">
+                    {% unless p.last == blank %}
+                      <span class="label">{{ p.first }}:</span>
+                      {% if p.last contains '/uploads/' %}
+                        <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                      {% else %}
+                        {{ p.last }}
+                      {% endif %}
+                      <br />
+                    {% endunless %}
+                  </div>
                 {% endfor %}
 
                 {% if section.settings.show_backorder_text == true %}
                   {% render 'backorder', product: item.product, variant: item.variant %}
                 {% endif %}
               </div>
-              
+
 
               <div class="cart-item__price">
                 <div class="cart-item__price__amount">
@@ -229,16 +454,16 @@
 
                 {% render 'unit-price', variant: item %}
               </div>
- 
+
               <div class="cart-item__quantity">
-                <div class="qty-adjuster">
+                <div class="qty-adjuster" data-variantId="{{ item.variant_id }}">
                   <div class="qty-adjuster__inner">
                     <a class="qty-adjuster__down" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}">{% render 'svg-minus' %}</a>
                     <input class="qty-adjuster__value" type="text" pattern="[0-9]*" name="updates[]" value="{{ item.quantity }}" aria-label="{{ 'cart.label.quantity' | t | escape }}">
                     <a class="qty-adjuster__up"
-                        href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}"
-                        {% if item.variant.inventory_management == 'shopify' and item.variant.inventory_policy == 'deny' and item.variant.inventory_quantity == item.quantity %}disabled{% endif %}
-                        >
+                       href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}"
+                       {% if item.variant.inventory_management == 'shopify' and item.variant.inventory_policy == 'deny' and item.variant.inventory_quantity == item.quantity %}disabled{% endif %}
+                    >
                       {%- render 'svg-plus' -%}
                     </a>
                   </div>
@@ -261,12 +486,12 @@
 
                 {% if item.line_level_discount_allocations.size > 0 %}
                   <ul class="cart-discount-list">
-                  {% for discount_allocation in item.line_level_discount_allocations %}
-                    <li class="cart-discount">
-                      <div class="cart-discount__label">{{ discount_allocation.discount_application.title }}</div>
-                      <div class="cart-discount__amount theme-money">{{ discount_allocation.amount | money }}</div>
-                    </li>
-                  {% endfor %}
+                    {% for discount_allocation in item.line_level_discount_allocations %}
+                      <li class="cart-discount">
+                        <div class="cart-discount__label">{{ discount_allocation.discount_application.title }}</div>
+                        <div class="cart-discount__amount theme-money">{{ discount_allocation.amount | money }}</div>
+                      </li>
+                    {% endfor %}
                   </ul>
                 {% endif %}
               </div>
@@ -274,12 +499,12 @@
           </li>
         {% endfor %}
       </ul>
-    
+
 
       {% if section.settings.cart_notification_show and section.settings.cart_notification_pos == 'under-items' %}
-      <div class="notification">
-        <div class="rte">{{ section.settings.cart_notification_text }}</div>
-      </div>
+        <div class="notification">
+          <div class="rte">{{ section.settings.cart_notification_text }}</div>
+        </div>
       {% endif %}
 
       <div class="row spaced-row">
@@ -303,8 +528,8 @@
               {%- endfor -%}
             </ul>
           {%- endif -%}
-          
-          
+
+
 
           <div class="cart-subtotal">
             <label class="cart-subtotal-label h2" for="checkout">{{ 'cart.general.subtotal' | t }}:</label>
@@ -326,111 +551,111 @@
 
             <div class="cart-policies rte lightly-spaced-row">{{ taxes_shipping_checkout }}</div>
           {% endif %}
-   
+
           <div class="cart-buttons">
             <button class="checkout-button checkout-button--lower"
                     onClick="return isCheckoutAllowed();"
                     type="submit" name="checkout">{{ 'cart.general.checkout' | t }}</button>
           </div>
-          
 
-          </div>
-          {% endif %}
+
         </div>
+        {% endif %}
       </div>
-    </form>
-
-    {% render 'shipping-calculator' %}
-
   </div>
+  </form>
+
+  {% render 'shipping-calculator' %}
+
+</div>
 
 
 </div>
 
 
 {% schema %}
-  {
-    "name": "Cart page",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "show_notes",
-        "label": "Enable cart notes",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "show_tax_and_shipping",
-        "label": "Show tax and shipping information",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "show_additional_checkout_buttons",
-        "label": "Show additional checkout options",
-        "default": true,
-        "info": "Display other gateways and quick checkout buttons. [Read more](https://help.shopify.com/en/manual/payments/accelerated-checkouts)"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_backorder_text",
-        "label": "Show backorder text",
-        "default": true,
-        "info": "Only shows for products which use Shopify inventory tracking and are available to purchase when out of stock."
-      },
-      {
-        "type": "header",
-        "content": "Cart announcement"
-      },
-      {
-        "type": "checkbox",
-        "id": "cart_notification_show",
-        "label": "Show announcement",
-        "default": false
-      },
-      {
-        "type": "richtext",
-        "id": "cart_notification_text",
-        "label": "Text"
-      },
-      {
-        "type": "select",
-        "id": "cart_notification_pos",
-        "label": "Position",
-        "default": "",
-        "options": [
-          {
-            "value": "",
-            "label": "Under page title"
-          },
-          {
-            "value": "under-items",
-            "label": "Under items"
-          }
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Shipping estimates calculator"
-      },
-      {
-        "type": "checkbox",
-        "id": "shipping_calculator",
-        "label": "Show shipping calculator",
-        "default": false
-      },
-      {
-        "type": "text",
-        "id": "shipping_calculator_default_country",
-        "label": "Default country selection",
-        "default": "United States"
-      },
-      {
-        "type": "paragraph",
-        "content": "If your customer is logged-in, the country in their default shipping address will be selected."
-      }
-    ]
-  }
+{
+"name": "Cart page",
+"settings": [
+{
+"type": "checkbox",
+"id": "show_notes",
+"label": "Enable cart notes",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "show_tax_and_shipping",
+"label": "Show tax and shipping information",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "show_additional_checkout_buttons",
+"label": "Show additional checkout options",
+"default": true,
+"info": "Display other gateways and quick checkout buttons. [Read more](https://help.shopify.com/en/manual/payments/accelerated-checkouts)"
+},
+{
+"type": "checkbox",
+"id": "show_backorder_text",
+"label": "Show backorder text",
+"default": true,
+"info": "Only shows for products which use Shopify inventory tracking and are available to purchase when out of stock."
+},
+{
+"type": "header",
+"content": "Cart announcement"
+},
+{
+"type": "checkbox",
+"id": "cart_notification_show",
+"label": "Show announcement",
+"default": false
+},
+{
+"type": "richtext",
+"id": "cart_notification_text",
+"label": "Text"
+},
+{
+"type": "select",
+"id": "cart_notification_pos",
+"label": "Position",
+"default": "",
+"options": [
+{
+"value": "",
+"label": "Under page title"
+},
+{
+"value": "under-items",
+"label": "Under items"
+}
+]
+},
+{
+"type": "header",
+"content": "Shipping estimates calculator"
+},
+{
+"type": "checkbox",
+"id": "shipping_calculator",
+"label": "Show shipping calculator",
+"default": false
+},
+{
+"type": "text",
+"id": "shipping_calculator_default_country",
+"label": "Default country selection",
+"default": "United States"
+},
+{
+"type": "paragraph",
+"content": "If your customer is logged-in, the country in their default shipping address will be selected."
+}
+]
+}
 {% endschema %}
 
 
