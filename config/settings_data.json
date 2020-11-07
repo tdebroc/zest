@@ -640,17 +640,6 @@
           "show_view_all": true,
           "collections_per_row": "4"
         }
-      },
-      "16044199161174e69f": {
-        "type": "image3",
-        "settings": {
-          "image": "shopify:\/\/shop_images\/1.png",
-          "layout": "left",
-          "title": "Nos Planches apéros",
-          "text": "<p>Ta planche apéro dînatoire 100% maison <\/p>",
-          "button_label": "COMMANDER",
-          "button_link": "shopify:\/\/collections\/planche-apero"
-        }
       }
     },
     "content_for_index": [
@@ -658,8 +647,7 @@
       "1604338685d5b5fb7e",
       "1590506747837",
       "1590157729940",
-      "1599129325640",
-      "16044199161174e69f"
+      "1599129325640"
     ]
   },
   "presets": {
