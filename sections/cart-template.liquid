@@ -115,7 +115,7 @@
               }
           }
           function shouldLaunchApiCall(formData) {
-              return doesItModifyCartAttributes(formData) || doesItModifyCartAttributes(formData);
+              return doesItModifyCartItems(formData) || doesItModifyCartAttributes(formData);
           }
           function doesItModifyCartItems(formData) {
               return Object.keys(formData.updates).length > 0;
@@ -205,6 +205,9 @@
             let formData = getNewFormData();
             if (deliveryOption === 'outside-paris') {
               postalCodeOutsideParisEl.focus();
+              if (shouldChangeExtra(1)) {
+                formData["updates"][getShippingExtraVariantId()] = 1
+              }
             } else {
                 if (postalCodeOutsideParisEl.val() !== "") {
                     postalCodeOutsideParisEl.val("");
@@ -275,10 +278,7 @@
               alert(MESSAGE_OUTSIDE_OF_ZONE);
               return;
             }
-            let formData = getNewFormData()
-            if (shouldChangeExtra(1)) {
-              formData.updates[getShippingExtraVariantId()] = 1
-            }
+            let formData = getNewFormData();
             formData.attributes[POSTAL_CODE_ATTR_KEY] = postalCode;
             modifyCart(formData)
           }
