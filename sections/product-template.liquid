@@ -247,8 +247,9 @@
                                 <button onclick="handleAddToCartClick();return false;">
                                   {{ 'products.product.add_to_cart' | t }}
                                 </button>
-                                <div id="product-added-to-basket-message" style="display: none;">
-                                    Bon Choix ! Ton Zest est dans ton panier !
+                                <div id="product-added-to-basket-message">
+                                    <img class="product-adding-loader" style="height: 39px;display: none;" src="{{ 'loading-orange-circle.gif' | asset_url }}"/>
+                                    <span class="product-added-message" style="display: none;"> Bon Choix ! Ton Zest est dans ton panier !</span>
                                 </div>
                             </span>
 
@@ -795,11 +796,13 @@ loadProductRecommendationsIntoSection();
     }
 
     function addProductToCart(formData) {
+        loaderAddingProduct.show();
         fetch('/cart/add.js', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(formData)
         }).then(json => {
+            loaderAddingProduct.hide();
             if (json.status === 422) {
                 alert("Désolé, le produit n'est plus en Stock !")
             } else {
@@ -808,11 +811,14 @@ loadProductRecommendationsIntoSection();
                 productAdded();
             }
         }).catch((error) => {
+            loaderAddingProduct.hide();
             console.error('Error:', error);
         });
     }
+
     let currentCartMoneyEl = $('.current-cart .theme-money')
-    let productAddedMessage =$("#product-added-to-basket-message")
+    let productAddedMessage =$("#product-added-to-basket-message .product-added-message")
+    let loaderAddingProduct =$("#product-added-to-basket-message .product-adding-loader")
     function productAdded() {
         productAddedMessage.show(500);
         Shopify.getCart(function(cart) {

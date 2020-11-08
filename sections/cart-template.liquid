@@ -51,11 +51,23 @@
                   <input type="radio" name="delivery-zone"/>
                   <span class="inputLabel">Je viens récupérer sur place !</span><br/>
                   <span class="delivery-price-message">Pas de frais de livraison</span>
+                  <div class="removing-extra-shipping-message">
+                      <span>
+                          <img class="loader-orange-circle" src="{{ 'loading-orange-circle.gif' | asset_url }}" />
+                          Ok ! Nous retirons le supplément.
+                      </span>
+                  </div>
               </div>
               <div class="delivery-zone-option pointer" data-deliveryOption="inside-paris" onClick="selectDeliveryOption(this)">
                   <input type="radio" name="delivery-zone"/>
                   <span class="inputLabel">J'habite dans Paris intra-muros ou Boulogne</span><br/>
                   <span class="delivery-price-message">La livraison revient à <span class="shipping-base-price"></span>€</span>
+                  <div class="removing-extra-shipping-message">
+                      <span>
+                          <img class="loader-orange-circle" src="{{ 'loading-orange-circle.gif' | asset_url }}" />
+                          Ok ! Nous retirons le supplément.
+                      </span>
+                  </div>
               </div>
               <div class="delivery-zone-option pointer" data-deliveryOption="outside-paris" onClick="selectDeliveryOption(this)">
                   <div>
@@ -64,8 +76,8 @@
                   </div>
                   <div id="adding-extra-shipping-message">
                       <span>
+                          <img class="loader-orange-circle" src="{{ 'loading-orange-circle.gif' | asset_url }}" />
                           Ok ! Nous ajoutons le supplément.
-                          <img style="height: 39px;" src="{{ 'loading-orange-circle.gif' | asset_url }}" />
                       </span>
                   </div>
                   <div>
@@ -221,6 +233,8 @@
               if (shouldChangeExtra(1)) {
                 formData["updates"][getShippingExtraVariantId()] = 1;
                 showingAddingShippingExtra();
+              } else {
+                postalCodeOutsideParisEl.focus()
               }
             } else {
                 if (postalCodeOutsideParisEl.val() !== "") {
@@ -228,7 +242,8 @@
                     formData.attributes[POSTAL_CODE_ATTR_KEY] = "";
                 }
                 if (shouldChangeExtra(0)) {
-                    formData.updates[getShippingExtraVariantId()] = 0
+                    formData.updates[getShippingExtraVariantId()] = 0;
+                    showRemovingExtraShipping(deliveryOption);
                 }
             }
             if (isInit) {
@@ -238,6 +253,9 @@
                 formData.attributes[DELIVERY_OPTION_ATTR_KEY] = deliveryOption;
             }
             modifyCart(formData)
+          }
+          function showRemovingExtraShipping(deliveryOption) {
+              $("#delivery-zone-choser .delivery-zone-option[data-deliveryOption=" + deliveryOption + "] .removing-extra-shipping-message").show()
           }
           function setShippingMessageAddBasePrice(deliveryOption) {
               $("#shipping-message-add-base-price").text(
@@ -409,11 +427,13 @@
             if (getShippingSelectedValue() === 'outside-paris' && !isValidPostalCode(postalCode)) {
                 alert("Le code Postal n'est pas valide.")
                 scrollTo("#delivery-zone-choser");
+                postalCodeOutsideParisEl.focus();
                 return false
             }
             if (getShippingSelectedValue() === 'outside-paris' && !isAllowedPostalCodeForOutsideParis(postalCode)) {
               alert(MESSAGE_OUTSIDE_OF_ZONE);
               scrollTo("#delivery-zone-choser");
+                postalCodeOutsideParisEl.focus();
               return false
             }
             return true;
