@@ -58,13 +58,22 @@
                   <span class="delivery-price-message">La livraison revient à <span class="shipping-base-price"></span>€</span>
               </div>
               <div class="delivery-zone-option pointer" data-deliveryOption="outside-paris" onClick="selectDeliveryOption(this)">
-                  <input type="radio" name="delivery-zone"/>
-                  <span class="inputLabel">J'habite en région Parisienne</span><br/>
-                  <input name="input-delivery-zone-paris"
-                         onkeyup="onPostalCodeChange()"
-                         type=text id="input-delivery-zone-outside-paris"
-                         placeholder="A quel Code Postal ?"/><br/>
-                <span class="delivery-price-message">La livraison revient à <span id="shipping-total-price-outside-paris"></span>€ (<span class="shipping-base-price"></span>€ de base + <span id="extraShippingPrice"></span>€ de supplément)</span>
+                  <div>
+                      <input type="radio" name="delivery-zone"/>
+                      <span class="inputLabel">J'habite en région Parisienne</span>
+                  </div>
+                  <div id="adding-extra-shipping-message">
+                      <span >Ok ! Nous ajoutons le supplément.</span>
+                  </div>
+                  <div>
+                      <input name="input-delivery-zone-paris"
+                             onkeyup="onPostalCodeChange()"
+                             type=text id="input-delivery-zone-outside-paris"
+                             placeholder="A quel Code Postal ?"/>
+                  </div>
+                  <div>
+                      <span class="delivery-price-message">La livraison revient à <span id="shipping-total-price-outside-paris"></span>€ (<span class="shipping-base-price"></span>€ de base + <span id="extraShippingPrice"></span>€ de supplément)</span>
+                  </div>
               </div>
         </div>
         <div style="clear: both;"></div>
@@ -86,6 +95,7 @@
           let DELIVERY_OPTION_ATTR_KEY = "Delivery Option";
           let POSTAL_CODE_ATTR_KEY = "Postal Code"
           let DATE_HOUR_SEPARATOR = " de ";
+          let SHIPPING_MESSAGE_ADD_BASE_PRICE = "Le tarif de base pour la livraison (" + SHIPPING_BASE_PRICE + "€) sera rajouté à la prochaine étape.";
           // ================================================================
           // = API Utils
           // ================================================================
@@ -203,10 +213,11 @@
             allOptionEls.find("input").prop('checked', false);
             $(el).closest(".delivery-zone-option").find("input").prop('checked', true);
             let formData = getNewFormData();
+            setShippingMessageAddBasePrice(deliveryOption);
             if (deliveryOption === 'outside-paris') {
-              postalCodeOutsideParisEl.focus();
               if (shouldChangeExtra(1)) {
-                formData["updates"][getShippingExtraVariantId()] = 1
+                formData["updates"][getShippingExtraVariantId()] = 1;
+                showingAddingShippingExtra();
               }
             } else {
                 if (postalCodeOutsideParisEl.val() !== "") {
@@ -224,6 +235,10 @@
                 formData.attributes[DELIVERY_OPTION_ATTR_KEY] = deliveryOption;
             }
             modifyCart(formData)
+          }
+          function setShippingMessageAddBasePrice(deliveryOption) {
+              $("#shipping-message-add-base-price").text(
+                  (deliveryOption === "pick-up") ? "" : SHIPPING_MESSAGE_ADD_BASE_PRICE)
           }
           function modifyCart(formData) {
               if (!shouldLaunchApiCall(formData)) {
@@ -306,6 +321,10 @@
               } else {
                   $(document).ready(forbidQuantityModificationForShippingExtra)
               }
+          }
+          function showingAddingShippingExtra() {
+              $("#adding-extra-shipping-message").show();
+              postalCodeOutsideParisEl.hide();
           }
 
           function forbidQuantityModificationForShippingExtra() {
@@ -561,7 +580,7 @@
               {%- endif -%}
             {%- endcapture -%}
 
-            <div class="cart-policies rte lightly-spaced-row">{{ taxes_shipping_checkout }}</div>
+            <div id="shipping-message-add-base-price" class="cart-policies rte lightly-spaced-row">{{ taxes_shipping_checkout }}</div>
           {% endif %}
 
           <div class="cart-buttons">

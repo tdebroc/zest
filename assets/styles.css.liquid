@@ -7341,7 +7341,7 @@ html.template-password #password-login .password-owner {
 
 #cart-timeSelector select {
   border: 1px solid #d3d1d2;
-  font-family: 'Karla';
+  font-family: Karla, sans-serif;
   padding: 9px 0.6em;
 }
 #postalCode-wrapper {
@@ -7358,14 +7358,14 @@ html.template-password #password-login .password-owner {
   border: 1px solid #d3d1d2;
   float: left;
   height: 125px;
-  width: 32.5%;
   margin-right: 3px;
   padding: 10px;
   text-align: left;
+  width: 32.5%;
 }
 .delivery-zone-option.selected {
-  border: grey;
   background: rgba(242, 159, 5, 0.8);
+  border: grey;
   box-shadow: 0px 5px 10px grey;
 }
 #where-do-deliver-question {
@@ -7387,10 +7387,16 @@ html.template-password #password-login .password-owner {
 .nothing-selected {
   color: grey;
 }
+#adding-extra-shipping-message {
+  display: none;
+  font-size: 0.8em;
+  font-style: italic;
+  height: 39px;
+}
 @media (max-width: 767px) {
   .delivery-zone-option {
     float: none;
-    width: 100%;
     margin-bottom: 5px;
+    width: 100%;
   }
 }
