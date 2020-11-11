@@ -116,7 +116,7 @@
           "announcement_show": true,
           "announcement_position": "above",
           "announcement_home_only": false,
-          "announcement_text": "Commande avant 19h30 et fais toi livrer le soir même dans tout Paris et Boulogne",
+          "announcement_text": "Pour une livraison le soir même, passe ta commande avant 20h00.",
           "announcement_col_bar": "#f29f05",
           "announcement_col_text": "#fafafa"
         }
