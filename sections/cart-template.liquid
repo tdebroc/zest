@@ -70,11 +70,15 @@
                       </span>
                   </div>
               </div>
-              <div class="delivery-zone-option pointer" data-deliveryOption="outside-paris" onClick="selectDeliveryOption(this)">
+              <div class="delivery-zone-option" data-deliveryOption="outside-paris" onClick="selectDeliveryOption(this)">
                   <div>
-                      <input type="radio" name="delivery-zone"/>
-                      <span class="inputLabel">J'habite en région Parisienne</span>
+                      <input type="radio" name="delivery-zone" disabled/>
+                      <span class="inputLabel" style="color: grey;">J'habite en région Parisienne</span>
                   </div>
+                  <div class="delivery-price-message">
+                      Cette option n'est pas encore disponible, mais patience ! Nous arrivons bientôt en région parisienne !
+                  </div>
+                  <!--
                   <div id="adding-extra-shipping-message">
                       <span>
                           <img class="loader-orange-circle" src="{{ 'loading-orange-circle.gif' | asset_url }}" />
@@ -91,6 +95,7 @@
                       <span class="delivery-price-message">La livraison revient à <span id="shipping-total-price-outside-paris"></span>€
                           (supplément de <span id="extraShippingPrice"></span>€ pour le coup de pédale en plus)</span>
                   </div>
+                  -->
               </div>
         </div>
         <div style="clear: both;"></div>
@@ -225,6 +230,10 @@
           let numbers = /^[-+]?[0-9]+$/;
           function selectDeliveryOption(el, isInit) {
             let deliveryOption = $(el).attr("data-deliveryOption");
+            if (deliveryOption === 'outside-paris') {
+                // Feature is not enabled while we don't know shipping prices from vendors.
+                return;
+            }
             allOptionEls.removeClass("selected");
             $(el).addClass("selected");
             allOptionEls.find("input").prop('checked', false);
