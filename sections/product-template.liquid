@@ -722,6 +722,11 @@ loadProductRecommendationsIntoSection();
                 return variant.id
             }
         }
+        if (meta && meta.product && meta.product.variants.length > 0 && meta.product.variants[0].id) {
+            return meta.product.variants[0].id;
+        } else {
+            alert("We can't find the variantId. We can't add your product. Please contact Zest team !")
+        }
         return undefined;
     }
 
@@ -803,12 +808,15 @@ loadProductRecommendationsIntoSection();
             body: JSON.stringify(formData)
         }).then(json => {
             loaderAddingProduct.hide();
-            if (json.status === 422) {
-                alert("Désolé, le produit n'est plus en Stock !")
-            } else {
+            if (json.status === 200) {
                 console.log("json add product answer:", json);
                 // window.location = "/cart";
                 productAdded();
+            } else if (json.status === 422) {
+                alert("Désolé, le produit n'est plus en Stock !")
+            } else {
+                alert("Désolé, il y a un problème technique, svp envoyez un message à Zest pour les prévenir !!" +
+                    " Copiez leur cette erreur :" + json.status + " Pour " + JSON.stringify(formData))
             }
         }).catch((error) => {
             loaderAddingProduct.hide();

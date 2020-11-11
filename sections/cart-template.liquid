@@ -118,6 +118,7 @@
           let POSTAL_CODE_ATTR_KEY = "Postal Code";
           let DATE_HOUR_SEPARATOR = " de ";
           let SHIPPING_MESSAGE_ADD_BASE_PRICE = "Le tarif de base pour la livraison (" + SHIPPING_BASE_PRICE + "€) sera rajouté à la prochaine étape.";
+          let QUANTITY_MODIFICATION_FORBIDDEN = [""];
           // ================================================================
           // = API Utils
           // ================================================================
@@ -521,7 +522,7 @@
                 {% render 'unit-price', variant: item %}
               </div>
               <div class="cart-item__quantity">
-                <div class="qty-adjuster" data-handle="{{ item.handle }}" data-variantId="{{ item.variant_id }}">
+                <div class="qty-adjuster" data-handle="{{ item.handle }}" data-variantId="{{ item.variant_id }}" data-url="{{ item.url }}">
                   <div class="qty-adjuster__inner">
                     <a class="qty-adjuster__down" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}">{% render 'svg-minus' %}</a>
                     <input class="qty-adjuster__value" type="text" pattern="[0-9]*" name="updates[]" value="{{ item.quantity }}" aria-label="{{ 'cart.label.quantity' | t | escape }}">
