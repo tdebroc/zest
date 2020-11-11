@@ -118,7 +118,7 @@
           let POSTAL_CODE_ATTR_KEY = "Postal Code";
           let DATE_HOUR_SEPARATOR = " de ";
           let SHIPPING_MESSAGE_ADD_BASE_PRICE = "Le tarif de base pour la livraison (" + SHIPPING_BASE_PRICE + "€) sera rajouté à la prochaine étape.";
-          let QUANTITY_MODIFICATION_FORBIDDEN = [""];
+          let QUANTITY_MODIFICATION_FORBIDDEN = ["mont-dor"];
           // ================================================================
           // = API Utils
           // ================================================================
@@ -361,10 +361,13 @@
           }
 
           function forbidQuantityModificationForShippingExtra() {
-              let parentEl = $(".qty-adjuster[data-variantId=" +  getShippingExtraVariantId() + "]")
-                  .parent()
+              let selectorQtyAdjuster = ".qty-adjuster[data-variantId=" +  getShippingExtraVariantId() + "]";
+              forbidQuantityModification(selectorQtyAdjuster, 1);
+          }
 
-              parentEl.text("1");
+          function forbidQuantityModification(selectorQtyAdjuster, quantity) {
+              let parentEl = $(selectorQtyAdjuster).parent()
+              parentEl.text(quantity);
               parentEl.css("padding-top", "9px");
           }
 
@@ -420,6 +423,7 @@
           let currentData = {}
           getShippingExtraProduct()
             .then(init);
+
 
           // ================================================================
           // = Checkout Button
@@ -637,6 +641,20 @@
 
 
 </div>
+
+<script type="text/javascript">
+    // ================================================================
+    // = Forbid Quantity modification
+    // ================================================================
+
+    QUANTITY_MODIFICATION_FORBIDDEN.forEach(
+        handle => {
+            let selector = ".qty-adjuster[data-url*='/" + handle + "?']";
+            let quantity = $(selector).find(".qty-adjuster__value").val();
+            forbidQuantityModification(selector, quantity);
+        }
+    )
+</script>
 
 
 {% schema %}
