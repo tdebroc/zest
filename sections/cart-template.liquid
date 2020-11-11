@@ -50,6 +50,7 @@
               <div class="delivery-zone-option pointer" data-deliveryOption="pick-up" onClick="selectDeliveryOption(this)">
                   <input type="radio" name="delivery-zone"/>
                   <span class="inputLabel">Je viens récupérer sur place !</span><br/>
+                  <span class="delivery-price-message">5 rue Crillon, 75004 (à coté de Bastille)</span><br/>
                   <span class="delivery-price-message">Pas de frais de livraison</span>
                   <div class="removing-extra-shipping-message">
                       <span>
@@ -60,7 +61,7 @@
               </div>
               <div class="delivery-zone-option pointer" data-deliveryOption="inside-paris" onClick="selectDeliveryOption(this)">
                   <input type="radio" name="delivery-zone"/>
-                  <span class="inputLabel">J'habite dans Paris intra-muros ou Boulogne</span><br/>
+                  <span class="inputLabel">J'habite Paris (intra-muros) ou Boulogne-Billancourt</span><br/>
                   <span class="delivery-price-message">La livraison revient à <span class="shipping-base-price"></span>€</span>
                   <div class="removing-extra-shipping-message">
                       <span>
@@ -87,7 +88,8 @@
                              placeholder="A quel Code Postal ?"/>
                   </div>
                   <div>
-                      <span class="delivery-price-message">La livraison revient à <span id="shipping-total-price-outside-paris"></span>€ (<span class="shipping-base-price"></span>€ de base + <span id="extraShippingPrice"></span>€ de supplément)</span>
+                      <span class="delivery-price-message">La livraison revient à <span id="shipping-total-price-outside-paris"></span>€
+                          (supplément de <span id="extraShippingPrice"></span>€ pour le coup de pédale en plus)</span>
                   </div>
               </div>
         </div>
@@ -108,7 +110,7 @@
                * https://zest-test.myshopify.com/admin/settings/checkout in script section. */
           let DATE_HOUR_ATTR_KEY = "Date et Heure de Livraison";
           let DELIVERY_OPTION_ATTR_KEY = "Delivery Option";
-          let POSTAL_CODE_ATTR_KEY = "Postal Code"
+          let POSTAL_CODE_ATTR_KEY = "Postal Code";
           let DATE_HOUR_SEPARATOR = " de ";
           let SHIPPING_MESSAGE_ADD_BASE_PRICE = "Le tarif de base pour la livraison (" + SHIPPING_BASE_PRICE + "€) sera rajouté à la prochaine étape.";
           // ================================================================
