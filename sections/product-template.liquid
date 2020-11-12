@@ -757,7 +757,7 @@ loadProductRecommendationsIntoSection();
     function addMoreProducts(itemsArray) {
         let productsToAdd = $("#more-products").find("input:checked")
         for (let i = 0; i < productsToAdd.length; i++) {
-            let variantId = parseInt(productsToAdd.eq(0).attr("variantId"));
+            let variantId = parseInt(productsToAdd.eq(i).attr("variantId"));
             itemsArray.push({
                 id: variantId,
                 quantity: 1
