@@ -676,7 +676,7 @@ loadProductRecommendationsIntoSection();
                 return;
             }
             $("#more-products").show();
-            let name = product.title + " ( + " + (product.price / 100) + " € )";
+            let name = product.title + " (&nbsp;+&nbsp;" + (product.price / 100) + "&nbsp;€&nbsp;)";
 
             let lineEl = addProductLineEl(name, addMeClick, addMoreEvent, removeEvent, product.variants[0].id)
             moreProductEl.append(lineEl)
