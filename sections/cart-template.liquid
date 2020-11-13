@@ -116,6 +116,7 @@
           let DATE_HOUR_ATTR_KEY = "Date et Heure de Livraison";
           let DELIVERY_OPTION_ATTR_KEY = "Delivery Option";
           let POSTAL_CODE_ATTR_KEY = "Postal Code";
+          let PETIT_MOT_EN_PLUS_KEY = "Petit mot en plus";
           let DATE_HOUR_SEPARATOR = " de ";
           let SHIPPING_MESSAGE_ADD_BASE_PRICE = "Le tarif de base pour la livraison (" + SHIPPING_BASE_PRICE + "€) sera rajouté à la prochaine étape.";
           let QUANTITY_ADDING_FORBIDDEN = ["mont-dor"];
@@ -271,7 +272,7 @@
           }
           function setShippingMessageAddBasePrice(deliveryOption) {
               $("#shipping-message-add-base-price").text(
-                  (deliveryOption === "pick-up") ? "" : SHIPPING_MESSAGE_ADD_BASE_PRICE)
+                  (deliveryOption !== "outside-paris") ? "Frais de livraison calculés à la prochaine étape" : SHIPPING_MESSAGE_ADD_BASE_PRICE)
           }
           function modifyCart(formData) {
               if (!shouldLaunchApiCall(formData)) {
@@ -424,6 +425,31 @@
           getShippingExtraProduct()
             .then(init);
 
+          // ================================================================
+          // = Un Petit Mot en Plus
+          // ================================================================
+
+          let PAD_TIME_PETIT_MOT = 20;
+          let timeLeftForPetitMot = -PAD_TIME_PETIT_MOT;
+          function onKeyUpPetitMotEnPlus() {
+              timeLeftForPetitMot = 1000;
+          }
+          function checkIfWeHandleChangeOnPetitMotEnPlus() {
+              timeLeftForPetitMot -= PAD_TIME_PETIT_MOT;
+              if (timeLeftForPetitMot === 0) {
+                  handlePetitMotEnPlusChange();
+              }
+              setTimeout(checkIfWeHandleChangeOnPetitMotEnPlus, PAD_TIME_PETIT_MOT)
+          }
+          checkIfWeHandleChangeOnPetitMotEnPlus()
+
+          function handlePetitMotEnPlusChange() {
+              console.log("should handle petit mot");
+              let petitMotEnPlus = $("#un-petit-mot-en-plus").val();
+              let formData = getNewFormData();
+              formData["attributes"][PETIT_MOT_EN_PLUS_KEY] = petitMotEnPlus;
+              updateCart(formData);
+          }
 
           // ================================================================
           // = Checkout Button
@@ -576,6 +602,15 @@
           <div class="rte">{{ section.settings.cart_notification_text }}</div>
         </div>
       {% endif %}
+      <div class="row spaced-row">
+          <div class="half column">
+              &nbsp;
+          </div>
+          <div class="half column align-right">
+              <textarea placeholder="Un petit mot en plus ?" id="un-petit-mot-en-plus"
+                    onkeyup="onKeyUpPetitMotEnPlus()"></textarea>
+          </div>
+      </div>
 
       <div class="row spaced-row">
         <div class="half column">

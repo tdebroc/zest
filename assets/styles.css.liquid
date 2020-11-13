@@ -7311,7 +7311,17 @@ html.template-password #password-login .password-owner {
   border: grey 1px solid;
 }
 .propertyLabel {
-  display: inline;
+  clear: both;
+  display: block;
+  padding-top: 5px;
+}
+.propertyLabel .innerText {
+  display: block;
+  padding-top: 9px;
+}
+.product-property-block .qty-adjuster__inner {
+  float: left;
+  width: fit-content;
 }
 .pointer {
   cursor: pointer;
@@ -7323,6 +7333,88 @@ html.template-password #password-login .password-owner {
   color: #2c2528;
   margin-top: 5px;
   position: absolute;
+}
+table.productTable {
+  min-height: 46px;
+}
+
+.right-td-productLabel {
+  vertical-align: middle;
+  padding-left: 5px;
+}
+td .addMe {
+  display: inline-block;
+  background: #ffffff;
+  color: #f29f05;
+  border: 1px solid #f29f05;
+  height: auto;
+  width: 118px;
+  padding: 9px 1.4em;
+  font-family: inherit;
+  font-size: 1em;
+  line-height: 1.2em;
+  font-weight: 400;
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 0px;
+  transition: opacity 200ms, background-color 150ms, border-color 150ms;
+}
+td .addMe .plus-sign {
+  display: block;
+}
+td .addMe:hover .plus-sign, td .addMe.shakeIt .plus-sign {
+  display: none;
+}
+td .addMe .me-text {
+  display: none;
+}
+td .addMe:hover .me-text, td .addMe.shakeIt .me-text {
+  display: block;
+}
+
+td .addMe:hover, td .addMe.shakeIt {
+  font-weight: 700;
+  background: #fbb32f;
+  color: #ffffff;
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.qty-adjuster__value {
+  -webkit-appearance: none;
+  opacity:1;
+}
+
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+@media (max-width: 790px) {
+  .productTable .qty-adjuster__down, .productTable .qty-adjuster__up {
+    padding: 17px;
+  }
+  td .addMe {
+    height: 54px;
+    width: 144px;
+    padding: 14px 1.4em;
+  }
 }
 
 /*************    ---                   ---                   ---   *************/

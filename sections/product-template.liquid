@@ -217,10 +217,7 @@
 
                         <div id="product-properties"></div>
                         <fieldset id="more-products" style="display: none;"></fieldset>
-                        <div id="mot-en-plus">
-                            Un petit mot à nous zester ?
-                            <textarea></textarea>
-                        </div>
+                        <!--<div id="mot-en-plus">Un petit mot à nous zester ?<textarea></textarea></div>-->
 
                         <div id="infiniteoptions-container"></div>
 
@@ -537,7 +534,8 @@ loadProductRecommendationsIntoSection();
     let productJson = {{ product | json }}
 
     function getVariantValue() {
-        return parseInt($(variantSelector).val())
+        let number = $(variantSelector).val().split("")[0]
+        return parseInt(number)
     }
 
     String.prototype.replaceAll = function(target, replacement) {
@@ -559,7 +557,7 @@ loadProductRecommendationsIntoSection();
                     return getVariantValue() + 1;
                 },
                 getTitleText: function () {
-                    return "Choix de " + this.getRequiredItemNumber() + " Tartinables";
+                    return "Choisissez " + this.getRequiredItemNumber() + " Tartinables:";
                 },
                 properties: [
                     {name: 'Tapenade'},
@@ -578,7 +576,7 @@ loadProductRecommendationsIntoSection();
                     return variantToZestEnPlus[getVariantValue()];
                 },
                 getTitleText: function () {
-                    return "Choix de " + this.getRequiredItemNumber() + " Zest en +";
+                    return "Choisissez " + this.getRequiredItemNumber() + " Zest en +";
                 },
                 properties: [
                     {name: 'Variété de charcuterie : Saucisson, chorizo'},
@@ -606,7 +604,7 @@ loadProductRecommendationsIntoSection();
                     return getVariantValue();
                 },
                 getTitleText: function () {
-                    return "Choix de " + this.getRequiredItemNumber() + " Tartines";
+                    return "Choisissez " + this.getRequiredItemNumber() + " Tartines";
                 },
                 properties: [
                     {name: 'La Zestiflette : Fondue de poireaux pommes de terre et reblochon fondant'},
@@ -632,38 +630,40 @@ loadProductRecommendationsIntoSection();
             displayProperties(numberOfZester)
         }
 
-        function getNumberOfPropertiesChecked() {
-            return parentEl.find("input:checked").length
-        }
-
         function displayProperties() {
             parentEl.empty();
             parentEl.append("<div>" + propertyConfig.getTitleText() + "</div>")
-
             let fieldSetEl = $("<fieldset></fieldset>")
 
             for (let property of propertyConfig.properties) {
                 let name = property.name;
-                let labelEl = $("<label class='propertyLabel pointer'></label>")
-                let inputEl = $("<input type='checkbox'  name='" + escape(name) + "' " +
-                    " value='" + escape(name) + "' class='spb-productoptiontextcolor spb-productoptionbackground'/>")
-                inputEl.click(onPropertySelected);
-                labelEl.append(inputEl)
-                labelEl.append("<span>&nbsp;&nbsp;" + name + "</span>")
-                fieldSetEl.append(labelEl)
-                fieldSetEl.append("<br/>")
+                let lineEl = addProductLineEl(name, addMeClick, addMoreEvent, removeEvent)
+                fieldSetEl.append(lineEl);
             }
             parentEl.append(fieldSetEl)
         }
 
-        function escape(name) {
-            return name.replaceAll("'", "&apos;").replaceAll('"', "&quot;")
+        function addMeClick(event) {
+            if (canWeAdd(event.target)) {
+                addMoreEvent(event);
+                showQuantityModifier(event.target);
+            }
         }
 
-        function onPropertySelected(event) {
-            if (getNumberOfPropertiesChecked() > (propertyConfig.getRequiredItemNumber())) {
-                event.target.checked = false
-                return false;
+        function canWeAdd(el) {
+            let canWeadd = getSumOfProductInCurrentFieldset($(el).closest("fieldset")) < propertyConfig.getRequiredItemNumber()
+            if (!canWeadd) {
+                alert("Miam, miam ! Pour en rajouter, " +
+                    "il faut juste augmenter le nombre de Zesteurs ou les prendre en extras dans tous nos produits :-)")
+            }
+            return canWeadd;
+        }
+
+        function addMoreEvent(event) {
+            let quantityEl = findQuantityElFromButton(event.target);
+            let quantity = parseInt(quantityEl.val());
+            if (canWeAdd(event.target)) {
+                quantityEl.val(quantity + 1);
             }
         }
 
@@ -677,14 +677,20 @@ loadProductRecommendationsIntoSection();
             }
             $("#more-products").show();
             let name = product.title + " ( + " + (product.price / 100) + " € )";
-            let labelEl = $("<label class='propertyLabel pointer'></label>")
-            let inputEl = $("<input type='checkbox'  name='" + product.title + "' " +
-                " variantId='" + product.variants[0].id + "' value='" + product.title +
-                "' class='spb-productoptiontextcolor spb-productoptionbackground'/>")
-            labelEl.append(inputEl)
-            labelEl.append("<span>&nbsp;&nbsp;" + name + "</span>")
-            moreProductEl.append(labelEl)
-            moreProductEl.append("<br/>")
+
+            let lineEl = addProductLineEl(name, addMeClick, addMoreEvent, removeEvent, product.variants[0].id)
+            moreProductEl.append(lineEl)
+        }
+
+        function addMeClick(event) {
+            addMoreEvent(event);
+            showQuantityModifier(event.target);
+        }
+
+        function addMoreEvent(event) {
+            let quantityEl = findQuantityElFromButton(event.target);
+            let quantity = parseInt(quantityEl.val());
+            quantityEl.val(quantity + 1);
         }
 
         for (let moreProductConfig of moreProductsHandle) {
@@ -696,7 +702,76 @@ loadProductRecommendationsIntoSection();
         }
     }
 
+    function showQuantityModifier(el) {
+        $(el).closest(".td-add-me").hide()
+        $(el).closest("tr").find(".td-quantity-modifier").show(300)
+    }
+
+    function getSumOfProductInCurrentFieldset(fieldset) {
+        return fieldset.find(".qty-adjuster__value").toArray()
+            .map(el => parseInt($(el).val())).reduce((a, b) => a + b)
+    }
+
+    function findQuantityElFromButton(el) {
+        return $(el).closest("tr").find(".qty-adjuster__value");
+    }
+
+    function removeEvent(event) {
+        let quantityEl = findQuantityElFromButton(event.target);
+        let quantity = parseInt(quantityEl.val());
+        if (quantity !== 0) {
+            quantityEl.val(quantity - 1);
+        }
+    }
+
+    function addProductLineEl(name, addMeClick, addMoreCallback, removeCallback, variantId) {
+        let quantityModifEl = $('<div class="qty-adjuster__inner"></div>');
+        let removeButton = $('<a class="qty-adjuster__down pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></a>');
+        let quantity = $('<input class="qty-adjuster__value" data-variantId=' + variantId + ' type="text" pattern="[0-9]*" name="updates[]" value="0" aria-label="Quantity" disabled>');
+        let addButton = $('<a class="qty-adjuster__up pointer" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a>');
+
+        addButton.click(addMoreCallback);
+        quantityModifEl.append(removeButton);
+        quantityModifEl.append(quantity);
+        quantityModifEl.append(addButton);
+        removeButton.click(removeCallback);
+
+        let tableEl = $("<table class='productTable'></table>");
+        let lineEl = $("<tr></tr>");
+        tableEl.append(lineEl);
+
+        let addMe = $("<td class='td-add-me'></td>");
+        addMe.append('<div class="addMe pointer"><span class="plus-sign">+</span><span class="me-text">Moi !</span><div>');
+        addMe.click(addMeClick);
+        lineEl.append(addMe);
+
+        let leftTd = $("<td class='td-quantity-modifier' style='display: none'></td>");
+        leftTd.append(quantityModifEl);
+        lineEl.append(leftTd);
+
+        let rightTd = $("<td class='right-td-productLabel'></td>");
+        rightTd.append("<span>" + name + "</span>");
+        lineEl.append(rightTd);
+
+        return tableEl;
+    }
+
+    function shakeRandomly() {
+        let allAddMe = $(".addMe")
+        let index = Math.round(Math.random() * allAddMe.length);
+        allAddMe.eq(index).removeClass("shakeIt")
+        allAddMe.eq(index).addClass("shakeIt")
+        setTimeout(function() {
+            allAddMe.eq(index).removeClass("shakeIt")
+        }, 1000);
+        setTimeout(shakeRandomly, 3000);
+    }
+
     function init() {
+        shakeRandomly();
+        $(document).ready(function() {
+            $(".product-property-block .qty-adjuster__value").toArray().forEach(el => $(el).val(0));
+        })
         if (typeof(globalConfig) === "undefined" || !globalConfig) {
             return;
         }
@@ -741,11 +816,13 @@ loadProductRecommendationsIntoSection();
             properties: getProperties()
         }
         itemsArray.push(mainProduct);
+        /*
         let motEnPlus = $("#mot-en-plus textarea").val()
         if (motEnPlus.trim().length !== 0) {
             let id = "Un petit Mot à nous Zester ?";
             mainProduct.properties[id] = motEnPlus;
         }
+        */
         addMoreProducts(itemsArray)
         let formData = {
             items: itemsArray
@@ -755,12 +832,13 @@ loadProductRecommendationsIntoSection();
     }
 
     function addMoreProducts(itemsArray) {
-        let productsToAdd = $("#more-products").find("input:checked")
+        let productsToAdd = $("#more-products").find(".qty-adjuster__value")
+            .filter(function() { return this.value !== "0" });;
         for (let i = 0; i < productsToAdd.length; i++) {
-            let variantId = parseInt(productsToAdd.eq(i).attr("variantId"));
+            let variantId = parseInt(productsToAdd.eq(i).attr("data-variantId"));
             itemsArray.push({
                 id: variantId,
-                quantity: 1
+                quantity: parseInt(productsToAdd.eq(i).val())
             })
         }
 
@@ -770,8 +848,8 @@ loadProductRecommendationsIntoSection();
         let propertiesBlock = $("#product-properties").find(".product-property-block")
         for (let i = 0; i < propertiesBlock.length; i++) {
             let propertyBlockEl = propertiesBlock.eq(i);
-            let optionsChecked = propertyBlockEl.find("input:checked");
-            if (globalConfig.properties[i].getRequiredItemNumber() > optionsChecked.length) {
+            let optionsChecked = getSumOfProductInCurrentFieldset(propertyBlockEl.find("fieldset"));
+            if (globalConfig.properties[i].getRequiredItemNumber() > optionsChecked) {
                 let option = globalConfig.properties[i].getRequiredItemNumber() > 1 ? "options" : "option";
                 alert("Vous devez choisir " + globalConfig.properties[i].getRequiredItemNumber()
                     + " " + option + " pour les " + globalConfig.properties[i].name + ".")
@@ -788,16 +866,23 @@ loadProductRecommendationsIntoSection();
         for (let i = 0; i < propertiesBlock.length; i++) {
             let propertyBlockEl = propertiesBlock.eq(i);
             let propertyName = propertyBlockEl.attr("property-name")
-            let optionsChecked = propertyBlockEl.find("input:checked");
+            let propertiesChosen = propertyBlockEl.find(".qty-adjuster__value")
+                .filter(function() { return this.value !== "0" });;
             let propertyValue = "";
 
-            for (let i = 0; i < optionsChecked.length; i++) {
-                propertyValue += optionsChecked.eq(i).attr("name")
-                propertyValue += (i === optionsChecked.length - 1) ? "" : " | ";
+            for (let i = 0; i < propertiesChosen.length; i++) {
+                propertyValue += propertiesChosen.eq(i).val() + " "
+                let propName = getLabelFromInput(propertiesChosen.eq(i));
+                propertyValue += propName
+                propertyValue += (i === propertiesChosen.length - 1) ? "" : " | ";
             }
             properties[propertyName] = propertyValue;
         }
         return properties;
+    }
+
+    function getLabelFromInput(el) {
+        return el.closest("tr").find('.right-td-productLabel').text()
     }
 
     function addProductToCart(formData) {
