@@ -120,6 +120,7 @@
           let DATE_HOUR_SEPARATOR = " de ";
           let SHIPPING_MESSAGE_ADD_BASE_PRICE = "Le tarif de base pour la livraison (" + SHIPPING_BASE_PRICE + "€) sera rajouté à la prochaine étape.";
           let QUANTITY_ADDING_FORBIDDEN = ["mont-dor"];
+          let PRE_COMMAND_HANDLE_LIST = ["planche-raclette-cochon", "test12345"];
           // ================================================================
           // = API Utils
           // ================================================================
@@ -168,6 +169,11 @@
           let disabledDates = [];
           // disabledDates.push(function(date) {return (date.getDay() === 1);}) // Disable Monday
           disabledDates.push(function(date) {return (date.getTime() + 24 * 60 * 60 * 1000 < currentDateObj.getTime());}) // Disable Previous Days
+          if (isTherePreCommandProduct()) {
+              disabledDates.push("2020-12-01");
+              disabledDates.push("2020-12-02");
+              disabledDates.push("2020-12-03");
+          }
           if (!isCurrentDayAllowed()) {
             disabledDates.push(currentDay)
           }
@@ -222,6 +228,9 @@
           }
           function isDateTimeOK() {
             return isDatePicked() && getTimeChosen().length !== 0 && isTimeChosen();
+          }
+          function isTherePreCommandProduct() {
+              return CART_CONTENT.items.map(item => item.handle).filter(handle => PRE_COMMAND_HANDLE_LIST.includes(handle)).length > 0;
           }
           // ================================================================
           // = Delivery Zone
