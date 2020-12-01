@@ -7423,10 +7423,127 @@ td .addMe:hover, td .addMe.shakeIt {
     width: 108%;
     padding-left: 5px;
   }
-
  */
 }
 
+/* Modals */
+
+#product-added-modal {
+  display: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 85%;
+  width: 50%;
+  position: fixed;
+  background-color: #fff;
+  z-index: 91100;
+  margin: auto;
+  padding: 10px
+}
+#product-added-modal .modal-header {
+  height: 5px;
+}
+#product-added-modal .modal-content {
+  overflow: scroll;
+}
+#product-added-modal .modal-header .close-button {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: 15px;
+  color: red;
+}
+#modal-background {
+  display: none;
+  opacity: 0;
+  background-color: #000;
+  transition: opacity .15s linear;
+  z-index: 91000;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+#modal-background.show {
+  opacity: 0.5;
+}
+
+#product-added-modal .top-right-cell {
+  padding: 0 15px;
+}
+
+#continue-shopping {
+  margin-top: 5px;
+}
+#continue-shopping img {
+  height: 40px;
+  margin-top: -11px;
+  margin-left: -25px;
+  position: absolute;
+  background: rgba(0,0,0,0.2);
+}
+#continue-shopping span {
+  padding-left: 0px;
+}
+#continue-shopping, #go-to-cart {
+  margin-top: 5px;
+  position: relative;
+}
+#go-to-cart svg {
+  background: rgba(0,0,0,0.2);
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  margin-top: -11px;
+  margin-left: -24px;
+  padding: 8px;
+}
+#go-to-cart span {
+  padding-left: 0px;
+}
+
+.line-separator {
+  border-bottom: 1px solid grey;
+  width: 80%;
+  margin: 10px auto;
+}
+#phrase-we-recommend-you-also {
+  text-align: center;
+  color: #f29f05;
+  font-size: 20px;
+}
+.product-to-recommend {
+  width: 200px;
+  float: left;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.product-to-recommend span {
+  width: 150px;
+}
+
+.product-to-recommend img {
+  width: 150px;
+}
+
+@media (max-width: 790px) {
+  #product-added-modal {
+    height: 95%;
+    width: 95%;
+  }
+  #continue-shopping span, #go-to-cart span {
+    padding: 0px;
+  }
+  #continue-shopping img, #go-to-cart svg {
+    display: none;
+  }
+}
 /*************    ---                   ---                   ---   *************/
 /*************    |     Cart Special Styles                     |   *************/
 /*************    ---                   ---                   ---   *************/
