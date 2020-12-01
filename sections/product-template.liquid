@@ -3,46 +3,6 @@
 {% assign variant = product.selected_or_first_available_variant %}
 {% assign featured_image = product.selected_or_first_available_variant.featured_media.preview_image | default: product.featured_media.preview_image %}
 
-<div id="modal-background" class="modal-background pointer" >
-</div>
-<div id="product-added-modal" class="modal-container" >
-    <div class="modal-dialog">
-        <div class="modal-header">
-            <svg class="close-button pointer" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path fill="grey" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
-        </div>
-        <div class="modal-content">
-            <h1>Excellent choix !</h1>
-            <table>
-                <tr>
-                    <td>
-                        <img src="{{ product.featured_image | img_url: 'master' }}"
-                             alt="{{ product | title }}"
-                             style="max-height: 200px;max-width: 200px;"/>
-                    </td>
-                    <td class="top-right-cell">
-                        Tu vas te régaler !<br/><br/>
-                        Que fait-on maintenant ?<br/><br/>
-                        <a href="/collections/all">
-                            <button id="continue-shopping">
-                                <span>On continue les achats ></span>
-                            </button>
-                        </a>
-                        <a href="/cart">
-                            <button id="go-to-cart">
-                                <span>Direction le panier</span>
-                            </button>
-                        </a>
-                    </td>
-
-                </tr>
-            </table>
-            <div class="line-separator"></div>
-            <div id="phrase-we-recommend-you-also">Nous te recommandons fortement aussi:</div>
-            <div id="product-to-recommend"></div>
-        </div>
-    </div>
-</div>
-
 <div class="container product-container"
      data-section-type="product-template">{% render 'preorder-now-collection-item', product: product %}
     {% unless template contains 'lightbox' %}
@@ -257,6 +217,7 @@
 
                         <div id="product-properties"></div>
                         <fieldset id="more-products" style="display: none;"></fieldset>
+                        <!--<div id="mot-en-plus">Un petit mot à nous zester ?<textarea></textarea></div>-->
 
                         <div id="infiniteoptions-container"></div>
 
@@ -384,7 +345,6 @@
 
     {% endunless %}
 </div>
-
 
 {% schema %}
 {
@@ -625,11 +585,7 @@ loadProductRecommendationsIntoSection();
                 ]
             }
         ],
-        moreProductsConfig: [
-            {"handle": "pain-aux-cereales"},
-            {"handle" : "biere-blonde"},
-            {"handle" : "biere-blanche"}
-        ]
+        moreProductsHandle: ["pain-aux-cereales", "biere-blonde", "biere-blanche","option-sans-gluten-personne"]
     }
     {% endif %}
 
@@ -659,16 +615,7 @@ loadProductRecommendationsIntoSection();
             },
             
         ],
-        moreProductsConfig: [
-            {"handle" : "vin-rouge-hukulum"},
-            {"handle" : "mont-dor",
-             "maxQuantityAllowed" : function(quantityDesired) {
-                 return quantityDesired <= 1 + Math.floor(getVariantValue() / 5)
-             },
-              "errorMessageMaxReached" : "Le max est 1 Mont d'or pour 4 personnes."
-            },
-
-        ]
+        moreProductsHandle: ["vin-rouge-hukulum","mont-dor","option-sans-gluten-personne"]
     }
     {% endif %}
 
@@ -723,43 +670,34 @@ loadProductRecommendationsIntoSection();
         displayProperties(getVariantValue())
     }
 
-    function MoreProduct(moreProductEl, moreProductsConfig) {
-        function addProduct(product, moreProductConfig) {
+    function MoreProduct(moreProductEl, moreProductsHandle) {
+        function addProduct(product) {
             if (!product.available) {
                 return;
             }
             $("#more-products").show();
             let name = product.title + " (&nbsp;+&nbsp;" + (product.price / 100) + "&nbsp;€&nbsp;)";
 
-            let lineEl = addProductLineEl(name, addMeClick,
-                addMoreEvent.bind(this, moreProductConfig),
-                removeEvent, product.variants[0].id
-            )
+            let lineEl = addProductLineEl(name, addMeClick, addMoreEvent, removeEvent, product.variants[0].id)
             moreProductEl.append(lineEl)
         }
 
         function addMeClick(event) {
-            addMoreEvent(undefined, event);
+            addMoreEvent(event);
             showQuantityModifier(event.target);
         }
 
-        function addMoreEvent(moreProductConfig, event) {
+        function addMoreEvent(event) {
             let quantityEl = findQuantityElFromButton(event.target);
             let quantity = parseInt(quantityEl.val());
-            debugger
-            if (moreProductConfig && moreProductConfig.maxQuantityAllowed &&
-                !moreProductConfig.maxQuantityAllowed(quantity + 1)) {
-                alert(moreProductConfig.errorMessageMaxReached)
-                return;
-            }
             quantityEl.val(quantity + 1);
         }
 
-        for (let moreProductConfig of moreProductsConfig) {
-            fetch('/products/' + moreProductConfig.handle + '.js')
+        for (let moreProductConfig of moreProductsHandle) {
+            fetch('/products/' + moreProductConfig + '.js')
                 .then(response => response.json())
                 .then(data => {
-                    addProduct(data, moreProductConfig)
+                    addProduct(data)
                 });
         }
     }
@@ -845,8 +783,8 @@ loadProductRecommendationsIntoSection();
                 new PropertiesSelector(propertyEl, propertyConfig);
             }
         }
-        if (globalConfig.moreProductsConfig) {
-            new MoreProduct($('#more-products'), globalConfig.moreProductsConfig)
+        if (globalConfig.moreProductsHandle) {
+            new MoreProduct($('#more-products'), globalConfig.moreProductsHandle)
         }
     }
 
@@ -959,7 +897,6 @@ loadProductRecommendationsIntoSection();
                 console.log("json add product answer:", json);
                 // window.location = "/cart";
                 productAdded();
-                openProductAddedModal();
             } else if (json.status === 422) {
                 alert("Désolé, le produit n'est plus en Stock !")
             } else {
@@ -987,60 +924,4 @@ loadProductRecommendationsIntoSection();
     }
 
 
-    // ================================================================================================
-    //= Modal
-    // ================================================================================================
-    let modalEl = $('#product-added-modal')
-    let backgroundEl = $('#modal-background')
-    let productsToRecommendEl = $('#product-to-recommend')
-    let recommendations = {
-        "default" : ["gateau-chocolat-fleur-doranger-noisettes-4-zesteurs", "banana-bread-4-zesteurs"],
-        "la-planche-aperitive" : ["gateau-chocolat-fleur-doranger-noisettes-4-zesteurs",
-                "banana-bread-4-zesteurs", "vin-rouge-hukulum"
-        ]
-    }
-
-    function openProductAddedModal() {
-        console.log("Open modal");
-        modalEl.show(500, function() {
-            $("#product-added-modal .modal-content").height($("#product-added-modal").height() - 20);
-        });
-        backgroundEl.show();
-        backgroundEl.addClass("show");
-        $("#product-added-modal .modal-content").height($("#product-added-modal").height() - 20);
-        displayRecommendations()
-    }
-    function closeProductAddedModal() {
-        modalEl.hide(500);
-        backgroundEl.removeClass("show");
-        backgroundEl.hide(0);
-    }
-    function displayRecommendations() {
-        let productsToRecommend = recommendations[productJson.handle] ?
-            recommendations[productJson.handle] : recommendations["default"];
-        productsToRecommendEl.html("")
-        for (let recoHandle of productsToRecommend) {
-            if (recoHandle === productJson.handle) {
-                continue;
-            }
-            fetch('/products/' + recoHandle + '.js')
-                .then(response => response.json())
-                .then(data => {
-                    addProductToRecommend(data)
-                });
-        }
-    }
-
-    function addProductToRecommend(product) {
-        console.log(product)
-        let linkEl = $("<a href='" + product.url + "'></a>");
-        let productEl = $("<div class='product-to-recommend'></div>");
-        productEl.append("<img src='" + product.featured_image + "'/><br/>");
-        productEl.append("<a href='" + product.url + "'><span>" + product.title + "</span></a>");
-        linkEl.append(productEl)
-        productsToRecommendEl.append(linkEl)
-    }
-
-    backgroundEl.click(closeProductAddedModal);
-    modalEl.find(".close-button").click(closeProductAddedModal);
 </script>

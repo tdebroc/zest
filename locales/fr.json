@@ -63,7 +63,7 @@
     },
     "general": {
       "quick_buy_added": "Ajout dans mon panier",
-      "from": "Prix à partir de ",
+      "from": "Prix par personne à partir de ",
       "include_taxes": "Taxes inclus",
       "full_details": "en cliquant ici",
       "quick_buy_html": "+ "
@@ -221,10 +221,10 @@
     },
     "activate_account": {
       "title": "Activer le compte",
-      "password": "Mot de pass",
-      "password_confirm": "Confirmer le mot de pass",
+      "password": "Mot de passe",
+      "password_confirm": "Confirmer le mot de passe",
       "cancel": "Annuler",
-      "subtext": "Créer ton mot de passe pour avoir le sésame et activer ton compte",
+      "subtext": "Créer un mot de passe pour avoir le sésame et activer ton compte",
       "submit": "Soumettre "
     },
     "addresses": {
@@ -249,11 +249,11 @@
       "add": "Ajouter l'adresse "
     },
     "login": {
-      "title": "Login",
+      "title": "S'identifier",
       "email": "Mail",
-      "password": "Mot de pass",
+      "password": "Mot de passe",
       "forgot_password": "Mot de pass oublié ? ",
-      "sign_in": "S'inscrire ",
+      "sign_in": "Se connecter ",
       "create_new_account": "Créer un compte ",
       "reset_sent": "Renvoyer un mail ",
       "submit_recover": "Envoyer ",
