@@ -328,7 +328,7 @@
                         {% render 'backorder', product: product, variant: current_variant %}
                     {% endif %}
                 {% endform %}
-        
+
 
             </div>
 
@@ -664,7 +664,7 @@ loadProductRecommendationsIntoSection();
                     {name: 'La Grosse courge : Butternut rôti au sirop d\'érable pomme granny acidulée'}
                 ]
             },
-            
+
         ],
         moreProductsConfig: [
             {"handle" : "vin-rouge-hukulum"},
@@ -678,37 +678,37 @@ loadProductRecommendationsIntoSection();
         ]
     }
     {% endif %}
-     
+
      {%- if product.tags contains "Raclette" -%}
-   
+
     // Use with variantToRequired[getVariantValue()]
     let globalConfig = {
-        
+
         moreProductsConfig: [
             {"handle" : "pommes-de-terres-800-gr"},
             {"handle" : "variete-de-charcuterie-250-gr"},
-            {"handle" : "variete-de-fromage-450-gr"},                                 
+            {"handle" : "variete-de-fromage-450-gr"},
             {"handle" : "legumes-rotis-250-gr"}
         ]
     }
     {% endif %}
-                                              
+
        {%- if product.tags contains "Surprise" -%}
-   
+
     // Use with variantToRequired[getVariantValue()]
     let globalConfig = {
-        
+
         moreProductsConfig: [
             {"handle" : "vin-rouge-hukulum"},
-            {"handle" : "offre-noel"},                                  
+            {"handle" : "offre-noel"},
             {"handle" : "pain-aux-cereales"},
-            {"handle" : "supplement-legumes-a-croquer"},                                 
+            {"handle" : "supplement-legumes-a-croquer"},
            	{"handle" : "option-sans-gluten-personne"}
         ]
     }
-                                              
+
 	{% endif %}
-                                              
+
 
     function PropertiesSelector(propertyEl, propertyConfig) {
         $(variantSelector).change(onVariantChange);
@@ -1075,4 +1075,15 @@ loadProductRecommendationsIntoSection();
     }
     backgroundEl.click(closeProductAddedModal);
     modalEl.find(".close-button").click(closeProductAddedModal);
+
+    // ================================================================================================
+    // = Hide Purchase Button on some products
+    // ====================È============================================================================
+    let hideButtonPurchaseHandles = ["mont-dor"]
+    for (let i = 0; i < hideButtonPurchaseHandles.length; i++) {
+        let handle = hideButtonPurchaseHandles[i]
+        if (productJson["handle"] === handle) {
+            $(".payment-and-quantity").text("Désolé, ce produit n'est pas disponible en achat seul.")
+        }
+    }
 </script>

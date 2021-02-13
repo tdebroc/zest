@@ -469,6 +469,14 @@
           }
 
           // ================================================================
+          // = Alcool Verification
+          // ================================================================
+          function isThereOnlyAlcoolProducts() {
+              // TODO: To implement
+              return false
+          }
+
+          // ================================================================
           // = Checkout Button
           // ================================================================
           function isCheckoutAllowed() {
@@ -494,6 +502,9 @@
               scrollTo("#delivery-zone-choser");
                 postalCodeOutsideParisEl.focus();
               return false
+            }
+            if (isThereOnlyAlcoolProducts()) {
+                return false
             }
             return true;
           }
