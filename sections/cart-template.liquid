@@ -1,4 +1,4 @@
-{% assign show_single_variant_details = true %}
+ù{% assign show_single_variant_details = true %}
 
 
 <div class="container" data-section-type="cart-template">
@@ -40,10 +40,9 @@
         <div id="cart-timeSelector">
           <select onchange="onTimeChange()" class="nothing-selected">
             <option disabled selected value>Choisissez votre heure de livraison</option>
-            <option value="1">17h30 à 18h30</option>
-            <option value="2">18h30 à 19h30</option>
-            <option value="3">19h30 à 20h30</option>
-            <option value="4">20h30 à 21h30</option>
+            <option value="1">17h30 à 19h00</option>
+            <option value="2">18h30 à 20h00</option>
+            <option value="3">19h30 à 21h30</option>
           </select>
         </div>
         <div id="delivery-zone-choser">
@@ -61,7 +60,7 @@
               </div>
               <div class="delivery-zone-option pointer" data-deliveryOption="inside-paris" onClick="selectDeliveryOption(this)">
                   <input type="radio" name="delivery-zone"/>
-                  <span class="inputLabel">J'habite Paris (intra-muros) ou Boulogne-Billancourt</span><br/>
+                  <span class="inputLabel">J'habite Paris intra-muros </span><br/>
                   <span class="delivery-price-message">La livraison revient à <span class="shipping-base-price"></span>€</span>
                   <div class="removing-extra-shipping-message">
                       <span>
@@ -76,7 +75,7 @@
                       <span class="inputLabel" style="color: grey;">J'habite en région Parisienne</span>
                   </div>
                   <div class="delivery-price-message">
-                      Cette option n'est pas encore disponible, mais patience ! Nous arrivons bientôt en région parisienne !
+                    Cette option n'est pas encore disponible, mais patience ! Zestez nous un appel au 06 36 16 93 83 ou <a href="/pages/contact" style="text-decoration:underline">contactez nous ici</a> !
                   </div>
                   <!--
                   <div id="adding-extra-shipping-message">
@@ -107,7 +106,7 @@
           let EXTRA_SHIPPING_HANDLE = "supplement-livraison";
           let SHIPPING_BASE_PRICE = 3.5;
           let DEFAULT_MIN_TIME = "17:30";
-          let DEFAULT_MAX_TIME_FOR_TODAY = "19:20";
+          let DEFAULT_MAX_TIME_FOR_TODAY = "19:30";
           let DEFAULT_MAX_TIME = "21:30";
           let MESSAGE_OUTSIDE_OF_ZONE = "Désolé nous ne livrons pas cette zone encore. Nous livrons dans le 92, 93, 94";
           /* /!\ Be careful if you change the attribute name "Date et Heure de Livraison".
@@ -120,7 +119,7 @@
           let DATE_HOUR_SEPARATOR = " de ";
           let SHIPPING_MESSAGE_ADD_BASE_PRICE = "Le tarif de base pour la livraison (" + SHIPPING_BASE_PRICE + "€) sera rajouté à la prochaine étape.";
           let QUANTITY_ADDING_FORBIDDEN = ["mont-dor"];
-          let PRE_COMMAND_HANDLE_LIST = ["planche-raclette-cochon", "test12345"];
+          let PRE_COMMAND_HANDLE_LIST = ["copie-de-planche-classico-raclette", "planche-raclette-veggie"];
           // ================================================================
           // = API Utils
           // ================================================================
@@ -174,6 +173,15 @@
               disabledDates.push("2020-12-02");
               disabledDates.push("2020-12-03");
           }
+          disabledDates.push("2020-12-24");
+          disabledDates.push("2020-12-25");
+          disabledDates.push("2020-12-26");
+          disabledDates.push("2020-12-27");
+          disabledDates.push("2021-01-01");
+          disabledDates.push("2021-01-10");
+          disabledDates.push("2021-01-11");
+          disabledDates.push("2021-02-15");
+          
           if (!isCurrentDayAllowed()) {
             disabledDates.push(currentDay)
           }

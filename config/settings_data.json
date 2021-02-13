@@ -4,10 +4,10 @@
     "header_col": "#f29f05",
     "logo_col": "#6a5b5c",
     "prod_sale_price_col": "#f29f05",
-    "feature_col": "#f29f05",
+    "feature_col": "#c0987e",
     "feature_over_col": "#ffffff",
-    "btn_shape": "rect",
-    "site_border_col": "#f29f05",
+    "btn_shape": "lozenge",
+    "site_border_col": "#c0987e",
     "site_border_thickness": 0,
     "divider_col": "#ffffff",
     "nav_main_col": "#2c2528",
@@ -35,11 +35,11 @@
     "site_bg_col": "#ffffff",
     "site_bg": "",
     "bg_alignment": "repeat-x",
-    "type_base_font": "karla_n4",
-    "type_heading_font": "karla_n4",
-    "type_nav_font": "karla_n4",
-    "type_logo_font": "karla_n4",
-    "font_size_body_int": 16,
+    "type_base_font": "josefin_sans_n4",
+    "type_heading_font": "josefin_sans_n4",
+    "type_nav_font": "josefin_sans_n4",
+    "type_logo_font": "josefin_sans_n4",
+    "font_size_body_int": 15,
     "font_size_nav_int": 17,
     "prod_thumb_shape": "natural",
     "prod_thumb_gutter": "10",
@@ -57,7 +57,7 @@
     "prod_quick_buy_type": "in-page",
     "prod_quick_buy_pos": "middle",
     "search_type": "product",
-    "favicon": "shopify:\/\/shop_images\/logo_Zest_4d14ea96-535a-418f-80ce-c159979bf1ba.png",
+    "favicon": "shopify:\/\/shop_images\/123307958_667202190659624_6485350956300460926_n.png",
     "share_image": "shopify:\/\/shop_images\/communication_12.png",
     "social_twitter_url": "",
     "social_facebook_url": "https:\/\/www.facebook.com\/zest.planche\/",
@@ -65,7 +65,7 @@
     "social_vimeo_url": "",
     "social_youtube_url": "",
     "social_instagram_url": "https:\/\/www.instagram.com\/zest.planche\/",
-    "social_custom_icon": "shopify:\/\/shop_images\/logo_Zest_4d14ea96-535a-418f-80ce-c159979bf1ba.png",
+    "social_custom_icon": "shopify:\/\/shop_images\/123307958_667202190659624_6485350956300460926_n.png",
     "social_custom_url": "",
     "cart_type": "drawer-standard",
     "checkout_header_image": "",
@@ -101,10 +101,10 @@
         "settings": {
           "menu_linklist": "main-menu",
           "header_layout": "center",
-          "logo": "shopify:\/\/shop_images\/logo_Zest_4d14ea96-535a-418f-80ce-c159979bf1ba.png",
+          "logo": "shopify:\/\/shop_images\/123307958_667202190659624_6485350956300460926_n.png",
           "logo_width": "200",
           "use_mobile_logo": false,
-          "compact_logo": "shopify:\/\/shop_images\/logo_Zest_4d14ea96-535a-418f-80ce-c159979bf1ba.png",
+          "compact_logo": "shopify:\/\/shop_images\/123307958_667202190659624_6485350956300460926_n.png",
           "show_header_search": true,
           "show_social_icons": true,
           "show_locale_selector": true,
@@ -116,8 +116,8 @@
           "announcement_show": true,
           "announcement_position": "above",
           "announcement_home_only": false,
-          "announcement_text": "Pour une livraison le soir même, passe ta commande avant 20h00.",
-          "announcement_col_bar": "#f29f05",
+          "announcement_text": "Pour une livraison le soir même, passe ta commande avant 19h30.",
+          "announcement_col_bar": "#c0987e",
           "announcement_col_text": "#fafafa"
         }
       },
@@ -140,11 +140,41 @@
       "1478797384865": {
         "type": "slideshow",
         "blocks": {
+          "717a18ff-23eb-4ce4-8adc-1d994dd95859": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/WEB_DESIGN_-2_965d4655-8db3-42ba-af9d-c258ed7d2b7e.png",
+              "mobile_image": "shopify:\/\/shop_images\/WEB_DESIGN_-2_965d4655-8db3-42ba-af9d-c258ed7d2b7e.png",
+              "tint_color": "#3d4246",
+              "tint_opacity": 0,
+              "position": "centre",
+              "heading": "",
+              "text": "",
+              "text_colour": "#ffffff",
+              "button_text": "COMMANDER",
+              "link_url": "shopify:\/\/collections\/edition-limitee"
+            }
+          },
+          "9e22ea7b-eb5f-4001-ad5c-b6466a6e1669": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/1_80fa6834-0384-4a4a-ade4-daa4d74918eb.png",
+              "mobile_image": "shopify:\/\/shop_images\/1_80fa6834-0384-4a4a-ade4-daa4d74918eb.png",
+              "tint_color": "#fafafa",
+              "tint_opacity": 0,
+              "position": "centre",
+              "heading": "",
+              "text": "",
+              "text_colour": "#ffffff",
+              "button_text": "COMMANDER",
+              "link_url": "shopify:\/\/collections\/planche-reconfortante"
+            }
+          },
           "1598353872644": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/pb-2.png",
-              "mobile_image": "shopify:\/\/shop_images\/pb-2.png",
+              "image": "shopify:\/\/shop_images\/WEB_DESIGN_-2.png",
+              "mobile_image": "shopify:\/\/shop_images\/WEB_DESIGN_-2.png",
               "tint_color": "rgba(0,0,0,0)",
               "tint_opacity": 0,
               "position": "centre",
@@ -152,27 +182,30 @@
               "text": "",
               "text_colour": "#4a8329",
               "button_text": "COMMANDER",
-              "link_url": "shopify:\/\/products\/planche-chaude-dinatoire-1"
+              "link_url": "shopify:\/\/collections\/planche-apero"
             }
           },
-          "1a39c1e0-af7c-4f16-a221-768b74c8fbca": {
+          "47422464-8cde-4929-824b-db3647026fb1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/pb_db32df03-f3a3-45d7-b9e1-4005a65cce49.png",
+              "image": "shopify:\/\/shop_images\/3.png",
+              "mobile_image": "shopify:\/\/shop_images\/3.png",
               "tint_color": "#3d4246",
               "tint_opacity": 0,
               "position": "centre",
               "heading": "",
               "text": "",
               "text_colour": "#ffffff",
-              "button_text": "Commander",
-              "link_url": "https:\/\/zestplanche.com\/pages\/box-visio"
+              "button_text": "COMMANDER",
+              "link_url": "shopify:\/\/collections\/raclette"
             }
           }
         },
         "block_order": [
+          "717a18ff-23eb-4ce4-8adc-1d994dd95859",
+          "9e22ea7b-eb5f-4001-ad5c-b6466a6e1669",
           "1598353872644",
-          "1a39c1e0-af7c-4f16-a221-768b74c8fbca"
+          "47422464-8cde-4929-824b-db3647026fb1"
         ],
         "settings": {}
       },
@@ -291,22 +324,10 @@
       "1590157729940": {
         "type": "featured-collections",
         "blocks": {
-          "1590157729940-0": {
+          "1598438156586": {
             "type": "collection",
             "settings": {
-              "collection": "nos-tartinables"
-            }
-          },
-          "1590157729940-1": {
-            "type": "collection",
-            "settings": {
-              "collection": "nos-boulangeries"
-            }
-          },
-          "1590157729940-2": {
-            "type": "collection",
-            "settings": {
-              "collection": "nos-zest-en"
+              "collection": "nos-planches"
             }
           },
           "1590157729940-3": {
@@ -315,19 +336,31 @@
               "collection": "nos-zest-sucre"
             }
           },
-          "1598438156586": {
+          "1590157729940-1": {
             "type": "collection",
             "settings": {
-              "collection": "nos-planches"
+              "collection": "nos-coups-de-food"
+            }
+          },
+          "1590157729940-2": {
+            "type": "collection",
+            "settings": {
+              "collection": "nos-tartines"
+            }
+          },
+          "1590157729940-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "nos-boissons"
             }
           }
         },
         "block_order": [
-          "1590157729940-0",
+          "1598438156586",
+          "1590157729940-3",
           "1590157729940-1",
           "1590157729940-2",
-          "1590157729940-3",
-          "1598438156586"
+          "1590157729940-0"
         ],
         "settings": {
           "heading": "Tous nos Zest",
@@ -341,7 +374,7 @@
           "collection": "planches-a-composer",
           "grid_show_vendor": false,
           "products_per_row": "5",
-          "row_count_int": 2
+          "row_count_int": 1
         }
       },
       "cart-drawer": {
@@ -566,8 +599,7 @@
               "heading": "",
               "text": "",
               "text_colour": "#ffffff",
-              "button_text": "",
-              "link_url": ""
+              "button_text": ""
             }
           },
           "1600512791297": {
@@ -578,11 +610,10 @@
               "tint_color": "#fcfeff",
               "tint_opacity": 0,
               "position": "centre",
-              "heading": "Slideshow",
+              "heading": "",
               "text": "",
               "text_colour": "#ffffff",
-              "button_text": "",
-              "link_url": ""
+              "button_text": ""
             }
           }
         },
@@ -643,6 +674,144 @@
         "settings": {
           "custom_html": "<div class=\"typeform-widget\" data-url=\"https:\/\/form.typeform.com\/to\/kyBP4kaF\" style=\"width: 100%; height: 500px;\"><\/div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id=\"typef_orm\", b=\"https:\/\/embed.typeform.com\/\"; if(!gi.call(d,id)) { js=ce.call(d,\"script\"); js.id=id; js.src=b+\"embed.js\"; q=gt.call(d,\"script\")[0]; q.parentNode.insertBefore(js,q) } })() <\/script>"
         }
+      },
+      "1611054985783115c3": {
+        "type": "tiled-images",
+        "blocks": {
+          "1611054985783115c3-4": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/WEB_DESIGN.png",
+              "tint_color": "#3d4246",
+              "tint_opacity": 0,
+              "title": "",
+              "text_line_2": "",
+              "overlay_color": "#464654",
+              "overlay_bg": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "1611054985783115c3-4"
+        ],
+        "settings": {
+          "row_size_int": 1,
+          "image_margin": "0"
+        }
+      },
+      "16118543373babb06b": {
+        "type": "tiled-images",
+        "blocks": {
+          "16118543373babb06b-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tartines_chaudes.jpg",
+              "tint_color": "#3d4246",
+              "tint_opacity": 0,
+              "title": "",
+              "text_line_2": "",
+              "overlay_color": "#464654",
+              "overlay_bg": "#ffffff"
+            }
+          },
+          "16118543373babb06b-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Zest_-_La_Parisienne.jpg",
+              "tint_color": "#3d4246",
+              "tint_opacity": 0,
+              "title": "",
+              "text_line_2": "",
+              "overlay_color": "#464654",
+              "overlay_bg": "#ffffff"
+            }
+          },
+          "16118543373babb06b-2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Montd_or.jpg",
+              "tint_color": "#3d4246",
+              "tint_opacity": 0,
+              "title": "",
+              "text_line_2": "",
+              "overlay_color": "#464654",
+              "overlay_bg": "#ffffff"
+            }
+          },
+          "16118543373babb06b-3": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/La_chouchou_de_Zest.jpg",
+              "tint_color": "#3d4246",
+              "tint_opacity": 0,
+              "title": "",
+              "text_line_2": "",
+              "overlay_color": "#464654",
+              "overlay_bg": "#ffffff"
+            }
+          },
+          "16118543373babb06b-4": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Nos_tartines.jpg",
+              "tint_color": "#3d4246",
+              "tint_opacity": 0,
+              "title": "",
+              "text_line_2": "",
+              "overlay_color": "#464654",
+              "overlay_bg": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "16118543373babb06b-0",
+          "16118543373babb06b-1",
+          "16118543373babb06b-2",
+          "16118543373babb06b-3",
+          "16118543373babb06b-4"
+        ],
+        "settings": {
+          "row_size_int": 3,
+          "image_margin": "0.5"
+        }
+      },
+      "1613053934b2c48d72": {
+        "type": "slideshow",
+        "blocks": {
+          "1613053934b2c48d72-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/7.png",
+              "mobile_image": "shopify:\/\/shop_images\/7.png",
+              "tint_color": "#3d4246",
+              "tint_opacity": 0,
+              "position": "centre",
+              "heading": "",
+              "text": "",
+              "text_colour": "#ffffff",
+              "button_text": ""
+            }
+          },
+          "1613053934b2c48d72-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/6.png",
+              "mobile_image": "shopify:\/\/shop_images\/6.png",
+              "tint_color": "#3d4246",
+              "tint_opacity": 0,
+              "position": "centre",
+              "heading": "",
+              "text": "",
+              "text_colour": "#ffffff",
+              "button_text": ""
+            }
+          }
+        },
+        "block_order": [
+          "1613053934b2c48d72-0",
+          "1613053934b2c48d72-1"
+        ],
+        "settings": {}
       }
     },
     "content_for_index": [
@@ -650,7 +819,10 @@
       "1604338685d5b5fb7e",
       "1590506747837",
       "1590157729940",
-      "1599129325640"
+      "1613053934b2c48d72",
+      "1611054985783115c3",
+      "1599129325640",
+      "16118543373babb06b"
     ]
   },
   "presets": {
