@@ -63,7 +63,7 @@
     },
     "general": {
       "quick_buy_added": "Ajout dans mon panier",
-      "from": "Prix par personne à partir de ",
+      "from": "A partir de 2 Zesteurs ",
       "include_taxes": "Taxes inclus",
       "full_details": "en cliquant ici",
       "quick_buy_html": "+ "
@@ -332,7 +332,11 @@
   "gift_cards": {
     "issued": {
       "print": "Imprimer",
-      "shop_link": "Commencer le shopping"
+      "shop_link": "Commencer le shopping",
+      "subtext": "Carte cadeau Zest ",
+      "expired": "Expire le  {{ expiry }}",
+      "active": "Expire le  {{ expiry }}",
+      "redeem": "Utilise ce code pour recevoir ton Zest "
     }
   },
   "storefront_password": {

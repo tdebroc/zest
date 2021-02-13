@@ -586,7 +586,12 @@ loadProductRecommendationsIntoSection();
       1 : 1,
 	  2 : 1,
 	  3 : 1,
-      4 : 2
+      4 : 2,
+	  5 : 2,
+      6 : 3,
+      7 : 3,
+      8 : 4,
+      9 : 4,
     }
 
     let globalConfig = {
@@ -619,7 +624,7 @@ loadProductRecommendationsIntoSection();
                     return "Choisissez " + this.getRequiredItemNumber() + " Zest en +";
                 },
                 properties: [
-                    {name: 'Variété de charcuterie : Saucisson, chorizo'},
+                    {name: 'Variété de charcuterie : Saucisson, chorizo, coppa'},
                     {name: 'Fromage de brebis'},
                     {name: 'Tortilla'}
                 ]
@@ -627,8 +632,9 @@ loadProductRecommendationsIntoSection();
         ],
         moreProductsConfig: [
             {"handle": "pain-aux-cereales"},
-            {"handle" : "biere-blonde"},
-            {"handle" : "biere-blanche"},
+            {"handle" : "vin-rouge-hukulum "},
+			{"handle" : "offre-noel"},
+			{"handle" : "supplement-legumes-a-croquer"},
             {"handle" : "option-sans-gluten-personne"}
         ]
     }
@@ -662,6 +668,7 @@ loadProductRecommendationsIntoSection();
         ],
         moreProductsConfig: [
             {"handle" : "vin-rouge-hukulum"},
+			{"handle" : "option-sans-gluten-personne"},
             {"handle" : "mont-dor",
                 "maxQuantityAllowed" : function(quantityDesired) {
                     return quantityDesired <= 1 + Math.floor(getVariantValue() / 5)
@@ -671,7 +678,37 @@ loadProductRecommendationsIntoSection();
         ]
     }
     {% endif %}
-
+     
+     {%- if product.tags contains "Raclette" -%}
+   
+    // Use with variantToRequired[getVariantValue()]
+    let globalConfig = {
+        
+        moreProductsConfig: [
+            {"handle" : "pommes-de-terres-800-gr"},
+            {"handle" : "variete-de-charcuterie-250-gr"},
+            {"handle" : "variete-de-fromage-450-gr"},                                 
+            {"handle" : "legumes-rotis-250-gr"}
+        ]
+    }
+    {% endif %}
+                                              
+       {%- if product.tags contains "Surprise" -%}
+   
+    // Use with variantToRequired[getVariantValue()]
+    let globalConfig = {
+        
+        moreProductsConfig: [
+            {"handle" : "vin-rouge-hukulum"},
+            {"handle" : "offre-noel"},                                  
+            {"handle" : "pain-aux-cereales"},
+            {"handle" : "supplement-legumes-a-croquer"},                                 
+           	{"handle" : "option-sans-gluten-personne"}
+        ]
+    }
+                                              
+	{% endif %}
+                                              
 
     function PropertiesSelector(propertyEl, propertyConfig) {
         $(variantSelector).change(onVariantChange);
@@ -992,9 +1029,9 @@ loadProductRecommendationsIntoSection();
     let backgroundEl = $('#modal-background')
     let productsToRecommendEl = $('#product-to-recommend')
     let recommendations = {
-        "default" : ["gateau-chocolat-fleur-doranger-noisettes-4-zesteurs", "banana-bread-4-zesteurs"],
+        "default" : ["gateau-chocolat-fleur-doranger-noisettes-4-zesteurs","carrot-cake-8-personnes", "biere-ipa", "cidre","vin-rouge-hukulum"],
         "la-planche-aperitive" : ["gateau-chocolat-fleur-doranger-noisettes-4-zesteurs",
-            "banana-bread-4-zesteurs", "vin-rouge-hukulum"
+            "cidre", "vin-rouge-hukulum", "biere-ipa","carrot-cake-8-personnes"
         ]
     }
     function openProductAddedModal() {

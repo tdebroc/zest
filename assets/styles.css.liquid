@@ -128,11 +128,9 @@ a:active, a:hover {
 }
 
 h1, .product-title-row .product-price .current-price, .slide-overlay .line-1, .slide-overlay .line-2, #mobile-nav .nav-item,
-    letter-spacing: 0.6rem;
     text-transform: none;
     text-shadow: white 0.4rem 0.3rem 0px;
     margin-bottom: 2.4rem;
-    font: 700 3rem/5rem LemonMilk, Circular, Helvetica, Arial, sans-serif;
 }
 
 h2, .product-block .price .amount {
@@ -244,7 +242,7 @@ nav ul, nav ol {
 
 img {
   border: 0;
-  -ms-interpolation-mode: bicubic;
+  -ms-interpolation-mode: bicubic;  
 }
 
 svg:not(:root) {
@@ -958,16 +956,10 @@ body {
 
 h1, .product-title-row .product-price .current-price, .slide-overlay .line-1, .slide-overlay .line-2, #mobile-nav .nav-item,
 #mobile-nav .sub-nav-item, .added-notice .added-notice__price, .h1 {
-    letter-spacing: 0.2rem;
     text-transform: none;
     color: rgb(38, 48, 60);
     display: inline;
     position: relative;
-    z-index: 1;
-    background-size: 5.3rem 0px;
-    box-shadow: rgb(253, 241, 184) 0px -1.5rem inset, rgb(253, 241, 141) 0px 0px inset;
-    font: bold 3.2rem/5.4rem LemonMilk, Circular, Helvetica, Arial, sans-serif;
-}
 }
 
 h2, .product-block .price .amount, .h2 {
@@ -1587,8 +1579,8 @@ svg g {
 }
 
 .story-container {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 0;
+  margin-right:0;
   width: {{ story_column_width }}px;
   max-width: 90%;
   padding-left: 20px;
@@ -3007,7 +2999,6 @@ svg g {
 }
 
 .rimage-outer-wrapper.fade-in.lazyloaded {
-  opacity: 1;
 }
 
 .no-js .rimage-outer-wrapper.fade-in {
