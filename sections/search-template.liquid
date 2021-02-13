@@ -91,6 +91,20 @@
   {% endif %}
 </div>
 
+<script type="text/javascript">
+  // ================================================================================================
+  // = Hide Purchase Button on some products
+  // ===========================È=====================================================================
+
+  let hideButtonPurchaseHandles = ["mont-dor"]
+  for (let i = 0; i < hideButtonPurchaseHandles.length; i++) {
+    let handle = hideButtonPurchaseHandles[i]
+    $("a[href^='/products/" + handle + "?']")
+            .closest(".product-block")
+            .find(".product-form")
+            .text("Désolé, ce produit n'est pas disponible en achat seul.")
+  }
+</script>
 
 {% schema %}
   {
