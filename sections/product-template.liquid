@@ -1079,11 +1079,10 @@ loadProductRecommendationsIntoSection();
     // ================================================================================================
     // = Hide Purchase Button on some products
     // ====================È============================================================================
-    let hideButtonPurchaseHandles = ["mont-dor"]
-    for (let i = 0; i < hideButtonPurchaseHandles.length; i++) {
-        let handle = hideButtonPurchaseHandles[i]
+    for (let i = 0; i < HIDE_BUTTON_PURCHASE_HANDLES.length; i++) {
+        let handle = HIDE_BUTTON_PURCHASE_HANDLES[i]
         if (productJson["handle"] === handle) {
-            $(".payment-and-quantity").text("Désolé, ce produit n'est pas disponible en achat seul.")
+            $(".payment-and-quantity").text(LABEL_HIDE_PURCHASE_PRODUCT)
         }
     }
 </script>
