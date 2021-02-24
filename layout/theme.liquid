@@ -124,7 +124,12 @@
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
-  
+
+  <script type="text/javascript">
+    let HIDE_BUTTON_PURCHASE_HANDLES =["mont-dor"]
+    let LABEL_HIDE_PURCHASE_PRODUCT = "Désolé, ce produit n'est pas disponible en achat seul."
+  </script>
+
 </head> 
 <body class="template-{{ template.name }} {% if template.suffix != blank %}template-sfx-{{ template.suffix }}{% endif %} {% if template.directory != blank %}template-dir-{{ template.directory }}{% endif %}">
   <a class="skip-link visually-hidden" href="#content">{{ 'general.accessibility_labels.skip_to_content' | t }}</a>

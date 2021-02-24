@@ -91,6 +91,19 @@
   {% endif %}
 </div>
 
+<script type="text/javascript">
+  // ================================================================================================
+  // = Hide Purchase Button on some products
+  // ===========================È=====================================================================
+
+  for (let i = 0; i < HIDE_BUTTON_PURCHASE_HANDLES.length; i++) {
+    let handle = HIDE_BUTTON_PURCHASE_HANDLES[i]
+    $("a[href^='/products/" + handle + "?']")
+            .closest(".product-block")
+            .find(".product-form")
+            .text(LABEL_HIDE_PURCHASE_PRODUCT)
+  }
+</script>
 
 {% schema %}
   {
