@@ -140,21 +140,6 @@
       "1478797384865": {
         "type": "slideshow",
         "blocks": {
-          "717a18ff-23eb-4ce4-8adc-1d994dd95859": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/WEB_DESIGN_-2_965d4655-8db3-42ba-af9d-c258ed7d2b7e.png",
-              "mobile_image": "shopify:\/\/shop_images\/WEB_DESIGN_-2_965d4655-8db3-42ba-af9d-c258ed7d2b7e.png",
-              "tint_color": "#3d4246",
-              "tint_opacity": 0,
-              "position": "centre",
-              "heading": "",
-              "text": "",
-              "text_colour": "#ffffff",
-              "button_text": "COMMANDER",
-              "link_url": "shopify:\/\/collections\/edition-limitee"
-            }
-          },
           "9e22ea7b-eb5f-4001-ad5c-b6466a6e1669": {
             "type": "image",
             "settings": {
@@ -202,7 +187,6 @@
           }
         },
         "block_order": [
-          "717a18ff-23eb-4ce4-8adc-1d994dd95859",
           "9e22ea7b-eb5f-4001-ad5c-b6466a6e1669",
           "1598353872644",
           "47422464-8cde-4929-824b-db3647026fb1"
