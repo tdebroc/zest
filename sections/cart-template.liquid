@@ -71,13 +71,13 @@
               </div>
               <div class="delivery-zone-option" data-deliveryOption="outside-paris" onClick="selectDeliveryOption(this)">
                   <div>
-                      <input type="radio" name="delivery-zone" disabled/>
-                      <span class="inputLabel" style="color: grey;">J'habite en région Parisienne</span>
+                      <input type="radio" name="delivery-zone"/>
+                      <span class="inputLabel">J'habite en région Parisienne</span>
                   </div>
                   <div class="delivery-price-message">
-                    Cette option n'est pas encore disponible, mais patience ! Zestez nous un appel au 06 36 16 93 83 ou <a href="/pages/contact" style="text-decoration:underline">contactez nous ici</a> !
+                      Seulement disponible en semaine et si c'est pour le jour même, avant <span id="MAX_HOUR_TO_DELIVER_OUTSIDE_PARIS"></span>
                   </div>
-                  <!--
+
                   <div id="adding-extra-shipping-message">
                       <span>
                           <img class="loader-orange-circle" src="{{ 'loading-orange-circle.gif' | asset_url }}" />
@@ -94,7 +94,6 @@
                       <span class="delivery-price-message">La livraison revient à <span id="shipping-total-price-outside-paris"></span>€
                           (supplément de <span id="extraShippingPrice"></span>€ pour le coup de pédale en plus)</span>
                   </div>
-                  -->
               </div>
         </div>
         <div style="clear: both;"></div>
@@ -103,12 +102,15 @@
           // ================================================================
           // = CONFIG
           // ================================================================
-          let EXTRA_SHIPPING_HANDLE = "supplement-livraison";
+          let EXTRA_SHIPPING_HANDLE = "supplement-livraison-1";
           let SHIPPING_BASE_PRICE = 3.5;
           let DEFAULT_MIN_TIME = "17:30";
           let DEFAULT_MAX_TIME_FOR_TODAY = "19:30";
           let DEFAULT_MAX_TIME = "21:30";
-          let MESSAGE_OUTSIDE_OF_ZONE = "Désolé nous ne livrons pas cette zone encore. Nous livrons dans le 92, 93, 94";
+          let MAX_HOUR_TO_DELIVER_OUTSIDE_PARIS = "14:50"
+          let ALLOWED_POSTAL_CODE_OUTSIDE_PARIS = ["93200", "93300", "93500", "93310"]
+          let MESSAGE_OUTSIDE_OF_ZONE = "Désolé nous ne livrons pas cette zone encore. " +
+                "Nous livrons dans les zones de " + ALLOWED_POSTAL_CODE_OUTSIDE_PARIS.join(", ");
           /* /!\ Be careful if you change the attribute name "Date et Heure de Livraison".
                * This value is used in the Thank You Script Page, you should modify it here:
                * https://zest-test.myshopify.com/admin/settings/checkout in script section. */
@@ -191,15 +193,18 @@
           disabledDates.push("2021-04-12");
           disabledDates.push("2021-04-19");
           disabledDates.push("2021-04-26");
-          
+
           if (!isCurrentDayAllowed()) {
             disabledDates.push(currentDay)
           }
           let options = {
             enableTime: false,
-            // defaultDate: currentDay + " 17:30",
-            "locale": "fr",
-            "disable": disabledDates,
+            defaultDate: getDateFromCartAttr(),
+            "locale" : "fr",
+            "disable" : disabledDates,
+            "altInput" : true,
+            "altFormat" : 'd/m/Y',
+            "dateFormat" : 'd/m/Y',
             onChange: function(selectedDates, dateStr) {
               sendDateIfValid(dateStr)
             },
@@ -223,10 +228,12 @@
           }
           function sendDateIfValid() {
             let timeChosen = getTimeChosen();
+            console.log("We might update date to " + getDateChosen())
             if (!isDateTimeOK()) {
               return;
             }
             let date = getDateChosen();
+            console.log("We'll update date " + getDateChosen())
             let formData = getNewFormData();
             formData["attributes"][DATE_HOUR_ATTR_KEY] = date + DATE_HOUR_SEPARATOR + timeChosen;
             updateCart(formData);
@@ -250,6 +257,26 @@
           function isTherePreCommandProduct() {
               return CART_CONTENT.items.map(item => item.handle).filter(handle => PRE_COMMAND_HANDLE_LIST.includes(handle)).length > 0;
           }
+          function isInsideWeek() {
+              if (!isDatePicked()) return false;
+              const currentWeekDay = datePickerToDate().getDay();
+              console.log(datePickerToDate())
+              console.log(datePickerToDate().getDay())
+              return currentWeekDay >= 1 && currentWeekDay <= 5;
+          }
+          function datePickerToDate() {
+              return new Date(datePickerEl.val().split("/")[2]  + "-" + datePickerEl.val().split("/")[1] + "-"
+                + datePickerEl.val().split("/")[0])
+          }
+
+          function canWeDeliverOutsideParisToday() {
+              if (currentDay !== datePickerEl.val()) return true
+              let currentHour = new Date().getHours();
+              let currentMin = new Date().getMinutes();
+              let maxHourAllowed = parseInt(MAX_HOUR_TO_DELIVER_OUTSIDE_PARIS.split(":")[0])
+              let maxMinAllowed = parseInt(MAX_HOUR_TO_DELIVER_OUTSIDE_PARIS.split(":")[1])
+              return currentHour * 60 + currentMin < maxHourAllowed * 60 + maxMinAllowed;
+          }
           // ================================================================
           // = Delivery Zone
           // ================================================================
@@ -259,10 +286,7 @@
           let numbers = /^[-+]?[0-9]+$/;
           function selectDeliveryOption(el, isInit) {
             let deliveryOption = $(el).attr("data-deliveryOption");
-            if (deliveryOption === 'outside-paris') {
-                // Feature is not enabled while we don't know shipping prices from vendors.
-                return;
-            }
+
             allOptionEls.removeClass("selected");
             $(el).addClass("selected");
             allOptionEls.find("input").prop('checked', false);
@@ -318,9 +342,10 @@
             return postalCode.length === 5 && postalCode.match(numbers);
           }
           function isAllowedPostalCodeForOutsideParis(postalCode) {
-            return postalCode.startsWith("92")
-                    || postalCode.startsWith("93")
-                    || postalCode.startsWith("94")
+            return arrayContains(postalCode, ALLOWED_POSTAL_CODE_OUTSIDE_PARIS)
+          }
+          function arrayContains(needle, array) {
+              return (array.indexOf(needle) > -1);
           }
           let PAD_TIME = 10;
           let timeLeft = -PAD_TIME;
@@ -431,6 +456,7 @@
                   CART_CONTENT.attributes[POSTAL_CODE_ATTR_KEY] : undefined;
           }
           function init() {
+              $("#MAX_HOUR_TO_DELIVER_OUTSIDE_PARIS").text(MAX_HOUR_TO_DELIVER_OUTSIDE_PARIS)
               if (CART_CONTENT.attributes[DATE_HOUR_ATTR_KEY]) {
                   datePickerEl.val(getDateFromCartAttr())
                   $("#cart-timeSelector option:contains(" + getTimeFromCartAttr() + ")").eq(0).prop('selected', true);
@@ -512,6 +538,16 @@
               scrollTo("#delivery-zone-choser");
                 postalCodeOutsideParisEl.focus();
               return false
+            }
+            if (getShippingSelectedValue() === 'outside-paris' && !isInsideWeek()) {
+              alert("Pour l'instant, la livraison en banlieue n'est assuré qu'en semaine.");
+              scrollTo("#datePicker");
+              return false
+            }
+            if (getShippingSelectedValue() === 'outside-paris' && !canWeDeliverOutsideParisToday()) {
+                alert("Désolé, mais pour une livraison en dehors de Paris aujourd'hui, l'heure maximale des livreurs est " + MAX_HOUR_TO_DELIVER_OUTSIDE_PARIS);
+                scrollTo("#datePicker");
+                return false
             }
             if (isThereOnlyAlcoolProducts()) {
                 return false
