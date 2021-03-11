@@ -116,7 +116,7 @@
           "announcement_show": true,
           "announcement_position": "above",
           "announcement_home_only": false,
-          "announcement_text": "Pour une livraison le soir même, passe ta commande avant 19h30.",
+          "announcement_text": "Du mardi au samedi, pour une livraison le soir même passe ta commande avant 19h30.",
           "announcement_col_bar": "#c0987e",
           "announcement_col_text": "#fafafa"
         }
@@ -127,7 +127,7 @@
           "footer_complexity": "columns",
           "show_footer_logo": true,
           "footer_logo": "shopify:\/\/shop_images\/logo_Zest_4d14ea96-535a-418f-80ce-c159979bf1ba.png",
-          "text_content": "<p>Pour te permettre de Zester ta planche dînatoire à Paris, nous sommes ouverts tous les soirs : du lundi au dimanche.<\/p><p>Livraison de <strong>17H30<\/strong> à <strong>21H30 <\/strong>dans tout<strong> Paris intramuros.<\/strong><\/p><p>Pour nous rendre visite : <\/p><p><a href=\"https:\/\/www.google.com\/maps\/place\/Zest+Planche\/@48.8487483,2.3629914,17z\/data=!3m1!4b1!4m5!3m4!1s0x47e671d02ad634a7:0x5e0194959dc3575a!8m2!3d48.8487483!4d2.3651801\" title=\"https:\/\/www.google.com\/maps\/place\/Zest+Planche\/@48.8487483,2.3629914,17z\/data=!3m1!4b1!4m5!3m4!1s0x47e671d02ad634a7:0x5e0194959dc3575a!8m2!3d48.8487483!4d2.3651801\"><strong>5 rue Crillon<\/strong><\/a><\/p><p><a href=\"https:\/\/www.google.com\/maps\/place\/Zest+Planche\/@48.8487483,2.3629914,17z\/data=!3m1!4b1!4m5!3m4!1s0x47e671d02ad634a7:0x5e0194959dc3575a!8m2!3d48.8487483!4d2.3651801\" title=\"https:\/\/www.google.com\/maps\/place\/Zest+Planche\/@48.8487483,2.3629914,17z\/data=!3m1!4b1!4m5!3m4!1s0x47e671d02ad634a7:0x5e0194959dc3575a!8m2!3d48.8487483!4d2.3651801\"><strong>75004 Paris<\/strong><\/a><\/p><p>Pour nous appeler : <\/p><p>06 36 16 93 83<\/p>",
+          "text_content": "<p>Pour te permettre de Zester ta planche dînatoire à Paris, nous sommes ouverts tous les soirs : du mardi au dimanche.<\/p><p>Livraison de <strong>17H30<\/strong> à <strong>21H30 <\/strong>dans tout<strong> Paris intramuros.<\/strong><\/p><p>Pour nous rendre visite : <\/p><p><a href=\"https:\/\/www.google.com\/maps\/place\/Zest+Planche\/@48.8487483,2.3629914,17z\/data=!3m1!4b1!4m5!3m4!1s0x47e671d02ad634a7:0x5e0194959dc3575a!8m2!3d48.8487483!4d2.3651801\" title=\"https:\/\/www.google.com\/maps\/place\/Zest+Planche\/@48.8487483,2.3629914,17z\/data=!3m1!4b1!4m5!3m4!1s0x47e671d02ad634a7:0x5e0194959dc3575a!8m2!3d48.8487483!4d2.3651801\"><strong>5 rue Crillon<\/strong><\/a><\/p><p><a href=\"https:\/\/www.google.com\/maps\/place\/Zest+Planche\/@48.8487483,2.3629914,17z\/data=!3m1!4b1!4m5!3m4!1s0x47e671d02ad634a7:0x5e0194959dc3575a!8m2!3d48.8487483!4d2.3651801\" title=\"https:\/\/www.google.com\/maps\/place\/Zest+Planche\/@48.8487483,2.3629914,17z\/data=!3m1!4b1!4m5!3m4!1s0x47e671d02ad634a7:0x5e0194959dc3575a!8m2!3d48.8487483!4d2.3651801\"><strong>75004 Paris<\/strong><\/a><\/p><p>Pour nous appeler : <\/p><p>06 36 16 93 83<\/p>",
           "footer_linklist": "footer",
           "footer_linklist2": "",
           "footer_linklist3": "footer-2",
