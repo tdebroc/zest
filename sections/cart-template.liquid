@@ -105,7 +105,7 @@
           let EXTRA_SHIPPING_HANDLE = "supplement-livraison-1";
           let SHIPPING_BASE_PRICE = 3.5;
           let DEFAULT_MIN_TIME = "17:30";
-          let DEFAULT_MAX_TIME_FOR_TODAY = "19:30";
+          let DEFAULT_MAX_TIME_FOR_TODAY = "19:15";
           let DEFAULT_MAX_TIME = "21:30";
           let MAX_HOUR_TO_DELIVER_OUTSIDE_PARIS = "14:50"
           let ALLOWED_POSTAL_CODE_OUTSIDE_PARIS = ["93200", "93300", "93500", "93310"]
@@ -186,13 +186,22 @@
           disabledDates.push("2021-02-22");
           disabledDates.push("2021-03-01");
           disabledDates.push("2021-03-08");
+          disabledDates.push("2021-03-14");
           disabledDates.push("2021-03-15");
           disabledDates.push("2021-03-22");
           disabledDates.push("2021-03-29");
+          disabledDates.push("2021-04-04");
           disabledDates.push("2021-04-05");
           disabledDates.push("2021-04-12");
           disabledDates.push("2021-04-19");
           disabledDates.push("2021-04-26");
+          disabledDates.push("2021-03-21");
+          disabledDates.push("2021-03-28");
+          disabledDates.push("2021-04-04");
+          disabledDates.push("2021-04-11");
+          disabledDates.push("2021-04-18");
+          disabledDates.push("2021-04-25");
+          
 
           if (!isCurrentDayAllowed()) {
             disabledDates.push(currentDay)
