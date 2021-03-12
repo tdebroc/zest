@@ -279,7 +279,7 @@
           }
 
           function canWeDeliverOutsideParisToday() {
-              if (currentDay !== datePickerEl.val()) return true
+              if (currentDate !== datePickerEl.val()) return true
               let currentHour = new Date().getHours();
               let currentMin = new Date().getMinutes();
               let maxHourAllowed = parseInt(MAX_HOUR_TO_DELIVER_OUTSIDE_PARIS.split(":")[0])
