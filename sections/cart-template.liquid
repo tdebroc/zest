@@ -107,8 +107,8 @@
           let DEFAULT_MIN_TIME = "17:30";
           let DEFAULT_MAX_TIME_FOR_TODAY = "19:15";
           let DEFAULT_MAX_TIME = "21:30";
-          let MAX_HOUR_TO_DELIVER_OUTSIDE_PARIS = "14:50"
-          let ALLOWED_POSTAL_CODE_OUTSIDE_PARIS = ["93200", "93300", "93500", "93310"]
+          let MAX_HOUR_TO_DELIVER_OUTSIDE_PARIS = "15:00"
+          let ALLOWED_POSTAL_CODE_OUTSIDE_PARIS = ["93200", "93300", "93500", "93310","93260","93170","93100","94160","94220","94200","94270","94250","92120","92240","92170","92130","92200","92300","92110","93400","92100"]
           let MESSAGE_OUTSIDE_OF_ZONE = "Désolé nous ne livrons pas cette zone encore. " +
                 "Nous livrons dans les zones de " + ALLOWED_POSTAL_CODE_OUTSIDE_PARIS.join(", ");
           /* /!\ Be careful if you change the attribute name "Date et Heure de Livraison".
@@ -279,7 +279,7 @@
           }
 
           function canWeDeliverOutsideParisToday() {
-              if (currentDay !== datePickerEl.val()) return true
+              if (currentDate !== datePickerEl.val()) return true
               let currentHour = new Date().getHours();
               let currentMin = new Date().getMinutes();
               let maxHourAllowed = parseInt(MAX_HOUR_TO_DELIVER_OUTSIDE_PARIS.split(":")[0])
